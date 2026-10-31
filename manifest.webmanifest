@@ -1,0 +1,13 @@
+{
+  "name": "Exxpress — игровой маркетплейс",
+  "short_name": "Exxpress",
+  "description": "Игровой маркетплейс Exxpress",
+  "start_url": "./index.html#home",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#10151d",
+  "theme_color": "#10151d",
+  "icons": [
+    {"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}

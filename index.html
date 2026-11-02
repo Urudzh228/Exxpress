@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="ru">
 <head>
+<meta name="google-site-verification" content="f5b-fl9hdtjWOg9Pzk_k5mgvxjHIip3RtnTLNRfo4t4" />
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#173a5e">
@@ -847,7 +848,6 @@ body:before{display:none}
     <button class="active" data-page="home">⌂ Главная</button>
     <button data-page="home" id="catalogNav">▦ Каталог</button>
     <button data-page="sell">＋ Объявления</button>
-    <button data-page="chats">▤ Сообщество</button>
     <button data-page="orders">☆ Покупки</button>
   </nav>
   <label class="search"><input id="search" type="search" placeholder="Поиск по товарам…" autocomplete="off" aria-label="Поиск по товарам"></label>
@@ -868,7 +868,7 @@ body:before{display:none}
         <div class="hero-actions">
           <button class="btn primary hero-cta" onclick="document.getElementById('catalog').scrollIntoView({behavior:'smooth'})">▣&nbsp; Перейти к покупкам <span>›</span></button>
         </div>
-        <div class="hero-pills"><span>⚡ Быстро и удобно</span><span>✧ Ключи и дополнения</span><span>◉ Общение с продавцами</span></div>
+        <div class="hero-pills"><span>⚡ Быстро и удобно</span><span>✧ Ключи и дополнения</span><span>◉ Объявления от игроков</span></div>
       </div>
       <div class="hero-glow" aria-hidden="true"></div>
     </div>
@@ -910,8 +910,7 @@ body:before{display:none}
   </section>
 
   <section id="sellPage" class="hidden"><div class="section-head"><div><h2>Мои объявления</h2><p>Управляй своими предложениями</p></div><button class="btn primary" onclick="newListing()">＋ Новое объявление</button></div><div class="panel" id="sellerPanel"></div></section>
-  <section id="chatsPage" class="hidden"><div class="section-head"><div><h2>Сообщения</h2><p>Переписка по объявлениям</p></div></div><div id="chatsRoot"></div></section>
-  <section id="ordersPage" class="hidden"><div class="section-head"><div><h2>Покупки</h2><p>Запросы и договорённости с продавцами</p></div></div><div class="panel"><div class="notice">Оплата и оформление заказа пока не подключены. Кнопка «Купить» открывает переписку с продавцом, чтобы уточнить наличие и условия сделки. Не переводи деньги незнакомым людям без проверки.</div><p class="muted">История оплаченных заказов появится после подключения платёжной системы и серверной обработки заказов.</p></div></section>
+  <section id="ordersPage" class="hidden"><div class="section-head"><div><h2>Покупки</h2><p>История заказов</p></div></div><div class="panel"><div class="notice">Оплата и оформление заказов пока не подключены. Личные сообщения продавцам временно отключены и станут доступны после покупки с подтверждённой оплатой.</div><p class="muted">История покупок появится после подключения платёжной системы и серверной обработки заказов.</p></div></section>
   <section id="profilePage" class="hidden"><div class="section-head"><div><h2>Мой профиль</h2><p>Твои данные и активность на Exxpress</p></div></div><div class="panel" id="profilePanel"></div></section>
   <footer class="footer"><div class="footer-inner"><span>© 2026 Exxpress Marketplace</span><span>Игровое сообщество и объявления</span></div></footer>
 </main>
@@ -1107,7 +1106,7 @@ async function register() {
     closeModal();
     toast('Аккаунт создан!');
   } else {
-    openModal('Почти готово!', `<div class="notice">Аккаунт создан. Осталось подтвердить адрес электронной почты.</div><p>Мы отправили письмо на <b>${esc(email)}</b>.</p><ol style="padding-left:20px;line-height:1.7"><li>Открой письмо от Supabase.</li><li>Нажми ссылку «Confirm your email address».</li><li>Вернись на сайт Exxpress.</li><li>Нажми <b>«Войти»</b> и введи тот же email и пароль, которые указал при регистрации.</li></ol><p class="muted tiny">После подтверждения вход не выполняется автоматически — войди с теми же данными.</p><button class="btn primary" onclick="closeModal()">Понятно</button>`);
+    openModal('Почти готово!', `<div class="notice">Аккаунт создан. Осталось подтвердить адрес электронной почты.</div><p>Мы отправили письмо на <b>${esc(email)}</b>.</p><ol style="padding-left:20px;line-height:1.7"><li>Открой письмо от Supabase.</li><li>Нажми ссылку «Confirm your email address».</li><li>Вернись на сайт Exxpress.</li><li>Нажми <b>«Войти»</b> и введи тот же email и пароль, которые указал при регистрации.</li></ol><p class="muted tiny">Подтверждение почты и вход — два отдельных шага. После подтверждения аккаунт уже создан, повторно регистрироваться не нужно.</p><button class="btn primary" onclick="closeModal()">Понятно</button>`);
   }
 }
 async function logout() {
@@ -1132,7 +1131,8 @@ function openAuth(note = '') {
     </div>
     <div class="muted tiny" style="text-align:center;margin:15px 0">или</div>
     <button class="btn secondary" style="width:100%" onclick="signInWithGoogle()">Продолжить с Google</button>
-    <p class="muted tiny" style="margin-top:13px">Можно войти через Google или по электронной почте и паролю.</p>`);
+    <div class="notice" style="margin-top:12px">Уже подтвердил почту? Нажми «Войти» и используй тот же адрес и пароль, которые указывал при регистрации.</div>
+    <p class="muted tiny" style="margin-top:13px">Используй отдельный пароль для Exxpress. Пароли от игровых платформ здесь не нужны.</p>`);
 }
 function authTab(tab) {
   $('loginTab').classList.toggle('active', tab === 'login');
@@ -1141,6 +1141,7 @@ function authTab(tab) {
     <div class="field"><label for="email">Электронная почта</label><input id="email" type="email" placeholder="name@example.com" autocomplete="email"></div>
     <div class="field"><label for="password">Пароль</label><input id="password" type="password" placeholder="Не менее 8 символов" autocomplete="${tab === 'reg' ? 'new-password' : 'current-password'}"></div>
     ${tab === 'reg' ? '<div class="field"><label for="username">Твой ник в Exxpress</label><input id="username" maxlength="24" placeholder="Например, Zextor"></div>' : ''}
+    ${tab === 'reg' ? '<div class="notice" style="margin:12px 0">После регистрации мы отправим письмо. Подтверди адрес по ссылке в письме, вернись на сайт и нажми «Войти», используя тот же email и пароль.</div>' : '<div class="notice" style="margin:12px 0">Если ты уже нажал ссылку подтверждения из письма, теперь просто войди с тем же email и паролем.</div>'}
     <button class="btn primary" style="width:100%" onclick="${tab === 'reg' ? 'register()' : 'login()'}">${tab === 'reg' ? 'Создать аккаунт' : 'Войти'}</button>`;
 }
 $('accountBtn').addEventListener('click', () => user ? showPage('profile') : openAuth());
@@ -1225,80 +1226,34 @@ function details(id) {
     <p>${esc(product.desc || 'Описание отсутствует.')}</p>
     <div class="price-row"><span class="price">${money(product.price)}</span><span class="stars">${product.rating > 0 ? `★ ${Number(product.rating).toFixed(1)} (${product.reviews || 0})` : 'Без оценок'}</span></div>
     ${product.demo ? '<div class="notice" style="margin-top:14px">Это демонстрационный пример, не реальное объявление. Для проверки покупки используй объявление, опубликованное через Exxpress.</div>' : ''}
-    <div class="product-actions"><button class="btn primary" onclick="requestPurchase('${String(product.id).replace(/'/g, '&#39;')}')">Купить</button><button class="btn secondary" onclick="startChat('${String(product.id).replace(/'/g, '&#39;')}')">Написать продавцу</button></div>
+    <div class="product-actions"><button class="btn primary" onclick="requestPurchase('${String(product.id).replace(/'/g, '&#39;')}')">Купить</button></div>
     <div class="divider"></div><h3>Отзывы</h3>
     ${listingReviews.length ? listingReviews.map(review => `<div class="review"><b>${esc(review.name)}</b> <span class="stars">${'★'.repeat(review.stars)}</span><p>${esc(review.text)}</p></div>`).join('') : '<p class="muted tiny">Публикация и общая база настоящих отзывов подключаются отдельно. Здесь пока отображаются только отзывы, сохранённые в этом браузере.</p>'}`);
 }
-async function requestPurchase(id) {
+function requestPurchase(id) {
   const product = products.find(item => String(item.id) === String(id));
   if (!product) return;
-  if (!user || !cloudUserId) return openAuth('Войди через Exxpress или Google, чтобы связаться с продавцом.');
   if (product.demo || !product.cloud || !product.ownerId) {
-    return openModal('Демонстрационный товар', '<p>Этот товар нужен только для примера оформления. Он не принадлежит реальному продавцу.</p><p class="muted">Чтобы попробовать связь с продавцом, размести своё объявление или открой реальное объявление сообщества.</p><button class="btn primary" onclick="closeModal();showPage(\'sell\')">Мои объявления</button>');
+    return openModal('Демонстрационный товар', '<p>Этот товар нужен только для примера каталога. Он не принадлежит реальному продавцу.</p>');
   }
-  if (product.ownerId === cloudUserId) return toast('Это твоё объявление.');
-  openModal('Связаться с продавцом', `<p>Ты собираешься обсудить покупку:</p><div class="order"><div><b>${esc(product.title)}</b><div class="muted">Продавец: ${esc(product.seller)}</div></div><b>${money(product.price)}</b></div><div class="notice">Оплата на Exxpress пока не подключена. Нажатие кнопки не списывает деньги и не создаёт оплаченный заказ — оно откроет чат с продавцом.</div><button class="btn primary" style="width:100%" onclick="startChat('${String(product.id).replace(/'/g, '&#39;')}', true)">Написать продавцу</button>`);
+  openModal('Покупки пока не подключены', `
+    <p>Система оформления и оплаты заказов EXXPRESS пока находится в разработке.</p>
+    <div class="notice">Личные сообщения продавцам временно отключены. Они станут доступны после покупки и подтверждения оплаты заказа.</div>
+    <p class="muted tiny">Сейчас нажатие кнопки не списывает деньги и не создаёт заказ.</p>
+    <button class="btn primary" style="width:100%" onclick="closeModal()">Понятно</button>
+  `);
 }
-async function startChat(productId, fromPurchase = false) {
-  const product = products.find(item => String(item.id) === String(productId));
-  if (!product) return;
-  if (!user || !cloudUserId) { closeModal(); return openAuth('Войди, чтобы написать продавцу.'); }
-  if (!exxpressSupabase || !product.cloud || !product.ownerId) return toast('Чат доступен для реальных объявлений из Supabase.');
-  if (product.ownerId === cloudUserId) return toast('Это твоё объявление.');
-  const { data, error } = await exxpressSupabase.from('conversations').upsert(
-    { listing_id: product.id, buyer_id: cloudUserId, seller_id: product.ownerId },
-    { onConflict: 'listing_id,buyer_id' }
-  ).select().single();
-  if (error) return toast('Не удалось открыть чат: ' + error.message);
-  activeChat = data.id;
-  closeModal();
-  showPage('chats');
-  await renderCloudChats();
-  if (fromPurchase) toast('Чат открыт. Обсуди с продавцом наличие и условия.');
+function startChat() {
+  return toast('Сообщения временно отключены. Они станут доступны после покупки.');
 }
-async function renderCloudChats() {
-  const root = $('chatsRoot');
-  if (!root || !exxpressSupabase || !cloudUserId) {
-    if (root) root.innerHTML = '<div class="empty">Войди в аккаунт, чтобы пользоваться сообщениями.</div>';
-    return;
-  }
-  const { data: threads, error } = await exxpressSupabase.from('conversations')
-    .select('id,listing_id,buyer_id,seller_id,created_at,listings(title)')
-    .or(`buyer_id.eq.${cloudUserId},seller_id.eq.${cloudUserId}`)
-    .order('created_at', { ascending: false });
-  if (error) { root.innerHTML = `<div class="notice">${esc(error.message)}</div>`; return; }
-  if (!threads?.length) { root.innerHTML = '<div class="empty">Пока нет переписок. Открой реальное объявление и нажми «Написать продавцу».</div>'; return; }
-  if (!threads.some(thread => String(thread.id) === String(activeChat))) activeChat = threads[0].id;
-  const thread = threads.find(item => String(item.id) === String(activeChat));
-  const { data: messages, error: messagesError } = await exxpressSupabase.from('messages')
-    .select('id,sender_id,body,created_at').eq('conversation_id', thread.id).order('created_at');
-  if (messagesError) { root.innerHTML = `<div class="notice">${esc(messagesError.message)}</div>`; return; }
-  root.innerHTML = `<div class="chat-layout">
-    <div class="chat-list">${threads.map(item => `<button class="chat-peer ${String(item.id) === String(activeChat) ? 'active' : ''}" onclick="selectChat('${String(item.id).replace(/'/g, '')}')"><b>Переписка</b><div class="meta">${esc(item.listings?.title || 'Объявление')}</div></button>`).join('')}</div>
-    <div class="chat-window"><b>${esc(thread.listings?.title || 'Переписка')}</b><div class="chat-messages" id="chatMessages">${(messages || []).map(message => `<div class="bubble ${message.sender_id === cloudUserId ? 'mine' : ''}">${esc(message.body)}<small>${message.sender_id === cloudUserId ? 'Вы' : 'Собеседник'} · ${new Date(message.created_at).toLocaleString('ru-RU')}</small></div>`).join('')}</div><form class="chat-compose" onsubmit="sendCloudChat(event,'${String(thread.id).replace(/'/g, '')}')"><input id="chatInput" maxlength="1000" placeholder="Напиши сообщение…" autocomplete="off"><button class="btn primary" type="submit">Отправить</button></form></div>
-  </div>`;
-  const box = $('chatMessages');
-  if (box) box.scrollTop = box.scrollHeight;
-}
-async function selectChat(id) { activeChat = id; await renderCloudChats(); }
-async function sendCloudChat(event, conversationId) {
-  event.preventDefault();
-  const input = $('chatInput');
-  const body = input?.value.trim();
-  if (!body || !exxpressSupabase || !cloudUserId) return;
-  const { error } = await exxpressSupabase.from('messages').insert({ conversation_id: conversationId, sender_id: cloudUserId, body });
-  if (error) return toast('Не удалось отправить сообщение: ' + error.message);
-  await renderCloudChats();
-}
-function renderChats() { renderCloudChats(); }
 
 function showPage(page, push = true) {
-  if (['sell','chats','orders','profile'].includes(page) && !user) return openAuth('Войди, чтобы открыть этот раздел.');
+  if (!['home','sell','orders','profile'].includes(page)) page = 'home';
+  if (['sell','orders','profile'].includes(page) && !user) return openAuth('Войди, чтобы открыть этот раздел.');
   currentPage = page;
-  ['home','sell','chats','orders','profile'].forEach(name => $(name + 'Page').classList.toggle('hidden', name !== page));
+  ['home','sell','orders','profile'].forEach(name => $(name + 'Page').classList.toggle('hidden', name !== page));
   document.querySelectorAll('.nav button').forEach(button => button.classList.toggle('active', button.dataset.page === page));
   if (page === 'sell') renderSeller();
-  if (page === 'chats') renderChats();
   if (page === 'profile') renderProfile();
   if (push) history.pushState({ page }, '', '#' + page);
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1579,7 +1534,7 @@ document.querySelectorAll('[data-card-size]').forEach(button => button.addEventL
 document.querySelectorAll('.nav button').forEach(button => button.addEventListener('click', () => { if (button.id !== 'catalogNav') showPage(button.dataset.page); }));
 window.addEventListener('popstate', event => {
   const page = event.state?.page || location.hash.slice(1) || 'home';
-  if (['home','sell','chats','orders','profile'].includes(page)) showPage(page, false);
+  if (['home','sell','orders','profile'].includes(page)) showPage(page, false);
 });
 
 // Start with the local demonstration examples, then merge real Supabase listings.
@@ -1587,7 +1542,7 @@ render();
 updateAccount();
 cloudInit();
 const initialPage = location.hash.slice(1);
-if (['home','sell','chats','orders','profile'].includes(initialPage)) showPage(initialPage, false);
+if (['home','sell','orders','profile'].includes(initialPage)) showPage(initialPage, false);
 // Проверяем актуальную версию Service Worker при каждом открытии сайта.
 // Сам документ загружается через network-first в sw.js; офлайн-кэш используется только без сети.
 if ('serviceWorker' in navigator && location.protocol !== 'file:') {

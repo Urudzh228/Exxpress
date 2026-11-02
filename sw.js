@@ -1,4 +1,4 @@
-const CACHE_NAME = 'exxpress-mobile-20261102-v2';
+const CACHE_NAME = 'exxpress-mobile-20261102-google-verification-v1';
 const APP_SHELL = ['./', './index.html', './manifest.webmanifest', './icon.svg'];
 self.addEventListener('install', event => {
   self.skipWaiting();

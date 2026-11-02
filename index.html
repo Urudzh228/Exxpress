@@ -938,17 +938,15 @@ const $ = id => document.getElementById(id);
 const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const money = value => new Intl.NumberFormat('ru-RU').format(Number(value) || 0) + ' ₽';
 const readLocal = (key, fallback) => { try { return JSON.parse(localStorage.getItem('exxpress_' + key)) ?? fallback; } catch { return fallback; } };
-const demoListings = [
-  {id:'demo-1',title:'Ключ активации игры — пример',category:'Игровые ключи',price:1499,seller:'Демо-магазин',rating:0,reviews:0,image:'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=900',desc:'Демонстрационный пример карточки. Это не реальный ключ и не реальное объявление.',date:1,stock:1,demo:true},
-  {id:'demo-2',title:'Игровой аккаунт — пример',category:'Аккаунты',price:2490,seller:'Демо-магазин',rating:0,reviews:0,image:'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=900',desc:'Демонстрационный пример карточки. Это не реальный аккаунт и не реальное объявление.',date:2,stock:1,demo:true},
-  {id:'demo-3',title:'Дополнение к игре — пример',category:'DLC и дополнения',price:899,seller:'Демо-магазин',rating:0,reviews:0,image:'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=900',desc:'Демонстрационный пример карточки. Это не реальное дополнение и не реальное объявление.',date:3,stock:1,demo:true},
-  {id:'demo-4',title:'Подарочная карта — пример',category:'Подарочные карты',price:799,seller:'Демо-магазин',rating:0,reviews:0,image:'https://images.unsplash.com/photo-1607082349566-187342175e2f?w=900',desc:'Демонстрационный пример карточки. Это не реальная подарочная карта и не реальное объявление.',date:4,stock:1,demo:true}
-];
-let products = [...demoListings];
+let products = [];
+let listingsLoaded = false;
 let user = null;
 let cloudUserId = null;
 let exxpressSupabase = null;
 let cloudReady = false;
+let authReady = false;
+let pendingProtectedPage = null;
+let cloudInitPromise = null;
 let cloudError = '';
 let reviews = readLocal('reviews', {});
 let category = 'Все';
@@ -1007,9 +1005,27 @@ function applyCloudUser(authUser) {
   saveLocal();
 }
 function updateAccount() {
-  $('accountBtn').textContent = user ? user.name : 'Войти';
-  $('logoutBtn').classList.toggle('hidden', !user);
-  $('registerBtn').classList.toggle('hidden', !!user);
+  const accountButton = $('accountBtn');
+  const logoutButton = $('logoutBtn');
+  const registerButton = $('registerBtn');
+  if (!authReady) {
+    accountButton.textContent = 'Проверка…';
+    accountButton.disabled = true;
+    logoutButton.classList.add('hidden');
+    registerButton.classList.add('hidden');
+    return;
+  }
+  accountButton.disabled = false;
+  accountButton.textContent = user ? user.name : 'Войти';
+  logoutButton.classList.toggle('hidden', !user);
+  registerButton.classList.toggle('hidden', !!user);
+}
+function finishAuthInitialization() {
+  authReady = true;
+  updateAccount();
+  const requestedPage = pendingProtectedPage;
+  pendingProtectedPage = null;
+  if (requestedPage) showPage(requestedPage, false);
 }
 function updateHomeProfile() {
   const name = $('homeProfileName');
@@ -1040,36 +1056,59 @@ function updateHomeProfile() {
   stats.classList.remove('hidden');
 }
 async function cloudInit() {
-  if (!cloudConfigured() || !window.supabase?.createClient) {
-    cloudError = 'Supabase не настроен. Проверь supabase-config.js.';
-    render();
-    return;
-  }
-  try {
-    exxpressSupabase = window.supabase.createClient(window.EXXPRESS_SUPABASE_CONFIG.url, window.EXXPRESS_SUPABASE_CONFIG.anonKey);
-    const { data, error } = await exxpressSupabase.auth.getSession();
-    if (error) throw error;
-    if (data.session?.user) applyCloudUser(data.session.user);
-    exxpressSupabase.auth.onAuthStateChange((_event, session) => {
-      if (session?.user) {
-        applyCloudUser(session.user);
-        loadCloudListings();
-        if (currentPage === 'profile') renderProfile();
+  if (cloudInitPromise) return cloudInitPromise;
+  cloudInitPromise = (async () => {
+    if (!cloudConfigured() || !window.supabase?.createClient) {
+      cloudError = 'Supabase не настроен. Проверь supabase-config.js.';
+      listingsLoaded = true;
+      render();
+      finishAuthInitialization();
+      return;
+    }
+    try {
+      exxpressSupabase = window.supabase.createClient(
+        window.EXXPRESS_SUPABASE_CONFIG.url,
+        window.EXXPRESS_SUPABASE_CONFIG.anonKey
+      );
+
+      // Restore the saved Supabase session before allowing protected routes to open.
+      const { data, error } = await exxpressSupabase.auth.getSession();
+      if (error) throw error;
+
+      if (data.session?.user) {
+        applyCloudUser(data.session.user);
       } else {
         user = null;
         cloudUserId = null;
-        updateAccount();
-        if (currentPage !== 'home') showPage('home');
       }
-    });
-    await loadCloudListings();
-    cloudReady = true;
-  } catch (error) {
-    console.error('Supabase initialization failed:', error);
-    cloudError = error.message || 'Не удалось подключиться к Supabase.';
-    toast('Не удалось подключиться к Supabase. Проверь настройки.');
-  }
-  updateAccount();
+
+      exxpressSupabase.auth.onAuthStateChange((_event, session) => {
+        if (session?.user) {
+          applyCloudUser(session.user);
+          loadCloudListings();
+          if (currentPage === 'profile') renderProfile();
+        } else {
+          user = null;
+          cloudUserId = null;
+          updateAccount();
+          if (currentPage !== 'home') showPage('home');
+        }
+      });
+
+      // The initial URL hash is processed only after session restoration.
+      finishAuthInitialization();
+      await loadCloudListings();
+      cloudReady = true;
+    } catch (error) {
+      console.error('Supabase initialization failed:', error);
+      cloudError = error.message || 'Не удалось подключиться к Supabase.';
+      listingsLoaded = true;
+      render();
+      finishAuthInitialization();
+      toast('Не удалось подключиться к Supabase. Проверь настройки.');
+    }
+  })();
+  return cloudInitPromise;
 }
 async function signInWithGoogle() {
   if (!exxpressSupabase) {
@@ -1155,7 +1194,10 @@ function authTab(tab) {
     ${tab === 'reg' ? '<div class="notice" style="margin:12px 0">После регистрации мы отправим письмо. Подтверди адрес по ссылке в письме, вернись на сайт и нажми «Войти», используя тот же email и пароль.</div>' : '<div class="notice" style="margin:12px 0">Если ты уже нажал ссылку подтверждения из письма, теперь просто войди с тем же email и паролем.</div>'}
     <button class="btn primary" style="width:100%" onclick="${tab === 'reg' ? 'register()' : 'login()'}">${tab === 'reg' ? 'Создать аккаунт' : 'Войти'}</button>`;
 }
-$('accountBtn').addEventListener('click', () => user ? showPage('profile') : openAuth());
+$('accountBtn').addEventListener('click', () => {
+  if (!authReady) { pendingProtectedPage = 'profile'; return; }
+  user ? showPage('profile') : openAuth();
+});
 $('registerBtn').addEventListener('click', () => { openAuth(); authTab('reg'); });
 $('catalogNav').addEventListener('click', () => { showPage('home'); $('catalog').scrollIntoView({behavior:'smooth'}); });
 $('logoutBtn').addEventListener('click', logout);
@@ -1185,12 +1227,15 @@ async function loadCloudListings() {
   if (error) {
     console.warn('Supabase listings:', error.message);
     cloudError = 'Не удалось загрузить объявления из Supabase: ' + error.message;
+    listingsLoaded = true;
     render();
     return;
   }
   const allowedCategories = ['Игровые ключи','Аккаунты','DLC и дополнения','Подарочные карты','Игровые предметы'];
   const cloud = (data || []).map(mapCloudListing).filter(item => allowedCategories.includes(item.category));
-  products = [...demoListings, ...cloud];
+  products = cloud;
+  listingsLoaded = true;
+  cloudError = '';
   render();
 }
 function render() {
@@ -1217,7 +1262,11 @@ function render() {
       </div>
     </article>`).join('');
   $('noResults').classList.toggle('hidden', list.length > 0);
-  if (!list.length && cloudError) $('noResults').textContent = cloudError;
+  if (!list.length) {
+    $('noResults').textContent = !listingsLoaded
+      ? 'Загружаем объявления…'
+      : (cloudError || 'Пока нет опубликованных объявлений. Загляни чуть позже или размести первое!');
+  }
 }
 function details(id) {
   const product = products.find(item => String(item.id) === String(id));
@@ -1363,6 +1412,10 @@ function startChat() {
 
 function showPage(page, push = true) {
   if (!['home','sell','orders','profile'].includes(page)) page = 'home';
+  if (['sell','orders','profile'].includes(page) && !authReady) {
+    pendingProtectedPage = page;
+    return;
+  }
   if (['sell','orders','profile'].includes(page) && !user) return openAuth('Войди, чтобы открыть этот раздел.');
   currentPage = page;
   ['home','sell','orders','profile'].forEach(name => $(name + 'Page').classList.toggle('hidden', name !== page));
@@ -1650,12 +1703,12 @@ window.addEventListener('popstate', event => {
   if (['home','sell','orders','profile'].includes(page)) showPage(page, false);
 });
 
-// Start with the local demonstration examples, then merge real Supabase listings.
+// Start with an honest loading state; real listings are loaded from Supabase.
 render();
 updateAccount();
-cloudInit();
 const initialPage = location.hash.slice(1);
 if (['home','sell','orders','profile'].includes(initialPage)) showPage(initialPage, false);
+cloudInit();
 // Проверяем актуальную версию Service Worker при каждом открытии сайта.
 // Сам документ загружается через network-first в sw.js; офлайн-кэш используется только без сети.
 if ('serviceWorker' in navigator && location.protocol !== 'file:') {

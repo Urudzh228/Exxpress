@@ -14,7 +14,7 @@
 <style>
 :root{color-scheme:dark;--bg:#0a111d;--surface:#111d2c;--surface2:#17273a;--surface3:#20364d;--line:#2a425b;--text:#eff6ff;--muted:#9db0c4;--blue:#62bdff;--blue2:#268fdb;--mint:#67dfad;--gold:#ffc76b;--danger:#ff8190;--shadow:0 22px 65px #0008;--radius:16px}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--text);font:15px/1.55 Inter,Segoe UI,Arial,sans-serif;background:radial-gradient(ellipse at 10% -5%,#1b527333,transparent 38%),radial-gradient(ellipse at 100% 30%,#1d47702b,transparent 35%),var(--bg)}body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.12;background-image:linear-gradient(30deg,transparent 48%,#78c5ff18 49%,#78c5ff18 50%,transparent 51%),linear-gradient(150deg,transparent 48%,#78c5ff12 49%,#78c5ff12 50%,transparent 51%);background-size:58px 58px}
-button,input,select,textarea{font:inherit}button{cursor:pointer;color:inherit;border:0}a{color:inherit;text-decoration:none}.hidden{display:none!important}.muted{color:var(--muted)}.tiny{font-size:12px}.topbar{height:76px;position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:28px;padding:0 max(22px,calc((100% - 1420px)/2));background:#0c1725eF;border-bottom:1px solid #34516c;backdrop-filter:blur(18px);box-shadow:0 8px 28px #0003}.logo{font-size:29px;font-weight:900;letter-spacing:-1.6px;white-space:nowrap}.logo span{background:linear-gradient(120deg,#73caff,#6be3bb);-webkit-background-clip:text;background-clip:text;color:transparent}.nav{display:flex;gap:8px}.nav button{padding:10px 13px;border-radius:9px;background:transparent;color:#b9cadb;font-weight:650;transition:.2s}.nav button:hover,.nav button.active{color:#fff;background:#203951}.search{flex:1;max-width:480px;position:relative}.search:before{content:"⌕";position:absolute;left:15px;top:4px;font-size:27px;color:#9dbbd4}.search input{width:100%;padding:12px 16px 12px 43px;color:#fff;background:#192b3e;border:1px solid #34516d;border-radius:10px;outline:none}.search input:focus,.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #62bdff20}.top-actions{display:flex;gap:9px;margin-left:auto;align-items:center}.btn{padding:10px 16px;border-radius:9px;background:#29435c;font-weight:700;border:1px solid #ffffff0c;transition:transform .18s,filter .18s,box-shadow .18s}.btn:hover{filter:brightness(1.14);transform:translateY(-1px)}.btn.primary{color:#061725;background:linear-gradient(120deg,#2296e5,#68ccf3);box-shadow:0 6px 20px #1689df30}.btn.secondary{background:#20364b;border-color:#3a5875}.btn.ghost{background:transparent;border-color:#405b75;color:#d4e3ef}.btn.danger{background:#4a2734;border-color:#784052;color:#ffdce2}.btn.small{padding:7px 11px;font-size:13px}.wrap{max-width:1420px;margin:auto;padding:26px 28px 40px}.hero{position:relative;overflow:hidden;min-height:285px;padding:42px 48px;border:1px solid #47799b;border-radius:22px;background:radial-gradient(circle at 83% 30%,#5ac4ff35,transparent 27%),linear-gradient(110deg,#10263b 0%,#19466a 57%,#13283d 100%);box-shadow:var(--shadow)}.hero:before{content:"";position:absolute;width:310px;height:310px;right:10%;top:-120px;border:1px solid #a6dcff35;border-radius:50%;box-shadow:0 0 0 28px #a6dcff0c,0 0 0 62px #a6dcff09,0 0 0 100px #a6dcff06}.hero:after{content:"";position:absolute;pointer-events:none}.hero-content{position:relative;z-index:1;max-width:680px}.eyebrow{color:#8bd4ff;text-transform:uppercase;letter-spacing:2px;font-size:12px;font-weight:800}.hero h1{margin:10px 0 12px;font-size:clamp(30px,4vw,46px);line-height:1.08;letter-spacing:-1.7px}.hero p{max-width:560px;color:#c4d9e9;margin:0}.hero .btn{margin-top:19px}.hero-pills{display:flex;flex-wrap:wrap;gap:9px;margin-top:23px}.hero-pills span{padding:6px 10px;border:1px solid #a8d9ff35;background:#ffffff0b;border-radius:30px;font-size:12px;color:#d3e8f6}.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:32px 0 16px}.section-head h2{font-size:22px;margin:0;letter-spacing:-.4px}.section-head p{margin:3px 0 0;color:var(--muted);font-size:13px}.categories{display:flex;flex-wrap:wrap;gap:9px}.chip{padding:9px 15px;border:1px solid #344e68;border-radius:40px;background:#17283a;color:#c5d7e7;transition:.2s}.chip:hover,.chip.active{background:linear-gradient(120deg,#1a6494,#287eae);border-color:#62bdff;color:#fff;box-shadow:0 5px 18px #1689df25}.catalog-layout{display:grid;grid-template-columns:215px 1fr;gap:22px}.sidebar,.panel{background:linear-gradient(145deg,#16273a,#101c2a);border:1px solid var(--line);border-radius:15px;padding:18px;box-shadow:0 12px 34px #0003}.sidebar h3{margin:0 0 12px;font-size:15px}.filter{display:block;width:100%;padding:10px;text-align:left;background:transparent;color:#b9cadb;border-radius:8px}.filter:hover,.filter.active{background:#243e56;color:#fff}.products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.product{min-width:0;overflow:hidden;position:relative;background:linear-gradient(155deg,#1a2e43,#111f2e);border:1px solid #304b67;border-radius:15px;box-shadow:0 10px 28px #0003;transition:.23s}.product:before{content:"";position:absolute;top:0;left:18px;right:18px;height:1px;background:linear-gradient(90deg,transparent,#86d1ff85,transparent);z-index:1}.product:hover{transform:translateY(-5px);border-color:#5bb8f0;box-shadow:0 18px 38px #0006,0 0 24px #2c9fe51b}.product img{display:block;width:100%;height:168px;object-fit:cover;background:#20364b}.product-body{padding:15px}.meta{font-size:12px;color:#9eb3c6}.product h3{font-size:16px;line-height:1.35;margin:6px 0 5px;min-height:43px}.stars{color:var(--gold)}.price-row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px}.price{font-size:20px;font-weight:850;color:#80e0ae}.tag{font-size:11px;color:#a9d9fb;background:#1c405a;border:1px solid #315b7b;padding:4px 8px;border-radius:6px;white-space:nowrap}.product-actions{display:flex;gap:8px;margin-top:13px}.product-actions button{flex:1}.favorite{margin-top:7px;width:100%;padding:8px;border-radius:8px;background:transparent;color:#a9bfd2;text-align:left}.favorite:hover,.favorite.on{color:#ff93a7;background:#492a382e}.empty{padding:42px 20px;text-align:center;color:var(--muted);background:#142438;border:1px dashed #3a5872;border-radius:14px}.notice{padding:12px 14px;border-left:3px solid var(--gold);border-radius:7px;background:#2a3947;color:#dce7f0;font-size:13px}.modal-bg{position:fixed;inset:0;z-index:30;display:none;align-items:center;justify-content:center;padding:18px;background:#03070ddc;backdrop-filter:blur(7px)}.modal-bg.show{display:flex}.modal{width:min(640px,100%);max-height:90vh;overflow:auto;padding:23px;background:linear-gradient(145deg,#1c3046,#101d2b);border:1px solid #496986;border-radius:17px;box-shadow:0 25px 85px #000b}.modal-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:16px}.modal-head h2{margin:0;font-size:21px}.close{background:#2a4056;border-radius:8px;padding:7px 11px}.field{margin:13px 0}.field label{display:block;margin-bottom:6px;font-size:13px;color:#c3d2df}.field input,.field select,.field textarea{display:block;width:100%;padding:11px 12px;background:#0e1925;border:1px solid #3b536b;border-radius:8px;color:#f2f7fb;outline:none}.field textarea{min-height:95px;resize:vertical}.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.tabs{display:flex;gap:8px;border-bottom:1px solid var(--line);margin-bottom:16px}.tabs button{padding:10px 13px;background:transparent;color:#aebfce;border-bottom:2px solid transparent}.tabs button.active{color:#fff;border-bottom-color:var(--blue)}.profile-grid{display:grid;grid-template-columns:1fr 250px;gap:18px}.profile-card{padding:20px;background:#1b3045;border:1px solid #395671;border-radius:13px}.avatar{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;font-size:27px;font-weight:900;color:#062036;background:linear-gradient(135deg,#67c9ff,#6de0b4);border:3px solid #b5e5ff55}.profile-head{display:flex;gap:16px;align-items:center}.profile-head h2{margin:0}.profile-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}.stat{padding:13px;background:#20364b;border:1px solid #385570;border-radius:10px}.stat b{display:block;font-size:22px}.order{display:flex;justify-content:space-between;align-items:center;gap:14px;margin:10px 0;padding:13px;background:#1d3043;border:1px solid #344f69;border-radius:10px}.status{font-size:12px;color:var(--mint)}.detail-img{display:block;width:100%;max-height:270px;object-fit:cover;border-radius:10px;margin-bottom:14px}.review{padding:12px 0;border-top:1px solid var(--line)}.chat-layout{display:grid;grid-template-columns:240px 1fr;gap:14px}.chat-list,.chat-window{background:#142336;border:1px solid var(--line);border-radius:12px;padding:12px}.chat-peer{display:block;width:100%;padding:11px;margin:3px 0;text-align:left;background:transparent;border-radius:8px}.chat-peer:hover,.chat-peer.active{background:#263f57}.chat-window{min-height:390px;display:flex;flex-direction:column}.chat-messages{flex:1;max-height:430px;overflow:auto;padding:8px}.bubble{max-width:80%;padding:10px 13px;margin:8px 0;border-radius:12px;background:#263d54;overflow-wrap:anywhere}.bubble.mine{margin-left:auto;background:#205783}.bubble small{display:block;margin-top:5px;font-size:10px;color:#b7cadb}.chat-compose{display:flex;gap:8px;margin-top:12px}.chat-compose input{flex:1;min-width:0;padding:11px;background:#0e1925;border:1px solid #3b536b;border-radius:8px;color:white}.footer{margin-top:60px;border-top:1px solid var(--line);padding:25px 0;color:#8196aa;font-size:12px}.toast{position:fixed;right:22px;bottom:22px;z-index:60;max-width:min(420px,calc(100% - 40px));padding:13px 17px;border:1px solid #5686aa;border-radius:10px;background:#1b3b55;color:#f3faff;box-shadow:0 12px 35px #0008;opacity:0;transform:translateY(10px);pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:translateY(0)}.divider{height:1px;background:var(--line);margin:17px 0}.footer-inner{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+button,input,select,textarea{font:inherit}button{cursor:pointer;color:inherit;border:0}a{color:inherit;text-decoration:none}.hidden{display:none!important}.muted{color:var(--muted)}.tiny{font-size:12px}.topbar{height:76px;position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:28px;padding:0 max(22px,calc((100% - 1420px)/2));background:#0c1725eF;border-bottom:1px solid #34516c;backdrop-filter:blur(18px);box-shadow:0 8px 28px #0003}.logo{font-size:29px;font-weight:900;letter-spacing:-1.6px;white-space:nowrap}.logo span{background:linear-gradient(120deg,#73caff,#6be3bb);-webkit-background-clip:text;background-clip:text;color:transparent}.nav{display:flex;gap:8px}.nav button{padding:10px 13px;border-radius:9px;background:transparent;color:#b9cadb;font-weight:650;transition:.2s}.nav button:hover,.nav button.active{color:#fff;background:#203951}.search{flex:1;max-width:480px;position:relative}.search:before{content:"⌕";position:absolute;left:15px;top:4px;font-size:27px;color:#9dbbd4}.search input{width:100%;padding:12px 16px 12px 43px;color:#fff;background:#192b3e;border:1px solid #34516d;border-radius:10px;outline:none}.search input:focus,.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #62bdff20}.top-actions{display:flex;gap:9px;margin-left:auto;align-items:center}.btn{padding:10px 16px;border-radius:9px;background:#29435c;font-weight:700;border:1px solid #ffffff0c;transition:transform .18s,filter .18s,box-shadow .18s}.btn:hover{filter:brightness(1.14);transform:translateY(-1px)}.btn.primary{color:#061725;background:linear-gradient(120deg,#2296e5,#68ccf3);box-shadow:0 6px 20px #1689df30}.btn.secondary{background:#20364b;border-color:#3a5875}.btn.ghost{background:transparent;border-color:#405b75;color:#d4e3ef}.btn.danger{background:#4a2734;border-color:#784052;color:#ffdce2}.btn.small{padding:7px 11px;font-size:13px}.wrap{max-width:1420px;margin:auto;padding:26px 28px 40px}.hero{position:relative;overflow:hidden;min-height:285px;padding:42px 48px;border:1px solid #47799b;border-radius:22px;background:radial-gradient(circle at 83% 30%,#5ac4ff35,transparent 27%),linear-gradient(110deg,#10263b 0%,#19466a 57%,#13283d 100%);box-shadow:var(--shadow)}.hero:before{content:"";position:absolute;width:310px;height:310px;right:10%;top:-120px;border:1px solid #a6dcff35;border-radius:50%;box-shadow:0 0 0 28px #a6dcff0c,0 0 0 62px #a6dcff09,0 0 0 100px #a6dcff06}.hero:after{content:"";position:absolute;pointer-events:none}.hero-content{position:relative;z-index:1;max-width:680px}.eyebrow{color:#8bd4ff;text-transform:uppercase;letter-spacing:2px;font-size:12px;font-weight:800}.hero h1{margin:10px 0 12px;font-size:clamp(30px,4vw,46px);line-height:1.08;letter-spacing:-1.7px}.hero p{max-width:560px;color:#c4d9e9;margin:0}.hero .btn{margin-top:19px}.hero-pills{display:flex;flex-wrap:wrap;gap:9px;margin-top:23px}.hero-pills span{padding:6px 10px;border:1px solid #a8d9ff35;background:#ffffff0b;border-radius:30px;font-size:12px;color:#d3e8f6}.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:32px 0 16px}.section-head h2{font-size:22px;margin:0;letter-spacing:-.4px}.section-head p{margin:3px 0 0;color:var(--muted);font-size:13px}.categories{display:flex;flex-wrap:wrap;gap:9px}.chip{padding:9px 15px;border:1px solid #344e68;border-radius:40px;background:#17283a;color:#c5d7e7;transition:.2s}.chip:hover,.chip.active{background:linear-gradient(120deg,#1a6494,#287eae);border-color:#62bdff;color:#fff;box-shadow:0 5px 18px #1689df25}.catalog-layout{display:grid;grid-template-columns:215px 1fr;gap:22px}.sidebar,.panel{background:linear-gradient(145deg,#16273a,#101c2a);border:1px solid var(--line);border-radius:15px;padding:18px;box-shadow:0 12px 34px #0003}.sidebar h3{margin:0 0 12px;font-size:15px}.filter{display:block;width:100%;padding:10px;text-align:left;background:transparent;color:#b9cadb;border-radius:8px}.filter:hover,.filter.active{background:#243e56;color:#fff}.products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.product{min-width:0;overflow:hidden;position:relative;background:linear-gradient(155deg,#1a2e43,#111f2e);border:1px solid #304b67;border-radius:15px;box-shadow:0 10px 28px #0003;transition:.23s}.product:before{content:"";position:absolute;top:0;left:18px;right:18px;height:1px;background:linear-gradient(90deg,transparent,#86d1ff85,transparent);z-index:1}.product:hover{transform:translateY(-5px);border-color:#5bb8f0;box-shadow:0 18px 38px #0006,0 0 24px #2c9fe51b}.product img{display:block;width:100%;height:168px;object-fit:cover;background:#20364b}.product-body{padding:15px}.meta{font-size:12px;color:#9eb3c6}.product h3{font-size:16px;line-height:1.35;margin:6px 0 5px;min-height:43px}.stars{color:var(--gold)}.price-row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px}.price{font-size:20px;font-weight:850;color:#80e0ae}.tag{font-size:11px;color:#a9d9fb;background:#1c405a;border:1px solid #315b7b;padding:4px 8px;border-radius:6px;white-space:nowrap}.product-actions{display:flex;gap:8px;margin-top:13px}.product-actions button{flex:1}.empty{padding:42px 20px;text-align:center;color:var(--muted);background:#142438;border:1px dashed #3a5872;border-radius:14px}.notice{padding:12px 14px;border-left:3px solid var(--gold);border-radius:7px;background:#2a3947;color:#dce7f0;font-size:13px}.modal-bg{position:fixed;inset:0;z-index:30;display:none;align-items:center;justify-content:center;padding:18px;background:#03070ddc;backdrop-filter:blur(7px)}.modal-bg.show{display:flex}.modal{width:min(640px,100%);max-height:90vh;overflow:auto;padding:23px;background:linear-gradient(145deg,#1c3046,#101d2b);border:1px solid #496986;border-radius:17px;box-shadow:0 25px 85px #000b}.modal-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:16px}.modal-head h2{margin:0;font-size:21px}.close{background:#2a4056;border-radius:8px;padding:7px 11px}.field{margin:13px 0}.field label{display:block;margin-bottom:6px;font-size:13px;color:#c3d2df}.field input,.field select,.field textarea{display:block;width:100%;padding:11px 12px;background:#0e1925;border:1px solid #3b536b;border-radius:8px;color:#f2f7fb;outline:none}.field textarea{min-height:95px;resize:vertical}.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.tabs{display:flex;gap:8px;border-bottom:1px solid var(--line);margin-bottom:16px}.tabs button{padding:10px 13px;background:transparent;color:#aebfce;border-bottom:2px solid transparent}.tabs button.active{color:#fff;border-bottom-color:var(--blue)}.profile-grid{display:grid;grid-template-columns:1fr 250px;gap:18px}.profile-card{padding:20px;background:#1b3045;border:1px solid #395671;border-radius:13px}.avatar{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;font-size:27px;font-weight:900;color:#062036;background:linear-gradient(135deg,#67c9ff,#6de0b4);border:3px solid #b5e5ff55}.profile-head{display:flex;gap:16px;align-items:center}.profile-head h2{margin:0}.profile-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}.stat{padding:13px;background:#20364b;border:1px solid #385570;border-radius:10px}.stat b{display:block;font-size:22px}.order{display:flex;justify-content:space-between;align-items:center;gap:14px;margin:10px 0;padding:13px;background:#1d3043;border:1px solid #344f69;border-radius:10px}.status{font-size:12px;color:var(--mint)}.detail-img{display:block;width:100%;max-height:270px;object-fit:cover;border-radius:10px;margin-bottom:14px}.review{padding:12px 0;border-top:1px solid var(--line)}.chat-layout{display:grid;grid-template-columns:240px 1fr;gap:14px}.chat-list,.chat-window{background:#142336;border:1px solid var(--line);border-radius:12px;padding:12px}.chat-peer{display:block;width:100%;padding:11px;margin:3px 0;text-align:left;background:transparent;border-radius:8px}.chat-peer:hover,.chat-peer.active{background:#263f57}.chat-window{min-height:390px;display:flex;flex-direction:column}.chat-messages{flex:1;max-height:430px;overflow:auto;padding:8px}.bubble{max-width:80%;padding:10px 13px;margin:8px 0;border-radius:12px;background:#263d54;overflow-wrap:anywhere}.bubble.mine{margin-left:auto;background:#205783}.bubble small{display:block;margin-top:5px;font-size:10px;color:#b7cadb}.chat-compose{display:flex;gap:8px;margin-top:12px}.chat-compose input{flex:1;min-width:0;padding:11px;background:#0e1925;border:1px solid #3b536b;border-radius:8px;color:white}.footer{margin-top:60px;border-top:1px solid var(--line);padding:25px 0;color:#8196aa;font-size:12px}.toast{position:fixed;right:22px;bottom:22px;z-index:60;max-width:min(420px,calc(100% - 40px));padding:13px 17px;border:1px solid #5686aa;border-radius:10px;background:#1b3b55;color:#f3faff;box-shadow:0 12px 35px #0008;opacity:0;transform:translateY(10px);pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:translateY(0)}.divider{height:1px;background:var(--line);margin:17px 0}.footer-inner{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 @media(max-width:1120px){.products{grid-template-columns:repeat(2,minmax(0,1fr))}.topbar{padding:0 18px}.nav{gap:2px}.nav button{padding:9px}}
 @media(max-width:760px){.topbar{height:auto;min-height:70px;flex-wrap:wrap;padding:12px 15px;gap:10px}.nav{order:3;width:100%;overflow:auto}.search{order:2;flex-basis:100%;max-width:none}.top-actions{margin-left:auto}.wrap{padding:16px}.hero{padding:27px 24px;min-height:250px}.hero:after{font-size:155px;right:2%;top:-20px}.hero h1{font-size:32px}.catalog-layout{grid-template-columns:1fr}.sidebar{display:none}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.product img{height:125px}.product-body{padding:11px}.product h3{font-size:14px;min-height:38px}.price{font-size:17px}.row2,.profile-grid,.chat-layout{grid-template-columns:1fr}.profile-stats{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:420px){.logo{font-size:25px}.top-actions .btn.ghost{display:none}.products{grid-template-columns:1fr}.product img{height:175px}.profile-stats{grid-template-columns:1fr 1fr}.hero h1{font-size:28px}}
@@ -191,8 +191,8 @@ body:before{
 }
 .product-actions{gap:9px}
 .product-actions .btn{min-height:39px}
-.favorite{color:#c1c9e5;border-radius:9px}
-.favorite:hover,.favorite.on{color:#ff9ac0;background:#8f39752e}
+
+
 .empty{background:linear-gradient(140deg,#172748,#211d3c);border:1px dashed #6276b1;color:#bac8e8}
 .notice{background:linear-gradient(110deg,#3c3453,#273c59);border-left-color:#ffd36d;color:#f1eaff}
 .modal-bg{background:#07091be0;backdrop-filter:blur(10px)}
@@ -364,7 +364,7 @@ body:before{opacity:.09;background-image:radial-gradient(#b58aff 0.65px,transpar
 .hero-art{width:64%;right:-1%;top:0;height:100%;background-size:cover;background-position:center right;opacity:.97;filter:saturate(1.28) contrast(1.06);-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 18%,#000 88%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0%,#000 18%,#000 88%,transparent 100%)}.hero-glow{position:absolute;z-index:1;pointer-events:none;right:0;top:0;width:64%;height:100%;background:linear-gradient(90deg,#100d25 0%,transparent 35%,transparent 85%,#10102444 100%);mix-blend-mode:screen;opacity:.4}
 .section-head{margin:28px 0 14px}.section-head h2{font-size:21px;letter-spacing:-.45px}.section-head p{margin:4px 0 0;font-size:12px;color:#a9a1c7}.section-kicker{font-size:10px;letter-spacing:2px;color:#8b78c4}.categories-heading{margin-top:25px}.category-tiles{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}.category-tile{min-width:0;position:relative;display:flex;align-items:center;gap:12px;padding:14px 13px;text-align:left;border:1px solid #43316f;border-radius:15px;background:linear-gradient(130deg,#17132f,#11162c);color:#f2eaff;box-shadow:0 8px 24px #02020a66;transition:.2s;overflow:hidden}.category-tile:after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,#8f2fff18,transparent 70%);opacity:0;transition:.2s}.category-tile:hover,.category-tile.active{transform:translateY(-3px);border-color:#a04aff;box-shadow:0 10px 28px #7628c933,0 0 0 1px #a04aff25}.category-tile:hover:after,.category-tile.active:after{opacity:1}.tile-icon{position:relative;z-index:1;width:43px;height:43px;flex:0 0 43px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(140deg,#7925c9,#2c53b9);font-size:21px;color:#fff;box-shadow:0 5px 18px #6924ba55}.category-tile:nth-child(2) .tile-icon{background:linear-gradient(140deg,#9c2bdb,#5140c4)}.category-tile:nth-child(3) .tile-icon{background:linear-gradient(140deg,#2866de,#36a8da)}.category-tile:nth-child(4) .tile-icon{background:linear-gradient(140deg,#4b4bd6,#a339bb)}.category-tile:nth-child(5) .tile-icon{background:linear-gradient(140deg,#cf4a88,#7042bd)}.tile-copy{position:relative;z-index:1;display:flex;flex-direction:column;gap:2px;min-width:0}.tile-copy b{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tile-copy small{font-size:10px;color:#a69cbe}.tile-arrow{position:relative;z-index:1;margin-left:auto;color:#b68bff;font-size:22px}
 .catalog-title{margin-top:31px;margin-bottom:14px}.catalog-title h2{display:flex;align-items:center;gap:10px}.heading-mark{color:#bd4bff;text-shadow:0 0 15px #a936ff}.result-count{font-size:11px;color:#b9a8dc;background:#21153d;border:1px solid #55348a;border-radius:20px;padding:6px 11px;white-space:nowrap}.catalog-layout{display:grid;grid-template-columns:minmax(0,1fr) 285px;gap:18px;align-items:start}.catalog-main{min-width:0}.catalog-toolbar{display:flex;align-items:center;gap:14px;padding:11px 13px;margin-bottom:13px;border:1px solid #352858;border-radius:13px;background:#100f23;box-shadow:0 6px 20px #02020a66}.toolbar-label{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;color:#c9b8eb;white-space:nowrap}.toolbar-dot{width:7px;height:7px;border-radius:50%;background:#b44cff;box-shadow:0 0 10px #bc49ff}.sort-options{display:flex;align-items:center;gap:5px;flex-wrap:wrap}.filter{display:inline-flex;width:auto;padding:7px 11px;border-radius:9px;color:#b8accf;font-size:11px}.filter:hover,.filter.active{background:linear-gradient(100deg,#6223ae,#342f9a);color:white;box-shadow:0 4px 14px #6d2bc544}
-.products{grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.product{border:1px solid #392b66;border-radius:15px;background:linear-gradient(160deg,#17152f,#101426);box-shadow:0 9px 24px #02020a77}.product:before{left:13px;right:13px;background:linear-gradient(90deg,transparent,#c36bff,transparent)}.product:hover{border-color:#a34dff;box-shadow:0 14px 32px #080318,0 0 22px #8d2be533}.product img{height:148px;background:#19152d}.product-body{padding:13px}.product h3{font-size:14px;min-height:40px;color:#f4edff}.meta{color:#a79cbe}.stars{color:#ffc56b}.price{color:#8ce8cb;font-size:18px}.tag{background:#291c4c;border-color:#52347f;color:#d3baff}.product-actions{gap:7px}.product-actions .btn{font-size:11px;padding:8px 9px;border-radius:8px}.favorite{font-size:11px;border-radius:8px;color:#b4a6d1}.favorite:hover,.favorite.on{background:#55213c55;color:#ff90b9}
+.products{grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.product{border:1px solid #392b66;border-radius:15px;background:linear-gradient(160deg,#17152f,#101426);box-shadow:0 9px 24px #02020a77}.product:before{left:13px;right:13px;background:linear-gradient(90deg,transparent,#c36bff,transparent)}.product:hover{border-color:#a34dff;box-shadow:0 14px 32px #080318,0 0 22px #8d2be533}.product img{height:148px;background:#19152d}.product-body{padding:13px}.product h3{font-size:14px;min-height:40px;color:#f4edff}.meta{color:#a79cbe}.stars{color:#ffc56b}.price{color:#8ce8cb;font-size:18px}.tag{background:#291c4c;border-color:#52347f;color:#d3baff}.product-actions{gap:7px}.product-actions .btn{font-size:11px;padding:8px 9px;border-radius:8px}
 .community-profile{position:sticky;top:96px;overflow:hidden;padding:0;border:1px solid #50337f;border-radius:17px;background:linear-gradient(155deg,#17142f,#101426 72%);box-shadow:0 14px 36px #02020b88}.cp-topline{display:flex;justify-content:space-between;align-items:center;padding:16px 17px;border-bottom:1px solid #3b2c62;font-size:10px;font-weight:900;letter-spacing:1.5px;color:#c2a5eb;background:linear-gradient(90deg,#241440,#14152b)}.cp-topline i{font-style:normal;padding:4px 7px;border-radius:6px;color:#dcb6ff;background:#6028a344;border:1px solid #8f44cc66}.cp-user{display:flex;align-items:center;gap:12px;padding:18px 17px 7px}.cp-avatar{width:54px;height:54px;min-width:54px;min-height:54px;display:grid;place-items:center;flex:0 0 54px;overflow:hidden;isolation:isolate;box-sizing:border-box;border:2px solid #bd70ff;border-radius:50%;background:linear-gradient(135deg,#7d27c6,#3158c2);color:#fff;font-size:26px;font-weight:900;box-shadow:0 0 22px #983dce55}.cp-avatar img,.avatar img{display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:cover;object-position:center;border-radius:inherit}.cp-user-info{display:flex;min-width:0;flex-direction:column;gap:5px}.cp-user-info b{font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cp-user-info span{font-size:11px;color:#9d92b9}.status-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#5bdfa5;box-shadow:0 0 9px #5bdfa5;margin-right:5px}.cp-description{padding:0 17px;color:#a89fbd;font-size:11px;line-height:1.55;min-height:54px;margin:8px 0 13px}.cp-stats{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:0 17px 15px}.cp-stats>div{padding:11px;border:1px solid #3c2d65;border-radius:10px;background:#1a1733}.cp-stats b{display:block;font-size:21px;color:#f4eaff}.cp-stats span{font-size:10px;color:#a99fbe}.cp-guest-actions,.cp-member-actions{padding:0 17px 17px;display:flex;flex-direction:column;gap:8px}.cp-guest-actions .btn{width:100%;padding:10px}.cp-register{background:#211b3e;border-color:#553781;color:#dac7fc}.cp-member-actions button{display:flex;align-items:center;gap:10px;width:100%;padding:10px 9px;border-radius:9px;background:transparent;text-align:left;color:#cfc4e5;font-size:12px}.cp-member-actions button:hover{background:#2a1b45;color:white}.cp-member-actions button span{width:20px;color:#bd75ff;font-size:16px}.cp-member-actions button b{margin-left:auto;color:#a78bd4}.cp-bottom{display:flex;justify-content:space-between;padding:12px 17px;border-top:1px solid #322650;background:#100f21;color:#8f83a9;font-size:10px}.cp-bottom span:last-child{color:#bc66ff}
 .profile-grid{grid-template-columns:minmax(0,1fr) 290px}.profile-card{background:linear-gradient(145deg,#1d1638,#13172b);border-color:#493272}.avatar{width:72px;height:72px;min-width:72px;min-height:72px;flex:0 0 72px;overflow:hidden;isolation:isolate;box-sizing:border-box;border-radius:50%;background:linear-gradient(135deg,#a32bdf,#315fe4);color:#fff;border-color:#bb80f4}.profile-stats .stat{background:#211a3c;border-color:#46316b}.sidebar,.panel{background:linear-gradient(145deg,#19152f,#111426);border-color:#3d2b66}.modal-bg{background:#04020bdc}.modal{background:linear-gradient(145deg,#20183e,#111529);border-color:#624092}.field input,.field select,.field textarea{background:#0e1022;border-color:#49356f}.notice{background:#271f40;border-left-color:#bd63ff;color:#e1d4f6}.order{background:#1d1935;border-color:#47326d}.footer{border-top-color:#39275d;color:#8e84aa}
 @media(max-width:1250px){.category-tiles{grid-template-columns:repeat(3,minmax(0,1fr))}.topbar{gap:12px}.nav button{padding:9px 8px;font-size:11px}.search{max-width:300px}.products{grid-template-columns:repeat(3,minmax(0,1fr))}.category-tiles{gap:8px}.category-tile{padding:11px 9px}.tile-copy b{font-size:12px}}
@@ -408,6 +408,10 @@ body:before{opacity:.09;background-image:radial-gradient(#b58aff 0.65px,transpar
   border-radius: 50% !important;
   transform: none !important;
 }
+
+.seller-profile-link{display:inline;padding:0;border:0;background:transparent;color:var(--blue);font:inherit;cursor:pointer;text-decoration:underline;text-decoration-color:#62bdff66;text-underline-offset:2px}
+.seller-profile-link:hover{color:#b9e5ff;text-decoration-color:currentColor}
+.buyer-tabs{flex-wrap:wrap}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="./supabase-config.js"></script>
@@ -484,7 +488,7 @@ body:before{display:none}
 .products[data-card-size="large"] .product img{height:180px}
 .product-body{padding:12px}.product h3{font-size:14px;min-height:38px;color:#e6f2fb}
 .meta{color:#9db0c1}.stars{color:#ffca70;text-shadow:none}.price{color:#b8dfb7;text-shadow:none;font-size:18px}.tag{border-radius:3px;background:#24445d;border:1px solid #355b78;color:#c1dced}
-.product-actions{gap:6px}.product-actions .btn{font-size:12px;border-radius:4px;min-height:34px}.favorite{border-radius:4px;color:#a9bdcd}.favorite:hover,.favorite.on{background:#29394a;color:#f09aaa}
+.product-actions{gap:6px}.product-actions .btn{font-size:12px;border-radius:4px;min-height:34px}
 .community-profile{border:1px solid #2b4358;border-radius:7px;background:#172432;box-shadow:none;position:sticky;top:88px}
 .cp-topline{background:#20384c;border-bottom:1px solid #34516a;color:#c3d9e8;border-radius:0;padding:13px 15px}.cp-topline i{background:#244d68;color:#d8ebf7;border:1px solid #3d6683;border-radius:3px}
 .cp-avatar{background:#315d7b!important;border:2px solid #77aed1!important;box-shadow:none!important}.cp-user-info span,.cp-description,.cp-bottom{color:#9db0c1}.cp-stats>div{background:#1d3042;border:1px solid #304b63}.cp-stats b{color:#e5edf5}.cp-member-actions button{color:#c5d7e5}.cp-member-actions button:hover{background:#20384c}.cp-member-actions button span{color:#83c5eb}.cp-bottom{background:#142331;border-top:1px solid #2b4358}.cp-bottom span:last-child{color:#75b9df}
@@ -493,7 +497,7 @@ body:before{display:none}
 .settings-check{display:flex;align-items:center;gap:9px;margin:12px 0;color:#c5d4df;font-size:13px}.settings-check input{width:16px;height:16px;accent-color:#3c91c2}
 @media(max-width:1250px){.category-tiles{grid-template-columns:repeat(3,minmax(0,1fr))}.products[data-card-size="compact"]{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:1000px){.catalog-layout{grid-template-columns:minmax(0,1fr) 245px}.products[data-card-size="compact"]{grid-template-columns:repeat(3,minmax(0,1fr))}.products[data-card-size="normal"]{grid-template-columns:repeat(3,minmax(0,1fr))}.products[data-card-size="large"]{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:760px){.topbar{height:auto;min-height:0;gap:8px;padding:10px 12px}.logo{font-size:23px}.nav{order:3;display:flex;width:100%;overflow-x:auto;gap:3px;scrollbar-width:thin}.nav button{flex:0 0 auto;padding:8px 10px;font-size:11px}.search{order:2;flex-basis:100%;max-width:none}.top-actions{margin-left:auto;gap:5px}.top-actions .btn{padding:8px 9px;font-size:11px}.sell-top-btn{display:none}.wrap{padding:14px 12px 30px}.hero{min-height:0;padding:25px 20px;border-radius:7px}.hero-content{width:100%}.hero h1{font-size:30px}.hero p{font-size:13px}.hero-pills{gap:5px;margin-top:15px}.hero-pills span{font-size:10px;padding:5px 7px}.category-tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.category-tile{padding:9px 8px;gap:7px}.tile-copy b{font-size:11px}.tile-copy small{font-size:9px}.catalog-layout{grid-template-columns:1fr}.community-profile{position:static;grid-row:1}.catalog-toolbar{align-items:flex-start;flex-direction:column}.card-size-controls{margin-left:0;width:100%}.sort-options{width:100%}.products,.products[data-card-size="compact"],.products[data-card-size="normal"],.products[data-card-size="large"]{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.product img,.products[data-card-size="normal"] .product img{height:112px}.products[data-card-size="compact"] .product img{height:92px}.products[data-card-size="large"] .product img{height:138px}.product-body{padding:9px}.product h3{font-size:12px;min-height:34px}.price{font-size:15px}.tag{font-size:9px;padding:3px 5px}.product-actions{gap:5px}.product-actions .btn{font-size:10px;padding:7px 5px;min-height:31px}.favorite{font-size:10px;padding:6px 2px}.profile-grid{grid-template-columns:1fr}.profile-stats{grid-template-columns:repeat(3,minmax(0,1fr))}.chat-layout{grid-template-columns:1fr}.chat-list{display:flex;overflow-x:auto;gap:5px}.chat-peer{min-width:150px}.row2{grid-template-columns:1fr}}
+@media(max-width:760px){.topbar{height:auto;min-height:0;gap:8px;padding:10px 12px}.logo{font-size:23px}.nav{order:3;display:flex;width:100%;overflow-x:auto;gap:3px;scrollbar-width:thin}.nav button{flex:0 0 auto;padding:8px 10px;font-size:11px}.search{order:2;flex-basis:100%;max-width:none}.top-actions{margin-left:auto;gap:5px}.top-actions .btn{padding:8px 9px;font-size:11px}.sell-top-btn{display:none}.wrap{padding:14px 12px 30px}.hero{min-height:0;padding:25px 20px;border-radius:7px}.hero-content{width:100%}.hero h1{font-size:30px}.hero p{font-size:13px}.hero-pills{gap:5px;margin-top:15px}.hero-pills span{font-size:10px;padding:5px 7px}.category-tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.category-tile{padding:9px 8px;gap:7px}.tile-copy b{font-size:11px}.tile-copy small{font-size:9px}.catalog-layout{grid-template-columns:1fr}.community-profile{position:static;grid-row:1}.catalog-toolbar{align-items:flex-start;flex-direction:column}.card-size-controls{margin-left:0;width:100%}.sort-options{width:100%}.products,.products[data-card-size="compact"],.products[data-card-size="normal"],.products[data-card-size="large"]{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.product img,.products[data-card-size="normal"] .product img{height:112px}.products[data-card-size="compact"] .product img{height:92px}.products[data-card-size="large"] .product img{height:138px}.product-body{padding:9px}.product h3{font-size:12px;min-height:34px}.price{font-size:15px}.tag{font-size:9px;padding:3px 5px}.product-actions{gap:5px}.product-actions .btn{font-size:10px;padding:7px 5px;min-height:31px}.profile-grid{grid-template-columns:1fr}.profile-stats{grid-template-columns:repeat(3,minmax(0,1fr))}.chat-layout{grid-template-columns:1fr}.chat-list{display:flex;overflow-x:auto;gap:5px}.chat-peer{min-width:150px}.row2{grid-template-columns:1fr}}
 @media(max-width:390px){.products,.products[data-card-size="compact"],.products[data-card-size="normal"],.products[data-card-size="large"]{grid-template-columns:repeat(2,minmax(0,1fr))}.category-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.product img{height:100px}.product-actions .btn{font-size:9px}.top-actions .btn{padding:7px 8px}}
 
 
@@ -804,7 +808,7 @@ body:before{display:none}
   .tag{max-width:100%;white-space:normal;font-size:9px!important;}
   .product-actions{display:grid!important;grid-template-columns:1fr 1fr;gap:5px!important;margin-top:9px!important;}
   .product-actions .btn{min-width:0;min-height:37px!important;padding:7px 4px!important;font-size:10px!important;white-space:nowrap;}
-  .favorite{font-size:10px!important;min-height:34px;}
+  
   .modal-bg{align-items:flex-end!important;padding:8px!important;}
   .modal{width:100%!important;max-width:none!important;max-height:calc(100dvh - 16px)!important;border-radius:16px 16px 10px 10px!important;padding:17px!important;}
   .modal-head h2{font-size:18px!important;}
@@ -910,7 +914,17 @@ body:before{display:none}
   </section>
 
   <section id="sellPage" class="hidden"><div class="section-head"><div><h2>Мои объявления</h2><p>Управляй своими предложениями</p></div><button class="btn primary" onclick="newListing()">＋ Новое объявление</button></div><div class="panel" id="sellerPanel"></div></section>
-  <section id="ordersPage" class="hidden"><div class="section-head"><div><h2>Покупки</h2><p>История заказов</p></div></div><div class="panel"><div class="notice">Оплата и оформление заказов пока не подключены. Личные сообщения продавцам временно отключены и станут доступны после покупки с подтверждённой оплатой.</div><p class="muted">История покупок появится после подключения платёжной системы и серверной обработки заказов.</p></div></section>
+  <section id="ordersPage" class="hidden">
+    <div class="section-head"><div><h2>Покупки</h2><p>Личный кабинет покупателя</p></div></div>
+    <div class="panel" id="buyerCabinetPanel">
+      <div class="tabs buyer-tabs" role="tablist" aria-label="Разделы покупателя">
+        <button type="button" class="active" data-buyer-tab="orders" onclick="setBuyerTab('orders')">Мои покупки</button>
+        <button type="button" data-buyer-tab="reviews" onclick="setBuyerTab('reviews')">Мои отзывы</button>
+        <button type="button" data-buyer-tab="notifications" onclick="setBuyerTab('notifications')">Уведомления</button>
+      </div>
+      <div id="buyerCabinetContent"></div>
+    </div>
+  </section>
   <section id="profilePage" class="hidden"><div class="section-head"><div><h2>Мой профиль</h2><p>Твои данные и активность на Exxpress</p></div></div><div class="panel" id="profilePanel"></div></section>
   <footer class="footer"><div class="footer-inner"><span>© 2026 Exxpress Marketplace</span><span>Игровое сообщество и объявления</span></div></footer>
 </main>
@@ -936,7 +950,6 @@ let cloudUserId = null;
 let exxpressSupabase = null;
 let cloudReady = false;
 let cloudError = '';
-let favorites = readLocal('favorites', []);
 let reviews = readLocal('reviews', {});
 let category = 'Все';
 let sortMode = 'popular';
@@ -965,7 +978,6 @@ $('modalClose').addEventListener('click', closeModal);
 $('modalBg').addEventListener('click', event => { if (event.target === $('modalBg')) closeModal(); });
 document.addEventListener('keydown', event => { if (event.key === 'Escape') closeModal(); });
 function saveLocal() {
-  localStorage.setItem('exxpress_favorites', JSON.stringify(favorites));
   localStorage.setItem('exxpress_reviews', JSON.stringify(reviews));
   localStorage.setItem('exxpress_search', searchText);
   localStorage.setItem('exxpress_cardSize', JSON.stringify(cardSize));
@@ -1012,7 +1024,7 @@ function updateHomeProfile() {
     name.textContent = 'Игрок Exxpress';
     avatar.textContent = '✦';
     status.innerHTML = '<i class="status-dot"></i> Гость';
-    description.textContent = 'Войди или зарегистрируйся, чтобы размещать объявления, сохранять избранное и общаться с продавцами.';
+    description.textContent = 'Войди или зарегистрируйся, чтобы покупать игровые товары и размещать объявления.';
     guest.classList.remove('hidden');
     member.classList.add('hidden');
     stats.classList.add('hidden');
@@ -1023,7 +1035,6 @@ function updateHomeProfile() {
   status.innerHTML = '<i class="status-dot"></i> В Exxpress';
   description.textContent = user.bio || user.email || 'Добро пожаловать в Exxpress!';
   $('homeListingsCount').textContent = products.filter(product => product.cloud && product.ownerId === cloudUserId).length;
-  $('homeFavoritesCount').textContent = favorites.length;
   guest.classList.add('hidden');
   member.classList.remove('hidden');
   stats.classList.remove('hidden');
@@ -1198,23 +1209,15 @@ function render() {
     <article class="product">
       <img src="${esc(product.image)}" alt="${esc(product.title)}" loading="lazy" onerror="this.src='https://placehold.co/900x500/203344/ffffff?text=Exxpress'">
       <div class="product-body">
-        <div class="meta">${esc(product.category)} · ${esc(product.seller)}</div>
+        <div class="meta">${esc(product.category)} · ${product.cloud && product.ownerId ? `<button type="button" class="seller-profile-link" onclick="openSellerProfile(&quot;${String(product.ownerId)}&quot;)">${esc(product.seller)}</button>` : esc(product.seller)}</div>
         <h3>${esc(product.title)}</h3>
         ${product.rating > 0 ? `<div class="stars">★ ${Number(product.rating).toFixed(1)} <span class="meta">(${product.reviews || 0} отзывов)</span></div>` : '<div class="meta">Пока без оценок</div>'}
         <div class="price-row"><span class="price">${money(product.price)}</span><span class="tag">${product.demo ? 'Пример' : product.stock > 0 ? 'В наличии' : 'Уточнить наличие'}</span></div>
         <div class="product-actions"><button class="btn primary small" ${product.stock <= 0 && !product.demo ? 'disabled' : ''} onclick="requestPurchase('${String(product.id).replace(/'/g, '&#39;')}')">Купить</button><button class="btn secondary small" onclick="details('${String(product.id).replace(/'/g, '&#39;')}')">Подробнее</button></div>
-        <button class="favorite ${favorites.includes(String(product.id)) ? 'on' : ''}" onclick="toggleFavorite('${String(product.id).replace(/'/g, '&#39;')}')">${favorites.includes(String(product.id)) ? '♥ В избранном' : '♡ В избранное'}</button>
       </div>
     </article>`).join('');
   $('noResults').classList.toggle('hidden', list.length > 0);
   if (!list.length && cloudError) $('noResults').textContent = cloudError;
-}
-function toggleFavorite(id) {
-  if (!user) return openAuth('Войди, чтобы сохранять объявления в избранное.');
-  const key = String(id);
-  favorites = favorites.includes(key) ? favorites.filter(item => item !== key) : [...favorites, key];
-  saveLocal(); render();
-  toast(favorites.includes(key) ? 'Добавлено в избранное.' : 'Удалено из избранного.');
 }
 function details(id) {
   const product = products.find(item => String(item.id) === String(id));
@@ -1222,7 +1225,7 @@ function details(id) {
   const listingReviews = reviews[id] || [];
   openModal(product.title, `
     <img class="detail-img" src="${esc(product.image)}" alt="${esc(product.title)}">
-    <p class="muted">${esc(product.category)} · продавец ${esc(product.seller)} ${product.demo ? '· демонстрационный пример' : ''}</p>
+    <p class="muted">${esc(product.category)} · продавец ${product.cloud && product.ownerId ? `<button type="button" class="seller-profile-link" onclick="openSellerProfile(&quot;${String(product.ownerId)}&quot;)">${esc(product.seller)}</button>` : esc(product.seller)} ${product.demo ? '· демонстрационный пример' : ''}</p>
     <p>${esc(product.desc || 'Описание отсутствует.')}</p>
     <div class="price-row"><span class="price">${money(product.price)}</span><span class="stars">${product.rating > 0 ? `★ ${Number(product.rating).toFixed(1)} (${product.reviews || 0})` : 'Без оценок'}</span></div>
     ${product.demo ? '<div class="notice" style="margin-top:14px">Это демонстрационный пример, не реальное объявление. Для проверки покупки используй объявление, опубликованное через Exxpress.</div>' : ''}
@@ -1230,6 +1233,117 @@ function details(id) {
     <div class="divider"></div><h3>Отзывы</h3>
     ${listingReviews.length ? listingReviews.map(review => `<div class="review"><b>${esc(review.name)}</b> <span class="stars">${'★'.repeat(review.stars)}</span><p>${esc(review.text)}</p></div>`).join('') : '<p class="muted tiny">Публикация и общая база настоящих отзывов подключаются отдельно. Здесь пока отображаются только отзывы, сохранённые в этом браузере.</p>'}`);
 }
+let buyerCabinetTab = 'orders';
+
+function setBuyerTab(tab) {
+  if (!['orders', 'reviews', 'notifications'].includes(tab)) return;
+  buyerCabinetTab = tab;
+  renderBuyerCabinet();
+}
+
+function setBuyerNotifications(enabled) {
+  profileNotifications = !!enabled;
+  saveLocal();
+  toast(profileNotifications ? 'Уведомления сайта включены.' : 'Уведомления сайта отключены.');
+}
+
+function renderBuyerCabinet() {
+  const panel = $('buyerCabinetContent');
+  if (!panel) return;
+  document.querySelectorAll('[data-buyer-tab]').forEach(button => {
+    const active = button.dataset.buyerTab === buyerCabinetTab;
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-selected', active ? 'true' : 'false');
+    button.setAttribute('role', 'tab');
+  });
+  if (buyerCabinetTab === 'orders') {
+    panel.innerHTML = `
+      <div class="notice">Оформление заказов и оплата пока не подключены, поэтому реальные покупки ещё не формируются.</div>
+      <div class="empty" style="margin-top:14px"><b>История покупок пока пуста</b><p class="muted">Когда на EXXPRESS появятся подтверждённые заказы, здесь будут отображаться товары, даты и статусы сделок.</p></div>`;
+    return;
+  }
+  if (buyerCabinetTab === 'reviews') {
+    panel.innerHTML = `
+      <div class="empty"><b>Твои отзывы появятся здесь</b><p class="muted">Оставить отзыв можно будет после завершения подтверждённой покупки. Сейчас система заказов ещё в разработке.</p></div>`;
+    return;
+  }
+  panel.innerHTML = `
+    <div class="profile-card" style="margin-bottom:12px">
+      <h3>Настройки уведомлений</h3>
+      <label class="settings-check"><input id="buyerNotificationsToggle" type="checkbox" ${profileNotifications ? 'checked' : ''} onchange="setBuyerNotifications(this.checked)"> Показывать уведомления сайта</label>
+    </div>
+    <div class="empty"><b>Новых уведомлений пока нет</b><p class="muted">Здесь будут появляться изменения статусов заказов и важные сообщения EXXPRESS.</p></div>`;
+}
+
+async function openSellerProfile(sellerId) {
+  const id = String(sellerId || '').trim();
+  if (!id) return toast('Не удалось определить продавца.');
+  if (!exxpressSupabase) return toast('Сейчас не удаётся подключиться к профилю продавца.');
+  const fallbackName = products.find(item => String(item.ownerId || '') === id)?.seller || 'Продавец EXXPRESS';
+  openModal('Профиль продавца', '<div class="empty">Загружаю профиль продавца…</div>');
+  try {
+    const [profileResult, listingsResult] = await Promise.all([
+      exxpressSupabase.from('seller_profiles')
+        .select('id,display_name,bio,avatar_url,website_url,created_at')
+        .eq('id', id).maybeSingle(),
+      exxpressSupabase.from('listings')
+        .select('*').eq('seller_id', id).eq('is_active', true)
+        .order('created_at', { ascending: false })
+    ]);
+    if (listingsResult.error) throw listingsResult.error;
+    const profile = profileResult.data || null;
+    const sourceRows = listingsResult.data || [];
+    const listings = sourceRows.map(mapCloudListing)
+      .filter(item => ['Игровые ключи','Аккаунты','DLC и дополнения','Подарочные карты','Игровые предметы'].includes(item.category));
+    const reviewCount = sourceRows.reduce((sum, row) => sum + Math.max(0, Number(row.reviews_count || 0)), 0);
+    const weightedRating = reviewCount
+      ? sourceRows.reduce((sum, row) => sum + (Number(row.rating || 0) * Math.max(0, Number(row.reviews_count || 0))), 0) / reviewCount
+      : 0;
+    const sellerName = profile?.display_name || fallbackName;
+    const initials = (sellerName || 'П').trim().slice(0, 1).toUpperCase();
+    const joined = profile?.created_at
+      ? new Date(profile.created_at).toLocaleDateString('ru-RU', { year: 'numeric', month: 'long' })
+      : 'Дата регистрации не указана';
+    const avatar = profile?.avatar_url
+      ? `<img src="${esc(profile.avatar_url)}" alt="Аватар продавца" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`
+      : esc(initials);
+    let websiteHref = '';
+    try {
+      const parsedWebsite = profile?.website_url ? new URL(profile.website_url) : null;
+      if (parsedWebsite && parsedWebsite.protocol === 'https:') websiteHref = parsedWebsite.href;
+    } catch (_) {}
+    const listingsHtml = listings.length ? listings.map(item => `
+      <div class="order">
+        <div style="min-width:0"><b>${esc(item.title)}</b><div class="muted tiny">${money(item.price)} · ${item.stock > 0 ? `В наличии: ${item.stock}` : 'Нет в наличии'}</div></div>
+        <button type="button" class="btn small secondary" onclick="details('${String(item.id).replace(/'/g, '')}')">Подробнее</button>
+      </div>`).join('') : '<div class="empty">У продавца пока нет активных объявлений.</div>';
+    const setupNotice = profileResult.error
+      ? '<div class="notice" style="margin-top:12px">Для публичных данных профиля нужно один раз выполнить файл SELLER-PROFILES-SETUP.sql в Supabase SQL Editor.</div>'
+      : '';
+    $('modalContent').innerHTML = `
+      <div class="profile-card">
+        <div class="profile-head">
+          <div class="avatar">${avatar}</div>
+          <div><h2>${esc(sellerName)}</h2><div class="muted tiny">Продавец EXXPRESS</div><div class="tag" style="display:inline-block;margin-top:6px">На площадке с ${esc(joined)}</div></div>
+        </div>
+        <p class="muted">${esc(profile?.bio || 'Продавец пока не добавил описание.')}</p>
+        <div class="profile-stats">
+          <div class="stat"><b>${listings.length}</b><span class="muted tiny">Активных объявлений</span></div>
+          <div class="stat"><b>${reviewCount ? `★ ${weightedRating.toFixed(1)}` : '—'}</b><span class="muted tiny">Оценка объявлений</span></div>
+          <div class="stat"><b>${reviewCount}</b><span class="muted tiny">Оценок</span></div>
+        </div>
+        ${websiteHref ? `<a class="website-link" href="${esc(websiteHref)}" target="_blank" rel="noopener noreferrer">↗ Сайт продавца</a>` : ''}
+      </div>
+      ${setupNotice}
+      <div class="divider"></div><h3>Активные объявления</h3>
+      ${listingsHtml}
+      <p class="muted tiny" style="margin-top:12px">Количество завершённых сделок и отзывы покупателей появятся после подключения системы заказов и подтверждённых покупок.</p>`;
+  } catch (error) {
+    console.error('Seller profile loading failed:', error);
+    $('modalContent').innerHTML = `<div class="notice">Не удалось загрузить профиль продавца: ${esc(error.message || 'ошибка запроса')}</div><p class="muted tiny">Проверь доступность публичных профилей в Supabase и повтори попытку.</p>`;
+  }
+}
+
 function requestPurchase(id) {
   const product = products.find(item => String(item.id) === String(id));
   if (!product) return;
@@ -1254,6 +1368,7 @@ function showPage(page, push = true) {
   ['home','sell','orders','profile'].forEach(name => $(name + 'Page').classList.toggle('hidden', name !== page));
   document.querySelectorAll('.nav button').forEach(button => button.classList.toggle('active', button.dataset.page === page));
   if (page === 'sell') renderSeller();
+  if (page === 'orders') renderBuyerCabinet();
   if (page === 'profile') renderProfile();
   if (push) history.pushState({ page }, '', '#' + page);
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1292,7 +1407,6 @@ async function deleteOwnAccount() {
     try { await exxpressSupabase.auth.signOut({ scope: 'local' }); } catch (_) {}
     user = null;
     cloudUserId = null;
-    favorites = [];
     activeChat = null;
     saveLocal();
     updateAccount();
@@ -1328,13 +1442,12 @@ function showProfileContent() {
         <div class="field"><label for="profileCardSize">Размер карточек товаров</label><select id="profileCardSize"><option value="compact" ${cardSize === 'compact' ? 'selected' : ''}>Компактный</option><option value="normal" ${cardSize === 'normal' ? 'selected' : ''}>Обычный</option><option value="large" ${cardSize === 'large' ? 'selected' : ''}>Крупный</option></select></div>
         <label class="settings-check"><input id="profileNotifications" type="checkbox" ${profileNotifications ? 'checked' : ''}> Показывать уведомления сайта</label>
         <button class="btn primary" style="margin-top:15px" onclick="saveProfileSettings()">Сохранить настройки</button>
-        <div class="divider"></div><h3>Избранное</h3>
-        ${favorites.length ? favorites.map(id => { const product = products.find(item => String(item.id) === String(id)); return product ? `<div class="order"><span>${esc(product.title)} · ${money(product.price)}</span><button class="btn small secondary" onclick="details('${String(product.id).replace(/'/g, '&#39;')}')">Открыть</button></div>` : ''; }).join('') : '<p class="muted tiny">Пока ничего не добавлено.</p>'}
       </div>
     </div>
     <aside class="profile-card">
       <h3>Магазин продавца</h3>
       <button class="btn secondary" style="width:100%;margin:8px 0" onclick="showPage('sell')">Мои объявления</button>
+      <button class="btn secondary" style="width:100%;margin:0 0 12px" onclick="openSellerProfile(cloudUserId)">Посмотреть публичный профиль</button>
       <button class="btn primary" style="width:100%;margin:0 0 18px" onclick="showPage('sell');setTimeout(()=>newListing(),0)">＋ Разместить объявление</button>
       <h3>Аккаунт и безопасность</h3>
       <p class="muted tiny">Контакт для входа</p><p><b>${esc(accountLabel)}</b></p>

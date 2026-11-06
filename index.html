@@ -412,6 +412,40 @@ body:before{opacity:.09;background-image:radial-gradient(#b58aff 0.65px,transpar
 .seller-profile-link{display:inline;padding:0;border:0;background:transparent;color:var(--blue);font:inherit;cursor:pointer;text-decoration:underline;text-decoration-color:#62bdff66;text-underline-offset:2px}
 .seller-profile-link:hover{color:#b9e5ff;text-decoration-color:currentColor}
 .buyer-tabs{flex-wrap:wrap}
+
+/* EXXPRESS 1.5.2 — profile balance and top-up tab */
+.profile-tabs{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 18px;padding:5px;background:#11172c;border:1px solid #3d3566;border-radius:12px}
+.profile-tab{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:43px;padding:10px 16px;border:1px solid transparent;border-radius:9px;background:transparent;color:#bfc8e7;font-weight:750;transition:background .18s,border-color .18s,transform .18s}
+.profile-tab:hover{background:#292447;color:#fff;transform:translateY(-1px)}
+.profile-tab.active{color:#fff;background:linear-gradient(110deg,#254f91,#583d91);border-color:#7185e0;box-shadow:0 6px 20px #344bba35}
+.profile-tab-icon{font-size:18px;line-height:1}
+.wallet-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(270px,.85fr);gap:16px;align-items:start}
+.wallet-balance-card{position:relative;overflow:hidden;padding:24px;border:1px solid #5b62ae;border-radius:15px;background:radial-gradient(circle at 88% 12%,#5acbff35,transparent 34%),linear-gradient(125deg,#1d3971,#443477 68%,#34265b);box-shadow:0 14px 35px #060b2566}
+.wallet-balance-card:after{content:"₽";position:absolute;right:22px;bottom:-35px;font-size:150px;font-weight:900;line-height:1;color:#ffffff0b;pointer-events:none}
+.wallet-kicker{color:#c1d9ff;font-size:12px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase}
+.wallet-balance-amount{margin:9px 0 4px;font-size:clamp(32px,5vw,45px);font-weight:900;letter-spacing:-1.5px;color:#fff}
+.wallet-balance-note{color:#d2d9f5;font-size:12px}
+.wallet-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:13px}
+.wallet-stat{padding:14px;border:1px solid #3e3b70;border-radius:11px;background:#1b1d3a}
+.wallet-stat b{display:block;font-size:20px;color:#f7f6ff}
+.wallet-stat span{display:block;color:#aeb9d8;font-size:12px;margin-top:3px}
+.wallet-panel{padding:19px;background:linear-gradient(145deg,#1b1a38,#14182d);border:1px solid #44376e;border-radius:13px}
+.wallet-panel h3{margin:0 0 6px}
+.wallet-panel-copy{margin:0 0 14px;color:#adb9d8;font-size:12px}
+.wallet-amount-presets{display:flex;gap:7px;flex-wrap:wrap;margin:8px 0 13px}
+.wallet-amount-presets button{padding:7px 11px;border-radius:8px;color:#dbe9ff;background:#242b50;border:1px solid #48568e;font-weight:700;font-size:12px}
+.wallet-amount-presets button:hover{background:#314b7c;border-color:#79aaff}
+.wallet-calc{margin:13px 0;padding:13px;background:#11182c;border:1px solid #39456f;border-radius:10px}
+.wallet-calc-row{display:flex;justify-content:space-between;gap:12px;padding:5px 0;color:#bdc8e0;font-size:13px}
+.wallet-calc-row strong{color:#f1f6ff;white-space:nowrap}
+.wallet-calc-row.total{margin-top:7px;padding-top:11px;border-top:1px solid #3d4b73;color:#fff;font-weight:800;font-size:15px}
+.wallet-history{margin-top:16px}
+.wallet-history-empty{padding:23px 15px;text-align:center;border:1px dashed #4a4773;border-radius:11px;color:#aeb9d5;background:#17182e}
+.wallet-history-empty strong{display:block;color:#e7e8fa;margin-bottom:5px}
+.wallet-demo-note{margin-top:13px;padding:12px 14px;border-left:3px solid #b47aff;border-radius:8px;background:#282044;color:#ddd3f4;font-size:12px}
+@media(max-width:760px){.wallet-layout{grid-template-columns:1fr}.profile-tabs{display:grid;grid-template-columns:1fr 1.2fr}.profile-tab{padding:9px 8px;font-size:12px}.wallet-balance-card{padding:20px}.wallet-stats{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.profile-tabs{grid-template-columns:1fr}.profile-tab{justify-content:flex-start}.wallet-stats{grid-template-columns:1fr 1fr}.wallet-stat{padding:11px}.wallet-stat b{font-size:17px}}
+
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="./supabase-config.js"></script>
@@ -845,6 +879,278 @@ body:before{display:none}
 @media(prefers-reduced-motion:reduce){.product,.category-tile,.btn{transition:none!important;}}
 </style>
 
+
+<style id="exxpress-layout-checkout-refresh-20261105">
+/* Wider desktop canvas plus a useful account rail: replaces the old empty right column. */
+@media (min-width: 761px) {
+  .wrap { max-width: 1660px !important; padding-left: clamp(22px, 2.2vw, 38px) !important; padding-right: clamp(22px, 2.2vw, 38px) !important; }
+  .catalog-layout {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(250px, 286px) !important;
+    gap: 20px !important;
+    align-items: start !important;
+  }
+  .catalog-main { width: auto !important; min-width: 0 !important; }
+  .community-profile, #homeProfileCard {
+    display: block !important;
+    position: sticky !important;
+    top: 94px !important;
+    width: 100%;
+    min-width: 0;
+  }
+  .products[data-card-size="normal"] { grid-template-columns: repeat(auto-fit, minmax(195px, 1fr)) !important; }
+  .products[data-card-size="compact"] { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)) !important; }
+  .products[data-card-size="large"] { grid-template-columns: repeat(auto-fit, minmax(245px, 1fr)) !important; }
+  .cp-info-note {
+    display: flex; gap: 10px; align-items: flex-start;
+    margin: 0 15px 15px; padding: 12px;
+    border: 1px solid #2b4358; border-radius: 7px; background: #12202d;
+  }
+  .cp-info-icon { color: #79bfe8; font-size: 18px; line-height: 1.2; }
+  .cp-info-note b { display: block; color: #dceaf4; font-size: 11px; margin-bottom: 3px; }
+  .cp-info-note p { margin: 0; color: #9db0c1; font-size: 10px; line-height: 1.45; }
+}
+@media (min-width: 761px) and (max-width: 1080px) {
+  .catalog-layout { grid-template-columns: minmax(0, 1fr) !important; }
+  .community-profile, #homeProfileCard { position: static !important; margin-top: 16px; }
+  .community-profile .cp-info-note { max-width: 600px; }
+}
+
+/* Phone layout: predictable header rows, readable controls and two-column product cards. */
+@media (max-width: 760px) {
+  .wrap { padding: 13px 12px calc(28px + env(safe-area-inset-bottom)) !important; }
+  .catalog-layout { display: flex !important; flex-direction: column !important; gap: 14px !important; }
+  .catalog-main { order: 1; width: 100% !important; min-width: 0 !important; }
+  .community-profile, #homeProfileCard {
+    display: block !important; position: static !important; order: 2; width: 100%; margin-top: 2px;
+  }
+  .community-profile .cp-topline { padding: 12px 14px; }
+  .community-profile .cp-user { padding: 13px 14px 5px; }
+  .community-profile .cp-description { min-height: 0; margin: 7px 0 12px; padding: 0 14px; }
+  .community-profile .cp-guest-actions { flex-direction: row; gap: 7px; padding: 0 14px 13px; }
+  .community-profile .cp-guest-actions .btn { flex: 1; min-width: 0; padding: 9px 6px; font-size: 11px; }
+  .community-profile .cp-stats { padding: 0 14px 13px; }
+  .community-profile .cp-member-actions { padding: 0 12px 12px; }
+  .community-profile .cp-info-note { display: flex; gap: 9px; align-items: flex-start; margin: 0 12px 12px; padding: 10px; border: 1px solid #2b4358; border-radius: 7px; background: #12202d; }
+  .cp-info-icon { color: #79bfe8; font-size: 17px; line-height: 1.2; }
+  .cp-info-note b { display: block; color: #dceaf4; font-size: 11px; margin-bottom: 2px; }
+  .cp-info-note p { margin: 0; color: #9db0c1; font-size: 10px; line-height: 1.45; }
+  .catalog-title { margin-top: 24px !important; }
+  .catalog-title h2 { font-size: 18px !important; }
+  .catalog-toolbar { gap: 10px !important; }
+  .sort-options { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; width: 100%; }
+  .sort-options .filter { min-height: 38px; justify-content: center; text-align: center; font-size: 11px !important; }
+  .card-size-controls { display: flex !important; flex-wrap: wrap !important; align-items: center; gap: 6px !important; width: 100%; margin: 0 !important; }
+  .products, .products[data-card-size="compact"], .products[data-card-size="normal"], .products[data-card-size="large"] {
+    display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 9px !important; width: 100%;
+  }
+  .product { min-width: 0; border-radius: 10px !important; }
+  .product img, .products[data-card-size="normal"] .product img { height: clamp(92px, 28vw, 122px) !important; }
+  .products[data-card-size="compact"] .product img { height: clamp(78px, 23vw, 100px) !important; }
+  .products[data-card-size="large"] .product img { height: clamp(108px, 32vw, 145px) !important; }
+  .product-body { padding: 9px !important; }
+  .product .meta { font-size: 10px !important; line-height: 1.35; }
+  .product h3 { font-size: 12px !important; min-height: 33px !important; line-height: 1.32 !important; }
+  .price-row { flex-direction: row !important; align-items: center !important; gap: 5px !important; flex-wrap: wrap; margin-top: 9px !important; }
+  .price { font-size: 15px !important; }
+  .tag { font-size: 9px !important; padding: 3px 5px !important; }
+  .product-actions { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 5px !important; margin-top: 9px !important; }
+  .product-actions .btn { min-width: 0; min-height: 35px !important; padding: 7px 4px !important; font-size: 10px !important; white-space: nowrap; }
+  .modal-bg { align-items: flex-end !important; padding: 0 !important; }
+  .modal { width: 100% !important; max-width: none !important; max-height: min(88dvh, 760px) !important; margin: 0 !important; padding: 17px 15px calc(16px + env(safe-area-inset-bottom)) !important; border-radius: 18px 18px 0 0 !important; }
+  .modal-head { position: sticky; top: -17px; z-index: 2; margin: -17px -15px 13px; padding: 15px; background: #172432; border-bottom: 1px solid #2b4358; }
+  .checkout-product { grid-template-columns: 82px minmax(0, 1fr) !important; }
+}
+@media (max-width: 390px) {
+  .topbar>.top-actions .btn { padding-left: 7px !important; padding-right: 7px !important; }
+  #accountBtn { max-width: 88px !important; }
+  #registerBtn { max-width: 88px !important; }
+  .products, .products[data-card-size="compact"], .products[data-card-size="normal"], .products[data-card-size="large"] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .product-body { padding: 8px !important; }
+  .product-actions .btn { font-size: 9px !important; }
+  .community-profile .cp-guest-actions { flex-direction: column; }
+}
+@media (max-width: 350px) {
+  .products, .products[data-card-size="compact"], .products[data-card-size="normal"], .products[data-card-size="large"] { grid-template-columns: minmax(0, 1fr) !important; }
+}
+
+/* Checkout preview: deliberately no card fields, payment SDK, API call or order creation. */
+.checkout-wrap { display: grid; gap: 14px; }
+.checkout-topline { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: #9db0c1; font-size: 10px; font-weight: 800; letter-spacing: 1.2px; }
+.checkout-badge { padding: 5px 8px; border: 1px solid #3b6682; border-radius: 4px; color: #a9d9f3; background: #1a3549; letter-spacing: .5px; white-space: nowrap; }
+.checkout-product { display: grid; grid-template-columns: 104px minmax(0,1fr); gap: 13px; align-items: center; padding: 12px; border: 1px solid #2b4358; border-radius: 8px; background: #1b2c3c; }
+.checkout-product img { display: block; width: 100%; height: 78px; border-radius: 5px; object-fit: cover; background: #20384c; }
+.checkout-product-copy { display: grid; gap: 4px; min-width: 0; }
+.checkout-product-copy b { color: #edf5fb; font-size: 14px; line-height: 1.35; overflow-wrap: anywhere; }
+.checkout-product-copy small { color: #9db0c1; font-size: 11px; }
+.checkout-category { color: #80bfe3; font-size: 10px; }
+.checkout-summary { display: grid; gap: 9px; padding: 0 2px; }
+.checkout-summary>div { display: flex; justify-content: space-between; gap: 14px; color: #aebdca; font-size: 13px; }
+.checkout-summary>div b { color: #e5edf5; white-space: nowrap; }
+.checkout-summary .checkout-total { margin-top: 3px; padding-top: 12px; border-top: 1px solid #2b4358; color: #edf5fb; font-size: 15px; font-weight: 800; }
+.checkout-summary .checkout-total b { color: #b8dfb7; font-size: 20px; }
+.checkout-methods { display: grid; gap: 9px; }
+.checkout-section-title { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 13px; }
+.checkout-section-title span { color: #93a5b4; font-size: 10px; }
+.checkout-method-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 9px; }
+.checkout-method { min-width: 0; min-height: 104px; display: grid; grid-template-columns: 36px minmax(0,1fr); align-content: start; align-items: center; gap: 9px; padding: 12px; border: 1px solid #354f66; border-radius: 11px; background: linear-gradient(145deg,#172942,#151b35); text-align: left; }
+.checkout-method.selected { border-color: #8a78e8; background: linear-gradient(145deg,#29345f,#30224d); box-shadow: inset 0 0 0 1px #927bff33,0 8px 22px #4935a522; }
+.checkout-method-icon { flex: 0 0 36px; width: 36px; height: 36px; display: grid; place-items: center; border-radius: 10px; overflow:hidden; }
+.checkout-method-icon svg { width: 31px; height: 31px; display: block; }
+.payment-card-icon { background: linear-gradient(135deg,#183d68,#4a3d93); }
+.payment-sbp-icon { background: linear-gradient(135deg,#153c50,#263c67); }
+.payment-wallet-icon { background: linear-gradient(135deg,#44306e,#293b71); }
+.checkout-method>span:nth-child(2) { min-width: 0; display: grid; gap: 3px; }
+.checkout-method b { color: #f2f0ff; font-size: 11px; line-height: 1.3; }
+.checkout-method small { color: #aeb8da; font-size: 9px; line-height: 1.35; }
+.checkout-method i { display: none; margin-left: auto; color: #a4d7f4; font-style: normal; }
+.checkout-method.selected i { display: block; }
+.checkout-notice,.checkout-warning { display: flex; gap: 10px; align-items: flex-start; padding: 12px; border: 1px solid #3a5c73; border-radius: 7px; background: #1a3041; color: #c5d6e3; font-size: 12px; line-height: 1.5; }
+.checkout-notice>span { color: #86c5e8; font-size: 17px; line-height: 1; }
+.checkout-notice p { margin: 0; }
+.checkout-notice b { color: #e7f2fa; }
+.checkout-warning { display: block; border-color: #6d5d39; background: #302b20; color: #efdfbb; }
+.checkout-warning b { color: #ffe0a0; }
+.checkout-pay-button { width: 100%; min-height: 44px; opacity: .62; cursor: not-allowed !important; filter: grayscale(.18); }
+.checkout-pay-button:disabled { transform: none !important; }
+.checkout-back-button { width: 100%; padding: 9px; background: transparent; color: #a9bfd0; font-size: 12px; }
+.checkout-back-button:hover { color: #e5edf5; }
+@media(max-width:480px) {
+  .checkout-wrap { gap: 12px; }
+  .checkout-topline { font-size: 9px; }
+  .checkout-product { grid-template-columns: 82px minmax(0,1fr); gap: 10px; padding: 9px; }
+  .checkout-product img { height: 68px; }
+  .checkout-product-copy b { font-size: 12px; }
+  .checkout-method-grid { grid-template-columns: 1fr; gap: 7px; }
+  .checkout-method { min-height: 0; grid-template-columns: 36px minmax(0,1fr) 18px; padding: 10px; }
+}
+</style>
+
+
+<style id="exxpress-auth-icons-motion-polish-20261105">
+/* Product category symbols: visible in the listing card as well as in category filters. */
+.product-category-line{display:flex;align-items:center;gap:7px;min-width:0;line-height:1.25}
+.product-category-line>span:last-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.product-category-icon{width:25px;height:25px;min-width:25px;display:inline-grid;place-items:center;vertical-align:middle;border:1px solid #8176c9;border-radius:8px;background:linear-gradient(145deg,#443b89,#253f75);font-size:14px;box-shadow:0 4px 12px #07061966}
+.product-category-icon[data-category="Игровые ключи"]{background:linear-gradient(140deg,#733bb0,#354c9b);border-color:#9c75df}
+.product-category-icon[data-category="Аккаунты"]{background:linear-gradient(140deg,#276da5,#3a4da0);border-color:#72afe9}
+.product-category-icon[data-category="DLC и дополнения"]{background:linear-gradient(140deg,#3655aa,#7445a7);border-color:#8d8aec}
+.product-category-icon[data-category="Подарочные карты"]{background:linear-gradient(140deg,#a34388,#6042a8);border-color:#d57bc1}
+.product-category-icon[data-category="Игровые предметы"]{background:linear-gradient(140deg,#217c83,#3a5eaa);border-color:#69c4c2}
+.product-detail-category{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+
+/* Smooth, consistent interaction feedback across the whole interface. */
+html{scroll-behavior:smooth}
+button,a,.category-tile,.product,.chip,.filter,.checkout-method,.cp-member-actions button,.order,.chat-peer,.tabs button,.close,.checkout-back-button,.field input,.field select,.field textarea{
+  transition:color .18s ease,background-color .18s ease,border-color .18s ease,box-shadow .2s ease,transform .2s cubic-bezier(.2,.75,.25,1),filter .18s ease,opacity .18s ease;
+}
+button:active:not(:disabled){transform:translateY(1px) scale(.985)}
+button:disabled{cursor:not-allowed;filter:saturate(.55)}
+.product:hover{transform:translateY(-4px)}
+.category-tile:hover,.chip:hover,.filter:hover{transform:translateY(-2px)}
+.checkout-method:hover{transform:translateY(-2px);border-color:#8e83dd;box-shadow:0 8px 20px #0a081d66}
+.checkout-method.selected:hover{border-color:#b5a7ff}
+.cp-member-actions button:hover{transform:translateX(3px)}
+button:focus-visible,a:focus-visible,.checkout-method:focus-visible,.field input:focus-visible,.field select:focus-visible,.field textarea:focus-visible{
+  outline:2px solid #8cceff;outline-offset:3px;
+}
+/* The modal now fades and slides both in and out instead of popping abruptly. */
+.modal-bg{display:flex!important;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,visibility .22s ease}
+.modal-bg.show{display:flex!important;opacity:1;visibility:visible;pointer-events:auto}
+.modal{opacity:0;transform:translateY(15px) scale(.985);transition:opacity .22s ease,transform .24s cubic-bezier(.2,.75,.25,1)}
+.modal-bg.show .modal{opacity:1;transform:translateY(0) scale(1)}
+.toast{transition:opacity .22s ease,transform .24s cubic-bezier(.2,.75,.25,1)}
+@media(max-width:760px){
+  .modal{transform:translateY(24px) scale(1)}
+  .modal-bg.show .modal{transform:translateY(0) scale(1)}
+  .checkout-method-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important}
+  *,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition-duration:.01ms!important;transition-delay:0ms!important}
+}
+
+</style>
+
+<style id="exxpress-1-5-3-wallet-currency-support">
+.currency-tools{display:flex;align-items:center;gap:11px;flex:0 0 auto;padding:6px 9px;border:1px solid #53639a;border-radius:10px;background:#12152b;box-shadow:inset 0 1px 8px #03071455}
+.currency-tools label{color:#aeb9d8;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;margin-right:2px}
+.currency-tools select{margin-left:2px;max-width:94px;min-width:82px;padding:5px 20px 5px 7px;border:0;outline:0;background:#1b2340;color:#f2f5ff;border-radius:6px;font-size:12px;font-weight:800}
+.currency-source{display:inline-flex;align-items:center;gap:3px;margin-left:2px;padding-left:10px;border-left:1px solid #53639a;color:#a9b9e7;font-size:10px;font-weight:800;letter-spacing:.25px;text-decoration:none;white-space:nowrap;transition:color .18s ease,opacity .18s ease}
+.currency-source:hover{color:#fff;text-decoration:underline;opacity:1}
+.wallet-method-heading{display:flex;justify-content:space-between;gap:8px;align-items:center;margin:15px 0 8px;font-size:13px}
+.wallet-method-heading span{color:#9daecc;font-size:10px}
+.wallet-payment-grid{display:grid;grid-template-columns:1fr;gap:7px}
+.wallet-payment-option{display:grid;grid-template-columns:37px minmax(0,1fr) 16px;align-items:center;gap:10px;width:100%;padding:10px 12px;text-align:left;border:1px solid #39466f;border-radius:10px;background:linear-gradient(130deg,#171c38,#1a1934);color:#eeeaff}
+.wallet-payment-option.selected{border-color:#8e83dd;background:linear-gradient(130deg,#292c5b,#30204b);box-shadow:inset 0 0 0 1px #927bff25}
+.wallet-payment-option>span:nth-child(2){display:grid;gap:2px;min-width:0}
+.wallet-payment-option b{font-size:12px}.wallet-payment-option small{font-size:10px;color:#aeb8da}.wallet-payment-option i{display:none;color:#9de0c2;font-style:normal}.wallet-payment-option.selected i{display:block}
+.wallet-payment-icon{display:grid;place-items:center;width:36px;height:36px;border-radius:9px;font-size:22px;font-weight:900;color:#e8e5ff;background:linear-gradient(140deg,#2b6d99,#6545a4)}
+.wallet-payment-icon.sbp{background:linear-gradient(140deg,#1a667d,#3a8c74);color:#a8f2db}.wallet-payment-icon.wallet{background:linear-gradient(140deg,#563b8d,#304d8e);color:#d8caff}
+.wallet-history-list{display:grid;gap:8px}.wallet-history-row{display:flex;justify-content:space-between;gap:12px;padding:12px;border:1px solid #3d3a68;border-radius:10px;background:#181a32}.wallet-history-main,.wallet-history-amount{display:grid;gap:4px;min-width:0}.wallet-history-main small,.wallet-history-amount small{font-size:10px;color:#aeb8d2}.wallet-history-status{color:#ffcf85;font-size:10px;font-weight:800}.wallet-history-amount{text-align:right;white-space:nowrap}.wallet-history-amount b{color:#f4edff}.support-launcher{position:fixed;right:22px;bottom:20px;z-index:70;display:flex;align-items:center;gap:9px;padding:12px 17px;border:1px solid #a58bff88;border-radius:28px;background:linear-gradient(110deg,#7629c9,#3e63cb);color:#fff;font-weight:850;box-shadow:0 10px 30px #08051b99;cursor:pointer}
+.support-chat{position:fixed;right:22px;bottom:82px;z-index:71;display:flex;flex-direction:column;width:min(370px,calc(100vw - 28px));height:min(550px,calc(100dvh - 110px));overflow:hidden;border:1px solid #6d5e9f;border-radius:17px;background:#11152b;box-shadow:0 20px 60px #0009}
+.support-chat.hidden{display:none}.support-chat-head{display:flex;align-items:center;gap:10px;padding:13px;background:linear-gradient(110deg,#222957,#35204c);border-bottom:1px solid #484171}.support-avatar{display:grid;place-items:center;width:37px;height:37px;border-radius:50%;background:linear-gradient(135deg,#a64cff,#33bbdf);font-weight:900}.support-chat-head>div:nth-child(2){display:grid;gap:2px;flex:1}.support-chat-head small{color:#c2bde0;font-size:10px}.support-chat-head>button{border:0;background:transparent;color:#eee;font-size:24px}.support-chat-messages{display:flex;flex:1;flex-direction:column;gap:9px;overflow:auto;padding:13px}.support-message{max-width:92%;padding:10px 12px;border:1px solid #3e4268;border-radius:12px;background:#1a203b;color:#e6ebff;font-size:12px;line-height:1.5;overflow-wrap:anywhere}.support-message p{margin:0}.support-message b{display:block;margin-bottom:5px}.support-message.user{align-self:flex-end;background:#382761;border-color:#7150a5}.support-message.bot{align-self:flex-start}.support-quick-questions{display:flex;gap:6px;flex-wrap:wrap;padding:0 12px 9px}.support-quick-questions button{padding:6px 9px;border:1px solid #554b83;border-radius:16px;background:#211f40;color:#dcd7ff;font-size:10px}.support-chat-form{display:flex;gap:7px;padding:10px;border-top:1px solid #3c3b63}.support-chat-form input{min-width:0;flex:1;padding:11px;border:1px solid #55507b;border-radius:9px;background:#171a31;color:#fff;outline:0}.support-chat-form button{width:42px;border:0;border-radius:9px;background:linear-gradient(135deg,#7c45d9,#397bd6);color:#fff;font-size:18px}.support-chat-foot{padding:0 12px 10px;color:#8f99b9;font-size:9px}
+@media(max-width:1000px){.currency-tools{order:2}.search{order:3;flex:1}.top-actions{order:2}}
+@media(max-width:700px){.currency-tools{order:2;margin-left:auto;padding:4px 7px;gap:8px}.currency-tools label{font-size:9px;margin-right:1px}.currency-tools select{font-size:11px;min-width:75px;padding-left:6px}.currency-source{font-size:9px;padding-left:7px;margin-left:0}.search{order:4;flex-basis:100%}.top-actions{order:2}.support-launcher{left:12px;right:auto;bottom:calc(12px + env(safe-area-inset-bottom));padding:11px 14px}.support-chat{left:10px;right:auto;bottom:calc(70px + env(safe-area-inset-bottom));width:calc(100vw - 20px);height:min(520px,calc(100dvh - 95px - env(safe-area-inset-bottom)))}.wallet-history-row{padding:10px}.wallet-history-amount b{font-size:12px}}
+</style>
+
+
+<style id="exxpress-1-5-4-page-motion-support">
+/* Noticeable but restrained transitions when switching app sections. */
+main>section.page-enter{
+  animation:exxPageRouteEnter .46s cubic-bezier(.18,.72,.22,1) both;
+  will-change:opacity,transform;
+}
+@keyframes exxPageRouteEnter{
+  0%{opacity:0;transform:translate3d(0,18px,0) scale(.992)}
+  68%{opacity:1;transform:translate3d(0,-2px,0) scale(1)}
+  100%{opacity:1;transform:translate3d(0,0,0) scale(1)}
+}
+.page-enter .hero-content,.page-enter .section-head,.page-enter .profile-card{
+  animation:exxContentEnter .42s cubic-bezier(.18,.72,.22,1) both;
+}
+.page-enter .product{animation:exxCardEnter .38s cubic-bezier(.18,.72,.22,1) both}
+.page-enter .product:nth-child(2){animation-delay:.035s}
+.page-enter .product:nth-child(3){animation-delay:.07s}
+.page-enter .product:nth-child(4){animation-delay:.105s}
+.page-enter .product:nth-child(5){animation-delay:.14s}
+.page-enter .product:nth-child(6){animation-delay:.175s}
+@keyframes exxContentEnter{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes exxCardEnter{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+/* Support is always easy to find, but placed bottom-left away from right-side notices. */
+.support-launcher{
+  left:22px;right:auto;bottom:22px;min-height:42px;padding:9px 14px;gap:7px;
+  border-radius:14px 14px 14px 5px;
+  background:linear-gradient(115deg,#354b68,#30445e);
+  border-color:#60758d88;color:#e3edf6;font-size:13px;font-weight:750;
+  box-shadow:0 6px 18px #080d1699,0 0 0 1px #9fb4c511;
+  transition:transform .22s cubic-bezier(.2,.75,.25,1),box-shadow .22s ease,filter .2s ease;
+}
+.support-launcher:hover{transform:translateY(-2px);box-shadow:0 9px 22px #080d16aa;filter:brightness(1.06)}
+.support-launcher:focus-visible{outline:2px solid #b7e4ff;outline-offset:4px}
+.support-chat{
+  left:22px;right:auto;bottom:84px;
+  visibility:hidden;opacity:0;pointer-events:none;
+  transform:translateY(16px) scale(.975);transform-origin:bottom left;
+  transition:opacity .24s ease,transform .3s cubic-bezier(.18,.72,.22,1),visibility .24s ease;
+}
+.support-chat.is-open{visibility:visible;opacity:1;pointer-events:auto;transform:translateY(0) scale(1)}
+.support-message{animation:exxSupportMessageIn .22s ease both}
+@keyframes exxSupportMessageIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+.support-chat-head>button{width:34px;height:34px;border-radius:9px;transition:background .18s ease,transform .18s ease}
+.support-chat-head>button:hover{background:#ffffff16;transform:rotate(90deg)}
+.support-quick-questions button{transition:transform .18s ease,border-color .18s ease,background .18s ease}
+.support-quick-questions button:hover{transform:translateY(-2px);border-color:#a58bff;background:#30285a}
+@media(max-width:700px){
+  .support-launcher{left:12px;right:auto;bottom:calc(12px + env(safe-area-inset-bottom));padding:11px 14px;min-height:44px}
+  .support-chat{left:10px;right:auto;bottom:calc(70px + env(safe-area-inset-bottom));width:calc(100vw - 20px);height:min(520px,calc(100dvh - 95px - env(safe-area-inset-bottom)));transform-origin:bottom left}
+}
+@media(prefers-reduced-motion:reduce){
+  main>section.page-enter,.page-enter .hero-content,.page-enter .section-head,.page-enter .profile-card,.page-enter .product,.support-message{animation:none!important;will-change:auto}
+  .support-chat,.support-launcher{transition:none!important}
+}
+</style>
 </head>
 <body>
 <header class="topbar">
@@ -856,6 +1162,9 @@ body:before{display:none}
     <button data-page="orders">☆ Покупки</button>
   </nav>
   <label class="search"><input id="search" type="search" placeholder="Поиск по товарам…" autocomplete="off" aria-label="Поиск по товарам"></label>
+  <div class="currency-tools"><label for="currencySelect">Валюта</label><select id="currencySelect" aria-label="Валюта отображения" onchange="setDisplayCurrency(this.value)">
+    <option value="RUB">₽ RUB</option><option value="USD">$ USD</option><option value="EUR">€ EUR</option><option value="KZT">₸ KZT</option>
+  </select><a href="https://www.exchangerate-api.com" target="_blank" rel="noopener noreferrer" title="Открыть источник справочных курсов валют" aria-label="Источник курсов валют — Rates" class="currency-source">Rates ↗</a></div>
   <div class="top-actions">
     <button class="btn ghost" id="accountBtn">Войти</button>
     <button class="btn primary register-btn" id="registerBtn">Регистрация</button>
@@ -867,7 +1176,7 @@ body:before{display:none}
     <div class="hero">
       <div class="hero-art" aria-hidden="true"></div>
       <div class="hero-content">
-        <div class="eyebrow"><span class="eyebrow-dot"></span> EXXPRESS · ИГРОВОЙ МАРКЕТПЛЕЙС</div>
+        <div class="eyebrow">EXXPRESS ИГРОВОЙ МАРКЕТПЛЕЙС</div>
         <h1>Гейминг,<br><span>доступный каждому.</span></h1>
         <p>Игровые ключи, аккаунты, дополнения и цифровые товары от сообщества. Находи предложения, сравнивай условия и общайся с продавцами.</p>
         <div class="hero-actions">
@@ -910,7 +1219,35 @@ body:before{display:none}
         <div class="empty hidden" id="noResults">Ничего не найдено. Попробуй изменить запрос или категорию.</div>
       </div>
 
-
+      <aside class="community-profile" id="homeProfileCard" aria-label="Профиль и информация EXXPRESS">
+        <div class="cp-topline"><span>ТВОЙ EXXPRESS</span><i>MARKET</i></div>
+        <div class="cp-user">
+          <div class="cp-avatar" id="homeProfileAvatar" aria-hidden="true">✦</div>
+          <div class="cp-user-info">
+            <b id="homeProfileName">Игрок Exxpress</b>
+            <span id="homeProfileStatus"><i class="status-dot"></i> Гость</span>
+          </div>
+        </div>
+        <p class="cp-description" id="homeProfileDescription">Войди или зарегистрируйся, чтобы покупать игровые товары и размещать объявления.</p>
+        <div class="cp-stats hidden" id="homeProfileStats">
+          <div><b id="homeListingsCount">0</b><span>Мои объявления</span></div>
+          <div><b>5</b><span>Категорий товаров</span></div>
+        </div>
+        <div class="cp-guest-actions" id="homeProfileGuest">
+          <button class="btn primary" type="button" onclick="openAuth()">Войти в аккаунт</button>
+          <button class="btn secondary cp-register" type="button" onclick="openAuth();authTab('reg')">Создать аккаунт</button>
+        </div>
+        <div class="cp-member-actions hidden" id="homeProfileMember">
+          <button type="button" onclick="showPage('profile')"><span>◉</span> Мой профиль <b>›</b></button>
+          <button type="button" onclick="showPage('sell')"><span>＋</span> Мои объявления <b>›</b></button>
+          <button type="button" onclick="showPage('orders')"><span>▣</span> Мои покупки <b>›</b></button>
+        </div>
+        <div class="cp-info-note">
+          <span class="cp-info-icon">ⓘ</span>
+          <div><b>Покупки в разработке</b><p>Сейчас можно посмотреть макет оформления заказа. Реальная оплата пока не подключена.</p></div>
+        </div>
+        <div class="cp-bottom"><span>Игровое сообщество</span><span>EXXPRESS</span></div>
+      </aside>
     </div>
   </section>
 
@@ -927,18 +1264,93 @@ body:before{display:none}
     </div>
   </section>
   <section id="profilePage" class="hidden"><div class="section-head"><div><h2>Мой профиль</h2><p>Твои данные и активность на Exxpress</p></div></div><div class="panel" id="profilePanel"></div></section>
-  <footer class="footer"><div class="footer-inner"><span>© 2026 Exxpress Marketplace</span><span>Игровое сообщество и объявления</span></div></footer>
+  <footer class="footer"><div class="footer-inner"><span>© 2026 Exxpress Marketplace</span><span>Игровое сообщество и объявления · курсы: <a href="https://www.exchangerate-api.com" target="_blank" rel="noopener noreferrer">Rates By Exchange Rate API</a></span></div></footer>
 </main>
 <div class="modal-bg" id="modalBg" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal"><div class="modal-head"><h2 id="modalTitle">Окно</h2><button class="close" id="modalClose" aria-label="Закрыть">✕</button></div><div id="modalContent"></div></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<button type="button" class="support-launcher" id="supportLauncher" onclick="toggleSupportChat()" aria-label="Открыть чат поддержки" aria-expanded="false" aria-controls="supportChat">✦ <span>Помощь</span></button>
+<section class="support-chat" id="supportChat" aria-label="Помощник EXXPRESS" aria-hidden="true">
+  <header class="support-chat-head"><div class="support-avatar">✦</div><div><b>Помощник EXXPRESS</b><small>Автоответы · демо-режим</small></div><button type="button" onclick="toggleSupportChat(false)" aria-label="Закрыть чат">×</button></header>
+  <div class="support-chat-messages" id="supportMessages" aria-live="polite"><div class="support-message bot"><b>Привет! Я помощник EXXPRESS.</b><p>Пока отвечаю по основным разделам сайта в демонстрационном режиме. Не отправляй сюда пароли, коды подтверждения и платёжные данные.</p></div></div>
+  <div class="support-quick-questions"><button type="button" onclick="askSupportQuick('Как считается комиссия?')">Комиссия</button><button type="button" onclick="askSupportQuick('Почему не загружается фото?')">Фото</button><button type="button" onclick="askSupportQuick('Какие способы оплаты доступны?')">Оплата</button></div>
+  <form class="support-chat-form" onsubmit="sendSupportMessage(event)"><input id="supportInput" maxlength="500" placeholder="Напиши вопрос…" autocomplete="off" aria-label="Сообщение поддержке"><button type="submit" aria-label="Отправить сообщение">➤</button></form>
+  <div class="support-chat-foot">Демонстрационный помощник, не подключён к ИИ-модели.</div>
+</section>
 <script>
 'use strict';
 
 // Exxpress frontend. Supabase credentials stay in supabase-config.js.
 const $ = id => document.getElementById(id);
 const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
-const money = value => new Intl.NumberFormat('ru-RU').format(Number(value) || 0) + ' ₽';
 const readLocal = (key, fallback) => { try { return JSON.parse(localStorage.getItem('exxpress_' + key)) ?? fallback; } catch { return fallback; } };
+const CURRENCY_META = {
+  RUB:{locale:'ru-RU',label:'Российский рубль'},
+  USD:{locale:'en-US',label:'Доллар США'},
+  EUR:{locale:'de-DE',label:'Евро'},
+  KZT:{locale:'kk-KZ',label:'Казахстанский тенге'}
+};
+let displayCurrency = CURRENCY_META[readLocal('currency', 'RUB')] ? readLocal('currency', 'RUB') : 'RUB';
+const cachedRates = readLocal('exchangeRates', null);
+let exchangeRates = cachedRates?.rates && typeof cachedRates.rates === 'object' ? cachedRates.rates : { RUB: 1 };
+let exchangeRatesLoaded = !!(cachedRates?.rates?.RUB === 1 && cachedRates?.savedAt && Date.now() - cachedRates.savedAt < 36 * 60 * 60 * 1000);
+let exchangeRateDate = cachedRates?.date || '';
+function formatDisplayMoney(value) {
+  const numeric = Number(value) || 0;
+  const code = exchangeRatesLoaded && Number.isFinite(Number(exchangeRates[displayCurrency])) && displayCurrency !== 'RUB' ? displayCurrency : 'RUB';
+  const converted = code === 'RUB' ? numeric : numeric * Number(exchangeRates[code]);
+  const locale = CURRENCY_META[code]?.locale || 'ru-RU';
+  try { const fractionDigits = Math.abs(converted - Math.round(converted)) > 0.000001 ? 2 : 0; return new Intl.NumberFormat(locale, { style: 'currency', currency: code, minimumFractionDigits: fractionDigits, maximumFractionDigits: 2 }).format(converted); }
+  catch (_) { return new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 2 }).format(converted) + ' ' + code; }
+}
+const money = value => formatDisplayMoney(value);
+function setDisplayCurrency(code) {
+  if (!CURRENCY_META[code]) return;
+  if (code !== 'RUB' && (!exchangeRatesLoaded || !Number.isFinite(Number(exchangeRates[code])))) {
+    const select = $('currencySelect'); if (select) select.value = 'RUB';
+    return toast('Курсы валют пока недоступны. Оставил отображение в рублях.');
+  }
+  displayCurrency = code;
+  localStorage.setItem('exxpress_currency', JSON.stringify(code));
+  render();
+  if (currentPage === 'profile') showProfileContent();
+  if (currentPage === 'sell') renderSeller();
+}
+async function loadExchangeRates() {
+  // The API is refreshed daily. The cached copy keeps the selector usable between visits.
+  const cached = readLocal('exchangeRates', null);
+  if (cached?.rates && cached?.savedAt && Date.now() - cached.savedAt < 36 * 60 * 60 * 1000) {
+    exchangeRates = cached.rates; exchangeRatesLoaded = true; exchangeRateDate = cached.date || '';
+  }
+  const selector = $('currencySelect');
+  if (selector) selector.value = exchangeRatesLoaded && exchangeRates[displayCurrency] ? displayCurrency : 'RUB';
+  if (exchangeRatesLoaded) {
+    render(); if (currentPage === 'profile') showProfileContent();
+    if (cached?.savedAt && Date.now() - cached.savedAt < 24 * 60 * 60 * 1000) return;
+  }
+  try {
+    const response = await fetch('https://open.er-api.com/v6/latest/RUB', { cache: 'no-store' });
+    if (!response.ok) throw new Error('HTTP ' + response.status);
+    const data = await response.json();
+    if (data.result !== 'success' || !data.rates || Number(data.rates.RUB) !== 1) throw new Error('Некорректный ответ курса валют');
+    exchangeRates = data.rates; exchangeRatesLoaded = true; exchangeRateDate = data.time_last_update_utc || data.time_last_update_unix || '';
+    localStorage.setItem('exxpress_exchangeRates', JSON.stringify({ rates: exchangeRates, date: exchangeRateDate, savedAt: Date.now() }));
+    if (!exchangeRates[displayCurrency]) displayCurrency = 'RUB';
+    localStorage.setItem('exxpress_currency', JSON.stringify(displayCurrency));
+    if (selector) selector.value = displayCurrency;
+    render(); if (currentPage === 'profile') showProfileContent(); if (currentPage === 'sell') renderSeller();
+  } catch (error) {
+    console.warn('Currency rates unavailable:', error);
+    if (!exchangeRatesLoaded || !exchangeRates[displayCurrency]) { displayCurrency = 'RUB'; if (selector) selector.value = 'RUB'; }
+  }
+}
+const EXXPRESS_FALLBACK_IMAGE = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#172c50"/><stop offset="1" stop-color="#35215e"/></linearGradient></defs><rect width="900" height="500" fill="url(#g)"/><circle cx="450" cy="190" r="72" fill="#8d8aff" opacity=".25"/><path d="M410 190h80M450 150v80" stroke="#b8ddff" stroke-width="12" stroke-linecap="round"/><text x="450" y="330" fill="#dce8ff" font-family="Arial,sans-serif" font-size="34" text-anchor="middle">EXXPRESS</text><text x="450" y="370" fill="#a8b8d8" font-family="Arial,sans-serif" font-size="18" text-anchor="middle">Изображение недоступно</text></svg>');
+const productImageSource = url => url || EXXPRESS_FALLBACK_IMAGE;
+function fallbackProductImage(image) {
+  if (!image) return;
+  image.onerror = null;
+  image.src = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#172c50"/><stop offset="1" stop-color="#35215e"/></linearGradient></defs><rect width="900" height="500" fill="url(#g)"/><circle cx="450" cy="190" r="72" fill="#8d8aff" opacity=".25"/><path d="M410 190h80M450 150v80" stroke="#b8ddff" stroke-width="12" stroke-linecap="round"/><text x="450" y="330" fill="#dce8ff" font-family="Arial,sans-serif" font-size="34" text-anchor="middle">EXXPRESS</text><text x="450" y="370" fill="#a8b8d8" font-family="Arial,sans-serif" font-size="18" text-anchor="middle">Изображение недоступно</text></svg>');
+}
+const categoryIcon = category => ({'Игровые ключи':'🔑','Аккаунты':'👤','DLC и дополнения':'🧩','Подарочные карты':'🎁','Игровые предметы':'💎'})[category] || '🎮';
 const demoListings = [
   {id:'demo-1',title:'Ключ активации игры — пример',category:'Игровые ключи',price:1499,seller:'Демо-магазин',rating:0,reviews:0,image:'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=900',desc:'Демонстрационный пример карточки. Это не реальный ключ и не реальное объявление.',date:1,stock:1,demo:true},
   {id:'demo-2',title:'Игровой аккаунт — пример',category:'Аккаунты',price:2490,seller:'Демо-магазин',rating:0,reviews:0,image:'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=900',desc:'Демонстрационный пример карточки. Это не реальный аккаунт и не реальное объявление.',date:2,stock:1,demo:true},
@@ -957,9 +1369,15 @@ let sortMode = 'popular';
 let searchText = localStorage.getItem('exxpress_search') || '';
 let activeChat = null;
 let currentPage = 'home';
+let authResolved = false;
+let pendingProtectedPage = null;
 let pendingListingImage = '';
 let cardSize = ['compact','normal','large'].includes(readLocal('cardSize', 'normal')) ? readLocal('cardSize', 'normal') : 'normal';
 let profileNotifications = readLocal('profileNotifications', true);
+let profileActiveTab = 'profile';
+let walletHistory = readLocal('walletHistory', []);
+let selectedWalletPaymentMethod = 'card';
+const WALLET_PAYMENT_METHODS = { card: 'Банковская карта', sbp: 'СБП', wallet: 'Электронный кошелёк' };
 
 function toast(message) {
   if (user && profileNotifications === false) return;
@@ -977,12 +1395,14 @@ function openModal(title, html) {
 function closeModal() { $('modalBg').classList.remove('show'); }
 $('modalClose').addEventListener('click', closeModal);
 $('modalBg').addEventListener('click', event => { if (event.target === $('modalBg')) closeModal(); });
-document.addEventListener('keydown', event => { if (event.key === 'Escape') closeModal(); });
+document.addEventListener('keydown', event => { if (event.key === 'Escape') { if ($('supportChat')?.classList.contains('is-open')) toggleSupportChat(false); closeModal(); } });
 function saveLocal() {
   localStorage.setItem('exxpress_reviews', JSON.stringify(reviews));
   localStorage.setItem('exxpress_search', searchText);
   localStorage.setItem('exxpress_cardSize', JSON.stringify(cardSize));
   localStorage.setItem('exxpress_profileNotifications', JSON.stringify(profileNotifications));
+  localStorage.setItem('exxpress_walletHistory', JSON.stringify(walletHistory));
+  localStorage.setItem('exxpress_currency', JSON.stringify(displayCurrency));
 }
 function cloudConfigured() {
   const config = window.EXXPRESS_SUPABASE_CONFIG;
@@ -1011,6 +1431,8 @@ function updateAccount() {
   $('accountBtn').textContent = user ? user.name : 'Войти';
   $('logoutBtn').classList.toggle('hidden', !user);
   $('registerBtn').classList.toggle('hidden', !!user);
+  // The top bar and the home profile card must always reflect the same Supabase session.
+  updateHomeProfile();
 }
 function updateHomeProfile() {
   const name = $('homeProfileName');
@@ -1040,10 +1462,19 @@ function updateHomeProfile() {
   member.classList.remove('hidden');
   stats.classList.remove('hidden');
 }
+function resumePendingProtectedPage() {
+  if (!authResolved || !pendingProtectedPage) return;
+  const page = pendingProtectedPage;
+  pendingProtectedPage = null;
+  showPage(page, false);
+}
 async function cloudInit() {
   if (!cloudConfigured() || !window.supabase?.createClient) {
     cloudError = 'Supabase не настроен. Проверь supabase-config.js.';
+    authResolved = true;
     render();
+    resumePendingProtectedPage();
+    resumePendingPurchase();
     return;
   }
   try {
@@ -1054,7 +1485,7 @@ async function cloudInit() {
     exxpressSupabase.auth.onAuthStateChange((_event, session) => {
       if (session?.user) {
         applyCloudUser(session.user);
-        loadCloudListings();
+        loadCloudListings().then(() => resumePendingPurchase());
         if (currentPage === 'profile') renderProfile();
       } else {
         user = null;
@@ -1063,12 +1494,18 @@ async function cloudInit() {
         if (currentPage !== 'home') showPage('home');
       }
     });
+    authResolved = true;
+    resumePendingProtectedPage();
     await loadCloudListings();
     cloudReady = true;
+    resumePendingPurchase();
   } catch (error) {
     console.error('Supabase initialization failed:', error);
     cloudError = error.message || 'Не удалось подключиться к Supabase.';
     toast('Не удалось подключиться к Supabase. Проверь настройки.');
+    authResolved = true;
+    resumePendingProtectedPage();
+    resumePendingPurchase();
   }
   updateAccount();
 }
@@ -1098,7 +1535,11 @@ async function login() {
   applyCloudUser(data.user);
   closeModal();
   await loadCloudListings();
+  const nextPage = pendingProtectedPage;
+  pendingProtectedPage = null;
+  if (nextPage) showPage(nextPage, false);
   toast('Вход выполнен. Добро пожаловать!');
+  resumePendingPurchase();
 }
 async function register() {
   if (!exxpressSupabase) return toast('Supabase ещё не подключён.');
@@ -1115,8 +1556,13 @@ async function register() {
   if (error) return toast(error.message);
   if (data.session?.user) {
     applyCloudUser(data.user);
+    await loadCloudListings();
     closeModal();
+    const nextPage = pendingProtectedPage;
+    pendingProtectedPage = null;
+    if (nextPage) showPage(nextPage, false);
     toast('Аккаунт создан!');
+    resumePendingPurchase();
   } else {
     openModal('Почти готово!', `<div class="notice">Аккаунт создан. Осталось подтвердить адрес электронной почты.</div><p>Мы отправили письмо на <b>${esc(email)}</b>.</p><ol style="padding-left:20px;line-height:1.7"><li>Открой письмо от Supabase.</li><li>Нажми ссылку «Confirm your email address».</li><li>Вернись на сайт Exxpress.</li><li>Нажми <b>«Войти»</b> и введи тот же email и пароль, которые указал при регистрации.</li></ol><p class="muted tiny">Подтверждение почты и вход — два отдельных шага. После подтверждения аккаунт уже создан, повторно регистрироваться не нужно.</p><button class="btn primary" onclick="closeModal()">Понятно</button>`);
   }
@@ -1172,17 +1618,25 @@ function mapCloudListing(row) {
     ownerId: row.seller_id,
     rating: Number(row.rating || 0),
     reviews: Number(row.reviews_count || 0),
-    image: row.image_url || 'https://placehold.co/900x500/203344/ffffff?text=Exxpress',
+    image: row.image_url || '',
     desc: row.description || '',
     date: new Date(row.created_at).getTime(),
     stock: Number(row.stock || 0),
+    isActive: row.is_active !== false,
     cloud: true,
     demo: false
   };
 }
 async function loadCloudListings() {
   if (!exxpressSupabase) return;
-  const { data, error } = await exxpressSupabase.from('listings').select('*').eq('is_active', true).order('created_at', { ascending: false });
+  let listingsQuery = exxpressSupabase.from('listings').select('*');
+  if (cloudUserId && /^[0-9a-f-]{36}$/i.test(String(cloudUserId))) {
+    // Загружаем активные объявления и собственные снятые с публикации, чтобы продавец мог их исправить.
+    listingsQuery = listingsQuery.or(`is_active.eq.true,seller_id.eq.${cloudUserId}`);
+  } else {
+    listingsQuery = listingsQuery.eq('is_active', true);
+  }
+  const { data, error } = await listingsQuery.order('created_at', { ascending: false });
   if (error) {
     console.warn('Supabase listings:', error.message);
     cloudError = 'Не удалось загрузить объявления из Supabase: ' + error.message;
@@ -1197,6 +1651,7 @@ async function loadCloudListings() {
 function render() {
   const query = searchText.trim().toLowerCase();
   let list = products.filter(product =>
+    (product.demo || (product.cloud && product.isActive !== false && Number(product.price) >= 90)) &&
     (category === 'Все' || product.category === category) &&
     `${product.title} ${product.seller} ${product.category}`.toLowerCase().includes(query)
   );
@@ -1208,9 +1663,9 @@ function render() {
   document.querySelectorAll('[data-card-size]').forEach(button => button.classList.toggle('active', button.dataset.cardSize === cardSize));
   $('products').innerHTML = list.map(product => `
     <article class="product">
-      <img src="${esc(product.image)}" alt="${esc(product.title)}" loading="lazy" onerror="this.src='https://placehold.co/900x500/203344/ffffff?text=Exxpress'">
+      <img src="${esc(productImageSource(product.image))}" alt="${esc(product.title)}" loading="lazy" onerror="fallbackProductImage(this)">
       <div class="product-body">
-        <div class="meta">${esc(product.category)} · ${product.cloud && product.ownerId ? `<button type="button" class="seller-profile-link" onclick="openSellerProfile(&quot;${String(product.ownerId)}&quot;)">${esc(product.seller)}</button>` : esc(product.seller)}</div>
+        <div class="meta product-category-line"><span class="product-category-icon" data-category="${esc(product.category)}" aria-hidden="true">${categoryIcon(product.category)}</span><span>${esc(product.category)} · ${product.cloud && product.ownerId ? `<button type="button" class="seller-profile-link" onclick="openSellerProfile(&quot;${String(product.ownerId)}&quot;)">${esc(product.seller)}</button>` : esc(product.seller)}</span></div>
         <h3>${esc(product.title)}</h3>
         ${product.rating > 0 ? `<div class="stars">★ ${Number(product.rating).toFixed(1)} <span class="meta">(${product.reviews || 0} отзывов)</span></div>` : '<div class="meta">Пока без оценок</div>'}
         <div class="price-row"><span class="price">${money(product.price)}</span><span class="tag">${product.demo ? 'Пример' : product.stock > 0 ? 'В наличии' : 'Уточнить наличие'}</span></div>
@@ -1219,14 +1674,15 @@ function render() {
     </article>`).join('');
   $('noResults').classList.toggle('hidden', list.length > 0);
   if (!list.length && cloudError) $('noResults').textContent = cloudError;
+  updateHomeProfile();
 }
 function details(id) {
   const product = products.find(item => String(item.id) === String(id));
   if (!product) return;
   const listingReviews = reviews[id] || [];
   openModal(product.title, `
-    <img class="detail-img" src="${esc(product.image)}" alt="${esc(product.title)}">
-    <p class="muted">${esc(product.category)} · продавец ${product.cloud && product.ownerId ? `<button type="button" class="seller-profile-link" onclick="openSellerProfile(&quot;${String(product.ownerId)}&quot;)">${esc(product.seller)}</button>` : esc(product.seller)} ${product.demo ? '· демонстрационный пример' : ''}</p>
+    <img class="detail-img" src="${esc(productImageSource(product.image))}" alt="${esc(product.title)}" onerror="fallbackProductImage(this)">
+    <p class="muted product-detail-category"><span class="product-category-icon" data-category="${esc(product.category)}" aria-hidden="true">${categoryIcon(product.category)}</span> ${esc(product.category)} · продавец ${product.cloud && product.ownerId ? `<button type="button" class="seller-profile-link" onclick="openSellerProfile(&quot;${String(product.ownerId)}&quot;)">${esc(product.seller)}</button>` : esc(product.seller)} ${product.demo ? '· демонстрационный пример' : ''}</p>
     <p>${esc(product.desc || 'Описание отсутствует.')}</p>
     <div class="price-row"><span class="price">${money(product.price)}</span><span class="stars">${product.rating > 0 ? `★ ${Number(product.rating).toFixed(1)} (${product.reviews || 0})` : 'Без оценок'}</span></div>
     ${product.demo ? '<div class="notice" style="margin-top:14px">Это демонстрационный пример, не реальное объявление. Для проверки покупки используй объявление, опубликованное через Exxpress.</div>' : ''}
@@ -1276,6 +1732,53 @@ function renderBuyerCabinet() {
     <div class="empty"><b>Новых уведомлений пока нет</b><p class="muted">Здесь будут появляться изменения статусов заказов и важные сообщения EXXPRESS.</p></div>`;
 }
 
+function detectPublicPlatform(rawUrl) {
+  try {
+    const url = new URL(rawUrl);
+    if (url.protocol !== 'https:') return { label: 'Публичная страница', icon: '↗' };
+    const host = url.hostname.toLowerCase().replace(/^www\./, '');
+    const platforms = [
+      { hosts: ['twitch.tv'], label: 'Twitch', icon: '🟣' },
+      { hosts: ['boosty.to'], label: 'Boosty', icon: '🟠' },
+      { hosts: ['youtube.com','youtu.be'], label: 'YouTube', icon: '▶️' },
+      { hosts: ['vk.com','vk.ru'], label: 'VK', icon: '🔵' },
+      { hosts: ['t.me','telegram.me'], label: 'Telegram', icon: '✈️' },
+      { hosts: ['patreon.com'], label: 'Patreon', icon: '🧡' },
+      { hosts: ['kick.com'], label: 'Kick', icon: '🟢' },
+      { hosts: ['discord.gg','discord.com'], label: 'Discord', icon: '💬' },
+      { hosts: ['steamcommunity.com'], label: 'Steam', icon: '🎮' }
+    ];
+    const match = platforms.find(item => item.hosts.some(domain => host === domain || host.endsWith('.' + domain)));
+    if (match) return { label: match.label, icon: match.icon };
+    const shortHost = host.split('.')[0] || 'страница';
+    return { label: shortHost.charAt(0).toUpperCase() + shortHost.slice(1), icon: '↗' };
+  } catch (_) { return { label: 'Публичная страница', icon: '↗' }; }
+}
+function publicPlatformLink(rawUrl, prefix = '') {
+  if (!rawUrl) return '';
+  let safeUrl = '';
+  try {
+    const parsed = new URL(rawUrl);
+    if (parsed.protocol !== 'https:') return '';
+    safeUrl = parsed.href;
+  } catch (_) { return ''; }
+  const platform = detectPublicPlatform(safeUrl);
+  return `<a class="website-link" href="${esc(safeUrl)}" target="_blank" rel="noopener noreferrer">${prefix ? esc(prefix) + ' ' : ''}${platform.icon} ${esc(platform.label)}</a>`;
+}
+function updateProfileWebsitePreview() {
+  const input = $('profileWebsite');
+  const preview = $('profileWebsitePreview');
+  if (!input || !preview) return;
+  const raw = input.value.trim();
+  if (!raw) { preview.textContent = 'Название платформы появится здесь.'; return; }
+  try {
+    const normalized = /^https:\/\//i.test(raw) ? raw : 'https://' + raw;
+    const url = new URL(normalized);
+    if (url.protocol !== 'https:') throw new Error('https only');
+    const platform = detectPublicPlatform(url.href);
+    preview.textContent = `Ссылка будет отображаться как: ${platform.icon} ${platform.label}`;
+  } catch (_) { preview.textContent = 'Проверь ссылку. Нужен корректный адрес https://.'; }
+}
 async function openSellerProfile(sellerId) {
   const id = String(sellerId || '').trim();
   if (!id) return toast('Не удалось определить продавца.');
@@ -1333,7 +1836,7 @@ async function openSellerProfile(sellerId) {
           <div class="stat"><b>${reviewCount ? `★ ${weightedRating.toFixed(1)}` : '—'}</b><span class="muted tiny">Оценка объявлений</span></div>
           <div class="stat"><b>${reviewCount}</b><span class="muted tiny">Оценок</span></div>
         </div>
-        ${websiteHref ? `<a class="website-link" href="${esc(websiteHref)}" target="_blank" rel="noopener noreferrer">↗ Сайт продавца</a>` : ''}
+        ${websiteHref ? publicPlatformLink(websiteHref) : ''}
       </div>
       ${setupNotice}
       <div class="divider"></div><h3>Активные объявления</h3>
@@ -1345,28 +1848,191 @@ async function openSellerProfile(sellerId) {
   }
 }
 
+let selectedCheckoutMethod = 'card';
+let pendingPurchaseId = null;
+
+function resumePendingPurchase() {
+  if (!pendingPurchaseId || !authResolved) return;
+  if (!exxpressSupabase) {
+    pendingPurchaseId = null;
+    toast(cloudError || 'Авторизация EXXPRESS пока недоступна. Попробуй позже.');
+    return;
+  }
+  if (!user || !cloudUserId) {
+    openAuth('Чтобы перейти к оформлению заказа, войди или зарегистрируйся. Просматривать каталог можно без аккаунта.');
+    return;
+  }
+  const id = pendingPurchaseId;
+  pendingPurchaseId = null;
+  requestAnimationFrame(() => requestPurchase(id));
+}
+
+function selectCheckoutMethod(method) {
+  if (!['card', 'sbp', 'wallet'].includes(method)) return;
+  selectedCheckoutMethod = method;
+  document.querySelectorAll('[data-checkout-method]').forEach(button => {
+    const active = button.dataset.checkoutMethod === method;
+    button.classList.toggle('selected', active);
+    button.setAttribute('aria-pressed', active ? 'true' : 'false');
+  });
+}
+
 function requestPurchase(id) {
   const product = products.find(item => String(item.id) === String(id));
   if (!product) return;
-  if (product.demo || !product.cloud || !product.ownerId) {
-    return openModal('Демонстрационный товар', '<p>Этот товар нужен только для примера каталога. Он не принадлежит реальному продавцу.</p>');
+  if (!authResolved) {
+    pendingPurchaseId = String(id);
+    toast('Проверяем вход в аккаунт…');
+    return;
   }
-  openModal('Покупки пока не подключены', `
-    <p>Система оформления и оплаты заказов EXXPRESS пока находится в разработке.</p>
-    <div class="notice">Личные сообщения продавцам временно отключены. Они станут доступны после покупки и подтверждения оплаты заказа.</div>
-    <p class="muted tiny">Сейчас нажатие кнопки не списывает деньги и не создаёт заказ.</p>
-    <button class="btn primary" style="width:100%" onclick="closeModal()">Понятно</button>
+  if (!exxpressSupabase) {
+    toast(cloudError || 'Авторизация EXXPRESS пока недоступна.');
+    return;
+  }
+  if (!user || !cloudUserId) {
+    pendingPurchaseId = String(id);
+    openAuth('Для оформления заказа необходим аккаунт EXXPRESS. Войди или зарегистрируйся, чтобы продолжить.');
+    return;
+  }
+  if (!product.demo && product.ownerId && String(product.ownerId) === String(cloudUserId)) {
+    toast('Нельзя оформить покупку собственного объявления.');
+    return;
+  }
+  if (!product.demo && (product.isActive === false || Number(product.price) < 90)) {
+    toast('Это объявление не опубликовано. Минимальная цена — 90 ₽.');
+    return;
+  }
+  if (!product.demo && Number(product.stock) <= 0) {
+    toast('Это объявление сейчас недоступно.');
+    return;
+  }
+  selectedCheckoutMethod = 'card';
+  const productImage = esc(productImageSource(product.image));
+  const productName = esc(product.title);
+  const purchaseFee = Math.round(Number(product.price) * 0.02 * 100) / 100;
+  const purchaseTotal = Math.round((Number(product.price) + purchaseFee) * 100) / 100;
+  const sellerName = esc(product.seller || 'Продавец EXXPRESS');
+  const demoMessage = product.demo
+    ? '<div class="checkout-warning"><b>Демонстрационное объявление.</b> Это пример для просмотра интерфейса, товар не продаётся.</div>'
+    : '';
+
+  openModal('Оформление заказа', `
+    <div class="checkout-wrap">
+      <div class="checkout-topline"><span>ПРЕДПРОСМОТР ЗАКАЗА</span></div>
+      <div class="checkout-product">
+        <img src="${productImage}" alt="${productName}" onerror="fallbackProductImage(this)">
+        <div class="checkout-product-copy">
+          <span class="checkout-category">${esc(product.category || 'Игровой товар')}</span>
+          <b>${productName}</b>
+          <small>Продавец: ${sellerName}</small>
+        </div>
+      </div>
+      <div class="checkout-summary">
+        <div><span>Стоимость товара</span><b>${money(product.price)}</b></div>
+        <div><span>Комиссия EXXPRESS · 2%</span><b>${money(purchaseFee)}</b></div>
+        <div class="checkout-total"><span>Итого к оплате</span><b>${money(purchaseTotal)}</b></div>
+      </div>
+      <div class="checkout-methods">
+        <div class="checkout-section-title"><b>Способ оплаты</b><span>Предварительный выбор</span></div>
+        <div class="checkout-method-grid">
+          <button type="button" class="checkout-method selected" data-checkout-method="card" aria-pressed="true" onclick="selectCheckoutMethod('card')">
+            <span class="checkout-method-icon payment-card-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><rect x="5" y="10" width="38" height="28" rx="7" fill="url(#cardGrad)"/><path d="M5 19h38" stroke="#fff" stroke-opacity=".8" stroke-width="3"/><rect x="10" y="26" width="9" height="6" rx="2" fill="#fff" fill-opacity=".9"/><defs><linearGradient id="cardGrad" x1="5" y1="10" x2="43" y2="38"><stop stop-color="#38bdf8"/><stop offset="1" stop-color="#7657ed"/></linearGradient></defs></svg></span>
+            <span><b>Банковская карта</b><small>Классическая оплата</small></span><i>✓</i>
+          </button>
+          <button type="button" class="checkout-method" data-checkout-method="sbp" aria-pressed="false" onclick="selectCheckoutMethod('sbp')">
+            <span class="checkout-method-icon payment-sbp-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M8 13 18 7l8 8-8 8z" fill="#33b5e5"/><path d="m22 9 8-4 11 11-8 6z" fill="#80cf58"/><path d="m8 35 10 6 8-8-8-8z" fill="#f3c34f"/><path d="m22 33 8 9 11-11-8-8z" fill="#e86b9b"/></svg></span>
+            <span><b>Система быстрых платежей</b><small>Перевод по QR-коду</small></span><i>✓</i>
+          </button>
+          <button type="button" class="checkout-method" data-checkout-method="wallet" aria-pressed="false" onclick="selectCheckoutMethod('wallet')">
+            <span class="checkout-method-icon payment-wallet-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M9 13.5A4.5 4.5 0 0 1 13.5 9H37a3 3 0 0 1 3 3v4H13a4 4 0 0 0 0 8h27v10a4 4 0 0 1-4 4H13a4 4 0 0 1-4-4z" fill="url(#walletGrad)"/><path d="M9 17h29a3 3 0 0 1 3 3v7H27a5 5 0 0 1 0-10z" fill="#d7cbff" fill-opacity=".9"/><circle cx="31" cy="23" r="2" fill="#5742a7"/><defs><linearGradient id="walletGrad" x1="9" y1="9" x2="40" y2="38"><stop stop-color="#a78bfa"/><stop offset="1" stop-color="#5b55db"/></linearGradient></defs></svg></span>
+            <span><b>Электронный кошелёк</b><small>Другие варианты — позже</small></span><i>✓</i>
+          </button>
+        </div>
+      </div>
+      ${demoMessage}
+      <div class="checkout-notice"><span>ⓘ</span><p><b>Оплата пока не подключена.</b> Это только макет будущего оформления. Деньги не списываются, платёжные данные не запрашиваются, заказ не создаётся.</p></div>
+      <button type="button" class="btn primary checkout-pay-button" disabled>Оплата скоро появится</button>
+      <button type="button" class="checkout-back-button" onclick="closeModal()">Вернуться к объявлению</button>
+    </div>
   `);
 }
 function startChat() {
-  return toast('Сообщения временно отключены. Они станут доступны после покупки.');
+  toggleSupportChat(true);
+}
+
+function formatRubles(value) {
+  return money(value);
+}
+function toggleSupportChat(force) {
+  const panel = $('supportChat');
+  const launcher = $('supportLauncher');
+  if (!panel) return;
+  const open = typeof force === 'boolean' ? force : !panel.classList.contains('is-open');
+  panel.classList.toggle('is-open', open);
+  panel.setAttribute('aria-hidden', String(!open));
+  launcher?.setAttribute('aria-expanded', String(open));
+  if (open) {
+    window.setTimeout(() => $('supportInput')?.focus(), 120);
+  } else {
+    launcher?.focus({ preventScroll: true });
+  }
+}
+function addSupportMessage(text, role) {
+  const list = $('supportMessages');
+  if (!list) return;
+  const node = document.createElement('div');
+  node.className = 'support-message ' + (role === 'user' ? 'user' : 'bot');
+  const paragraph = document.createElement('p'); paragraph.textContent = text; node.appendChild(paragraph);
+  list.appendChild(node); list.scrollTop = list.scrollHeight;
+}
+function getSupportReply(question) {
+  const q = String(question || '').toLowerCase();
+  if (/steam/.test(q)) return 'Раздел пополнения Steam временно скрыт: мы вернём его после проверки сценария. Сейчас не вводи логин, пароль или Steam Guard на сторонних страницах EXXPRESS.';
+  if (/комисс|процент|2%|объявлен/.test(q)) return 'В макете EXXPRESS комиссия при покупке любого объявления составляет 2% от цены товара. Для пополнения баланса в демо-расчёте также используется 2%. Реальные списания пока не подключены.';
+  if (/валют|доллар|евро|тенге|курс/.test(q)) return 'В верхней панели можно выбрать RUB, USD, EUR, KZT и другие валюты. Цены внутри системы хранятся в рублях, переключатель показывает ориентировочный эквивалент по справочному курсу.';
+  if (/фото|картин|изображен|аватар/.test(q)) return 'Для загрузки фотографий нужно один раз создать хранилища avatars и listing-images. В архиве есть файл STORAGE-SETUP.sql: открой Supabase → SQL Editor, вставь его содержимое и запусти. Затем загрузи фото ещё раз.';
+  if (/сбп|карт|оплат|плат[её]ж|банк/.test(q)) return 'В профиле → «Баланс и пополнение» теперь есть выбор банковской карты, СБП и электронного кошелька. Пока это только макет выбора: деньги не принимаются и баланс не меняется.';
+  if (/истори|операц|транзакц/.test(q)) return 'В разделе баланса есть журнал предпросмотров расчёта. Он хранится локально в этом браузере и не считается подтверждённой денежной операцией.';
+  if (/ии|искусствен|бот|поддерж/.test(q)) return 'Сейчас я демонстрационный помощник с заранее подготовленными ответами. Для настоящего ИИ нужен серверный маршрут, который обращается к модели; секретный API-ключ хранится только в серверных переменных окружения, не в index.html.';
+  if (/аккаунт|войти|вход|регист|авториз/.test(q)) return 'Для входа используй кнопку «Войти» и авторизацию Supabase. Не сообщай никому пароль, почтовые коды или коды двухфакторной защиты.';
+  return 'Я пока умею отвечать на вопросы о комиссиях, валютах, фотографиях, оплате, истории операций и разделах EXXPRESS. Опиши вопрос чуть подробнее или выбери одну из быстрых тем.';
+}
+function sendSupportMessage(event) {
+  event?.preventDefault();
+  const input = $('supportInput'); const question = input?.value.trim();
+  if (!question) return;
+  addSupportMessage(question, 'user'); input.value = '';
+  window.setTimeout(() => addSupportMessage(getSupportReply(question), 'bot'), 180);
+}
+function askSupportQuick(question) {
+  const input = $('supportInput'); if (input) input.value = question;
+  sendSupportMessage({ preventDefault() {} });
 }
 
 function showPage(page, push = true) {
   if (!['home','sell','orders','profile'].includes(page)) page = 'home';
-  if (['sell','orders','profile'].includes(page) && !user) return openAuth('Войди, чтобы открыть этот раздел.');
+  if (['sell','orders','profile'].includes(page) && !user) {
+    pendingProtectedPage = page;
+    if (!authResolved) return;
+    return openAuth('Войди, чтобы открыть этот раздел.');
+  }
+  const pageChanged = currentPage !== page;
+  const pageSections = ['home','sell','orders','profile'].map(name => $(name + 'Page'));
+  pageSections.forEach(section => section.classList.toggle('hidden', section.id !== page + 'Page'));
   currentPage = page;
-  ['home','sell','orders','profile'].forEach(name => $(name + 'Page').classList.toggle('hidden', name !== page));
+  if (pageChanged) {
+    pageSections.forEach(section => section.classList.remove('page-enter'));
+    const activeSection = $(page + 'Page');
+    // Force a style/layout boundary so the same transition can play on every navigation.
+    void activeSection.offsetWidth;
+    activeSection.classList.add('page-enter');
+    const finishPageEnter = event => {
+      if (event.target !== activeSection || event.animationName !== 'exxPageRouteEnter') return;
+      activeSection.classList.remove('page-enter');
+      activeSection.removeEventListener('animationend', finishPageEnter);
+    };
+    activeSection.addEventListener('animationend', finishPageEnter);
+  }
   document.querySelectorAll('.nav button').forEach(button => button.classList.toggle('active', button.dataset.page === page));
   if (page === 'sell') renderSeller();
   if (page === 'orders') renderBuyerCabinet();
@@ -1422,23 +2088,143 @@ async function deleteOwnAccount() {
 }
 
 function renderProfile() { if (user) showProfileContent(); }
+function setProfileTab(tab) {
+  if (!['profile', 'wallet'].includes(tab)) return;
+  profileActiveTab = tab;
+  showProfileContent();
+}
+function selectWalletPaymentMethod(method) {
+  if (!WALLET_PAYMENT_METHODS[method]) return;
+  selectedWalletPaymentMethod = method;
+  document.querySelectorAll('[data-wallet-payment]').forEach(button => {
+    const active = button.dataset.walletPayment === method;
+    button.classList.toggle('selected', active);
+    button.setAttribute('aria-pressed', active ? 'true' : 'false');
+  });
+}
+function formatWalletDate(value) {
+  try { return new Intl.DateTimeFormat('ru-RU', { dateStyle: 'short', timeStyle: 'short' }).format(new Date(value)); }
+  catch (_) { return ''; }
+}
+function renderWalletHistory() {
+  if (!walletHistory.length) return '<div class="wallet-history-empty"><strong>Пока нет записей</strong><span>Предпросмотры расчётов появятся здесь. Реальные операции будут доступны после подключения платёжной системы.</span></div>';
+  return `<div class="wallet-history-list">${walletHistory.slice(0, 20).map(item => `
+    <div class="wallet-history-row"><div class="wallet-history-main"><b>${esc(item.service || 'Пополнение EXXPRESS')}</b><small>${esc(item.methodLabel || WALLET_PAYMENT_METHODS[item.method] || 'Способ не выбран')} · ${esc(formatWalletDate(item.createdAt))}</small><span class="wallet-history-status">${esc(item.status || 'Предпросмотр · не оплачено')}</span></div><div class="wallet-history-amount"><b>${money(item.total)}</b><small>Включая комиссию ${money(item.fee)}</small></div></div>`).join('')}</div>`;
+}
+function updateWalletTopupCalc() {
+  const input = $('walletTopupAmount');
+  const amount = Math.max(0, Math.min(1000000, Number(input?.value) || 0));
+  const fee = Math.round(amount * 0.02 * 100) / 100;
+  const feeNode = $('walletTopupFee');
+  const totalNode = $('walletTopupTotal');
+  const baseNode = $('walletTopupBase');
+  if (baseNode) baseNode.textContent = formatRubles(amount);
+  if (feeNode) feeNode.textContent = formatRubles(fee);
+  if (totalNode) totalNode.textContent = formatRubles(amount + fee);
+}
+function setWalletTopupAmount(amount) {
+  const input = $('walletTopupAmount');
+  if (!input) return;
+  input.value = String(amount);
+  updateWalletTopupCalc();
+}
+function previewWalletTopup() {
+  const service = $('walletTopupService')?.value || 'Пополнение услуг';
+  const amount = Math.max(0, Math.min(1000000, Number($('walletTopupAmount')?.value) || 0));
+  if (!Number.isFinite(amount) || amount < 1) return toast('Укажи сумму пополнения больше нуля.');
+  const fee = Math.round(amount * 0.02 * 100) / 100;
+  const methodLabel = WALLET_PAYMENT_METHODS[selectedWalletPaymentMethod];
+  walletHistory.unshift({ id: Date.now(), service, amount, fee, total: amount + fee, method: selectedWalletPaymentMethod, methodLabel, status: 'Предпросмотр · не оплачено', createdAt: new Date().toISOString() });
+  walletHistory = walletHistory.slice(0, 30);
+  saveLocal();
+  if (currentPage === 'profile') showProfileContent();
+  openModal('Предпросмотр пополнения баланса', `
+    <div class="checkout-wrap">
+      <div class="checkout-topline"><span>EXXPRESS · БАЛАНС</span><span class="checkout-badge">ДЕМО-РЕЖИМ</span></div>
+      <div class="profile-card"><div class="muted tiny">Назначение</div><h3 style="margin:5px 0 0">${esc(service)}</h3></div>
+      <div class="checkout-summary">
+        <div><span>Способ оплаты</span><b>${esc(methodLabel)}</b></div>
+        <div><span>Сумма пополнения</span><b>${money(amount)}</b></div>
+        <div><span>Комиссия EXXPRESS · 2%</span><b>${money(fee)}</b></div>
+        <div class="checkout-total"><span>Итого по расчёту</span><b>${money(amount + fee)}</b></div>
+      </div>
+      <div class="checkout-notice"><span>ⓘ</span><p><b>Это только демонстрационный расчёт.</b> Платёж не принимается, баланс не меняется, заказ не создаётся. Реальный кошелёк появится после подключения защищённой серверной платёжной системы.</p></div>
+      <button type="button" class="btn primary" disabled style="width:100%;opacity:.65">Оплата пока не подключена</button>
+      <button type="button" class="checkout-back-button" onclick="closeModal()">Вернуться к балансу</button>
+    </div>`);
+}
+function renderWalletTab() {
+  return `
+    <div class="wallet-layout">
+      <div>
+        <section class="wallet-balance-card">
+          <div class="wallet-kicker">💳 Баланс EXXPRESS</div>
+          <div class="wallet-balance-amount">${money(0)}</div>
+          <div class="wallet-balance-note">Демо-баланс · реальные средства пока не учитываются</div>
+        </section>
+        <div class="wallet-stats">
+          <div class="wallet-stat"><b>${money(0)}</b><span>Всего пополнено</span></div>
+          <div class="wallet-stat"><b>${money(0)}</b><span>Ожидает зачисления</span></div>
+        </div>
+        <section class="wallet-panel wallet-history">
+          <h3>📜 История операций</h3>
+          <p class="wallet-panel-copy">Журнал предпросмотров в этом браузере. Он не подтверждает оплату и не меняет баланс.</p>
+          ${renderWalletHistory()}
+        </section>
+      </div>
+      <section class="wallet-panel">
+        <h3>➕ Пополнить баланс</h3>
+        <p class="wallet-panel-copy">Выбери назначение, способ оплаты и сумму для предварительного расчёта. Steam временно скрыт до завершения проверки раздела.</p>
+        <div class="field"><label for="walletTopupService">Услуга</label><select id="walletTopupService"><option>Пополнение баланса EXXPRESS</option><option>Roblox</option><option>PlayStation</option><option>Xbox</option><option>Другая услуга</option></select></div>
+        <div class="field"><label for="walletTopupAmount">Сумма в базовой валюте, ₽</label><input id="walletTopupAmount" type="number" min="1" max="1000000" step="1" value="1000" inputmode="numeric" oninput="updateWalletTopupCalc()"></div>
+        <div class="wallet-amount-presets" aria-label="Быстрый выбор суммы">
+          <button type="button" onclick="setWalletTopupAmount(500)">500 ₽</button>
+          <button type="button" onclick="setWalletTopupAmount(1000)">1 000 ₽</button>
+          <button type="button" onclick="setWalletTopupAmount(2500)">2 500 ₽</button>
+          <button type="button" onclick="setWalletTopupAmount(5000)">5 000 ₽</button>
+        </div>
+        <div class="wallet-method-heading"><b>Способ оплаты</b><span>Пока только выбор для макета</span></div>
+        <div class="wallet-payment-grid">
+          <button type="button" class="wallet-payment-option ${selectedWalletPaymentMethod === 'card' ? 'selected' : ''}" data-wallet-payment="card" aria-pressed="${selectedWalletPaymentMethod === 'card' ? 'true' : 'false'}" onclick="selectWalletPaymentMethod('card')"><span class="wallet-payment-icon card">▤</span><span><b>Банковская карта</b><small>Карта банка</small></span><i>✓</i></button>
+          <button type="button" class="wallet-payment-option ${selectedWalletPaymentMethod === 'sbp' ? 'selected' : ''}" data-wallet-payment="sbp" aria-pressed="${selectedWalletPaymentMethod === 'sbp' ? 'true' : 'false'}" onclick="selectWalletPaymentMethod('sbp')"><span class="wallet-payment-icon sbp">◇</span><span><b>СБП</b><small>Перевод по QR-коду</small></span><i>✓</i></button>
+          <button type="button" class="wallet-payment-option ${selectedWalletPaymentMethod === 'wallet' ? 'selected' : ''}" data-wallet-payment="wallet" aria-pressed="${selectedWalletPaymentMethod === 'wallet' ? 'true' : 'false'}" onclick="selectWalletPaymentMethod('wallet')"><span class="wallet-payment-icon wallet">◈</span><span><b>Электронный кошелёк</b><small>Другие способы</small></span><i>✓</i></button>
+        </div>
+        <div class="wallet-calc" aria-live="polite">
+          <div class="wallet-calc-row"><span>Сумма</span><strong id="walletTopupBase">${money(1000)}</strong></div>
+          <div class="wallet-calc-row"><span>Комиссия EXXPRESS · 2%</span><strong id="walletTopupFee">${money(20)}</strong></div>
+          <div class="wallet-calc-row total"><span>Итого</span><strong id="walletTopupTotal">${money(1020)}</strong></div>
+        </div>
+        <button type="button" class="btn primary" style="width:100%" onclick="previewWalletTopup()">Посмотреть расчёт</button>
+        <div class="wallet-demo-note">Демо-режим: выбор способа оплаты и расчёт не принимают деньги, не создают реальный заказ и не зачисляют средства. Внутренние суммы хранятся в рублях; переключатель валют меняет только отображение по справочному курсу (обновляется примерно раз в сутки). Комиссия 2% распространяется на любое пополнение; плановая комиссия вывода продавца — 2%.</div>
+      </section>
+    </div>`;
+}
 function showProfileContent() {
   const panel = $('profilePanel');
   if (!panel || !user) return;
   const initials = (user.name || 'Игрок').trim().slice(0, 1).toUpperCase();
   const accountLabel = user.email || 'Вход через Google';
-  panel.innerHTML = `<div class="profile-grid">
+  const tabBar = `<div class="profile-tabs" role="tablist" aria-label="Разделы профиля">
+    <button type="button" role="tab" aria-selected="${profileActiveTab === 'profile'}" class="profile-tab ${profileActiveTab === 'profile' ? 'active' : ''}" onclick="setProfileTab('profile')"><span class="profile-tab-icon" aria-hidden="true">👤</span>Мой профиль</button>
+    <button type="button" role="tab" aria-selected="${profileActiveTab === 'wallet'}" class="profile-tab ${profileActiveTab === 'wallet' ? 'active' : ''}" onclick="setProfileTab('wallet')"><span class="profile-tab-icon" aria-hidden="true">💳</span>Баланс и пополнение</button>
+  </div>`;
+  if (profileActiveTab === 'wallet') {
+    panel.innerHTML = tabBar + renderWalletTab();
+    updateWalletTopupCalc();
+    return;
+  }
+  panel.innerHTML = tabBar + `<div class="profile-grid">
     <div>
       <div class="profile-card">
         <div class="profile-head">
           <div class="avatar" id="profileAvatar">${user.avatar ? `<img src="${esc(user.avatar)}" alt="Аватар">` : esc(initials)}</div>
-          <div><h2>${esc(user.name)}</h2><div class="muted tiny">${esc(user.bio || 'Участник Exxpress')}</div><div class="tag" style="display:inline-block;margin-top:6px">${user.verified ? 'Контакт подтверждён' : 'Аккаунт активен'}</div>${user.websiteUrl ? `<a class="website-link" href="${esc(user.websiteUrl)}" target="_blank" rel="noopener noreferrer">↗ Мой сайт</a>` : ''}</div>
+          <div><h2>${esc(user.name)}</h2><div class="muted tiny">${esc(user.bio || 'Участник Exxpress')}</div><div class="tag" style="display:inline-block;margin-top:6px">${user.verified ? 'Контакт подтверждён' : 'Аккаунт активен'}</div>${user.websiteUrl ? publicPlatformLink(user.websiteUrl) : ''}</div>
         </div>
         <div class="avatar-upload"><div class="field" style="flex:1;min-width:180px;margin:8px 0"><label for="avatarFile">Фотография профиля</label><input id="avatarFile" type="file" accept="image/png,image/jpeg,image/webp" onchange="uploadProfileAvatar(this.files && this.files[0])"><div class="upload-help">JPG, PNG или WebP. До 5 МБ. Фото будет храниться в аккаунте.</div></div></div>
         <h3>Личные данные</h3>
         <div class="field"><label for="profileName">Ник</label><input id="profileName" maxlength="24" minlength="3" value="${esc(user.name)}" placeholder="Например, Zextor"></div>
         <div class="field"><label for="profileBio">О себе</label><textarea id="profileBio" maxlength="140" placeholder="Коротко расскажи о себе">${esc(user.bio || '')}</textarea><div class="muted tiny">До 140 символов. Отображается в твоём профиле.</div></div>
-        <div class="field"><label for="profileWebsite">Сайт или публичная страница (необязательно)</label><input id="profileWebsite" type="url" maxlength="240" value="${esc(user.websiteUrl || '')}" placeholder="https://example.com" autocomplete="url"><div class="upload-help">Добавь ссылку на свой сайт или публичную страницу. Используй только безопасный адрес https://.</div></div>
+        <div class="field"><label for="profileWebsite">Ссылка на твою страницу (необязательно)</label><input id="profileWebsite" type="url" maxlength="240" value="${esc(user.websiteUrl || '')}" placeholder="https://twitch.tv/username" autocomplete="url" oninput="updateProfileWebsitePreview()"><div class="upload-help">Вставь ссылку на Twitch, Boosty или другую публичную страницу. EXXPRESS определит платформу по адресу и покажет её название вместо общей надписи.</div><div class="upload-help" id="profileWebsitePreview" aria-live="polite">Название платформы появится здесь.</div></div>
         <h3>Настройки каталога</h3>
         <div class="field"><label for="profileCardSize">Размер карточек товаров</label><select id="profileCardSize"><option value="compact" ${cardSize === 'compact' ? 'selected' : ''}>Компактный</option><option value="normal" ${cardSize === 'normal' ? 'selected' : ''}>Обычный</option><option value="large" ${cardSize === 'large' ? 'selected' : ''}>Крупный</option></select></div>
         <label class="settings-check"><input id="profileNotifications" type="checkbox" ${profileNotifications ? 'checked' : ''}> Показывать уведомления сайта</label>
@@ -1462,6 +2248,7 @@ function showProfileContent() {
       </div>
     </aside>
   </div>`;
+  updateProfileWebsitePreview();
 }
 async function saveProfileSettings() {
   const name = $('profileName')?.value.trim() || '';
@@ -1470,10 +2257,11 @@ async function saveProfileSettings() {
   let websiteUrl = '';
   if (websiteRaw) {
     try {
-      const parsedWebsite = new URL(websiteRaw);
-      if (parsedWebsite.protocol !== 'https:') return toast('Ссылка на сайт должна начинаться с https://.');
+      const normalizedWebsite = /^https?:\/\//i.test(websiteRaw) ? websiteRaw : 'https://' + websiteRaw;
+      const parsedWebsite = new URL(normalizedWebsite);
+      if (parsedWebsite.protocol !== 'https:') return toast('Ссылка на страницу должна использовать безопасный адрес https://.');
       websiteUrl = parsedWebsite.href;
-    } catch (_) { return toast('Введи корректную ссылку, например https://example.com.'); }
+    } catch (_) { return toast('Введи корректную ссылку, например twitch.tv/username.'); }
   }
   const nextSize = $('profileCardSize')?.value || 'normal';
   const nextNotifications = !!$('profileNotifications')?.checked;
@@ -1501,8 +2289,8 @@ function renderSeller() {
   const panel = $('sellerPanel');
   if (!user || !cloudUserId) { panel.innerHTML = '<div class="empty">Войди, чтобы управлять объявлениями.</div>'; return; }
   const mine = products.filter(product => product.cloud && product.ownerId === cloudUserId);
-  panel.innerHTML = `<div class="row2"><div><h3>Твои объявления</h3><p class="muted tiny">Публикации сохраняются в Supabase.</p></div><div><button class="btn primary" onclick="newListing()">＋ Добавить объявление</button></div></div>
-    ${mine.length ? mine.map(product => `<div class="order"><div><b>${esc(product.title)}</b><div class="muted tiny">${money(product.price)} · остаток: ${product.stock}</div></div><div><button class="btn small secondary" onclick="editListing('${String(product.id).replace(/'/g, '')}')">Изменить</button> <button class="btn small danger" onclick="deleteListing('${String(product.id).replace(/'/g, '')}')">Удалить</button></div></div>`).join('') : '<div class="empty">У тебя пока нет объявлений. Добавь первое!</div>'}`;
+  panel.innerHTML = `<div class="row2"><div><h3>Твои объявления</h3><p class="muted tiny">Минимальная цена публикации — 90 ₽. Объявления дешевле не показываются в каталоге.</p></div><div><button class="btn primary" onclick="newListing()">＋ Добавить объявление</button></div></div>
+    ${mine.length ? mine.map(product => `<div class="order"><div><b>${esc(product.title)}</b><div class="muted tiny">${money(product.price)} · остаток: ${product.stock}</div>${product.isActive === false ? `<div class="tiny" style="color:#f4c66b;margin-top:4px">${Number(product.price) < 90 ? 'Снято с публикации: установи цену от 90 ₽' : 'Объявление не опубликовано'}</div>` : ''}</div><div><button class="btn small secondary" onclick="editListing('${String(product.id).replace(/'/g, '')}')">Изменить</button> <button class="btn small danger" onclick="deleteListing('${String(product.id).replace(/'/g, '')}')">Удалить</button></div></div>`).join('') : '<div class="empty">У тебя пока нет объявлений. Добавь первое!</div>'}`;
 }
 function newListing() {
   if (!user || !cloudUserId) return openAuth('Войди, чтобы размещать объявления.');
@@ -1512,10 +2300,10 @@ function openListingForm(product = null) {
   pendingListingImage = product?.image || '';
   openModal(product ? 'Редактировать объявление' : 'Новое объявление', `
     <div class="field"><label for="pTitle">Название</label><input id="pTitle" maxlength="90" value="${esc(product?.title || '')}" placeholder="Например, ключ активации игры"></div>
-    <div class="row2"><div class="field"><label for="pCat">Категория</label><select id="pCat">${['Игровые ключи','Аккаунты','DLC и дополнения','Подарочные карты','Игровые предметы'].map(value => `<option ${product?.category === value ? 'selected' : ''}>${value}</option>`).join('')}</select></div><div class="field"><label for="pPrice">Цена, ₽</label><input id="pPrice" type="number" min="1" step="1" value="${product?.price || ''}" placeholder="1500"></div></div>
-    <div class="row2"><div class="field"><label for="pStock">Количество</label><input id="pStock" type="number" min="1" max="999" value="${product?.stock || 1}"></div><div class="field image-upload"><label for="pImageFile">Фотография товара</label><input id="pImageFile" type="file" accept="image/png,image/jpeg,image/webp" onchange="uploadListingPhoto(this.files && this.files[0])"><div class="upload-help">Выбери фото прямо с телефона или компьютера. JPG, PNG или WebP, до 5 МБ.</div><div class="upload-preview" id="listingImagePreview">${pendingListingImage ? `<img src="${esc(pendingListingImage)}" alt="Предпросмотр фотографии"><span class="muted tiny">Текущее фото</span>` : '<span class="muted tiny">Фотография пока не выбрана</span>'}</div></div></div>
+    <div class="row2"><div class="field"><label for="pCat">Категория</label><select id="pCat">${['Игровые ключи','Аккаунты','DLC и дополнения','Подарочные карты','Игровые предметы'].map(value => `<option ${product?.category === value ? 'selected' : ''}>${value}</option>`).join('')}</select></div><div class="field"><label for="pPrice">Цена, ₽</label><input id="pPrice" type="number" min="90" step="1" value="${product?.price || ''}" placeholder="От 90"><div class="upload-help">Минимальная цена объявления — 90 ₽.</div></div></div>
+    <div class="row2"><div class="field"><label for="pStock">Количество</label><input id="pStock" type="number" min="1" max="999" value="${product?.stock || 1}"></div><div class="field image-upload"><label for="pImageFile">Фотография товара</label><input id="pImageFile" type="file" accept="image/png,image/jpeg,image/webp" onchange="uploadListingPhoto(this.files && this.files[0])"><div class="upload-help">Выбери фото прямо с телефона или компьютера. JPG, PNG или WebP, до 5 МБ.</div><div class="upload-preview" id="listingImagePreview">${pendingListingImage ? `<img src="${esc(productImageSource(pendingListingImage))}" alt="Предпросмотр фотографии" onerror="fallbackProductImage(this)"><span class="muted tiny">Текущее фото</span>` : '<span class="muted tiny">Фотография пока не выбрана</span>'}</div></div></div>
     <div class="field"><label for="pDesc">Описание</label><textarea id="pDesc" maxlength="3000" placeholder="Укажи платформу, регион, состав товара и условия передачи">${esc(product?.desc || '')}</textarea></div>
-    <div class="notice">Фотографии загружаются в общее хранилище Exxpress. Для загрузки администратор должен один раз создать хранилища avatars и listing-images в Supabase Storage.</div>
+    <div class="notice">Фотографии загружаются в общее хранилище Exxpress. Для загрузки один раз выполни файл STORAGE-SETUP.sql из архива в Supabase → SQL Editor. Он создаст публичные хранилища и безопасные правила загрузки для авторизованных пользователей.</div>
     <button class="btn primary" id="publishListingBtn" style="width:100%;margin-top:12px" onclick="publishListing('${product ? String(product.id).replace(/'/g, '') : ''}')">${product ? 'Сохранить изменения' : 'Опубликовать объявление'}</button>`);
 }
 async function optimizeUploadImage(file, maxSide = 1400) {
@@ -1581,12 +2369,12 @@ async function uploadListingPhoto(file) {
   if (preview) preview.innerHTML = '<span class="muted tiny">Загружаю фотографию…</span>';
   try {
     pendingListingImage = await uploadToExxpressStorage('listing-images', file, 1400);
-    if (preview) preview.innerHTML = `<img src="${esc(pendingListingImage)}" alt="Предпросмотр фотографии"><span class="muted tiny">Фото загружено</span>`;
+    if (preview) preview.innerHTML = `<img src="${esc(productImageSource(pendingListingImage))}" alt="Предпросмотр фотографии" onerror="fallbackProductImage(this)"><span class="muted tiny">Фото загружено</span>`;
     toast('Фотография загружена.');
   } catch (error) {
     console.error('Listing image upload:', error);
     pendingListingImage = previousImage;
-    if (preview) preview.innerHTML = previousImage ? `<img src="${esc(previousImage)}" alt="Предпросмотр фотографии"><span class="muted tiny">Оставлено прежнее фото</span>` : '<span class="muted tiny">Фотография не загружена</span>';
+    if (preview) preview.innerHTML = previousImage ? `<img src="${esc(productImageSource(previousImage))}" alt="Предпросмотр фотографии" onerror="fallbackProductImage(this)"><span class="muted tiny">Оставлено прежнее фото</span>` : '<span class="muted tiny">Фотография не загружена</span>';
     toast(error.message || 'Не удалось загрузить фотографию.');
   } finally {
     if (input) input.disabled = false;
@@ -1602,7 +2390,8 @@ async function publishListing(id = '') {
   const image = pendingListingImage || '';
   const description = $('pDesc').value.trim();
   const cat = $('pCat').value;
-  if (!title || title.length < 3 || price <= 0 || !Number.isFinite(price)) return toast('Укажи название и корректную цену.');
+  if (!title || title.length < 3 || !Number.isFinite(price)) return toast('Укажи название и корректную цену.');
+  if (price < 90) return toast('Минимальная цена объявления — 90 ₽.');
   if (image && !/^https?:\/\//i.test(image)) return toast('Не удалось проверить фотографию. Загрузи её ещё раз.');
   const payload = { seller_id: cloudUserId, seller_name: user.name, title, category: cat, price, stock, image_url: image || null, description, is_active: true };
   const result = id
@@ -1654,6 +2443,8 @@ window.addEventListener('popstate', event => {
 // Start with the local demonstration examples, then merge real Supabase listings.
 render();
 updateAccount();
+if ($('currencySelect')) $('currencySelect').value = displayCurrency;
+loadExchangeRates();
 cloudInit();
 const initialPage = location.hash.slice(1);
 if (['home','sell','orders','profile'].includes(initialPage)) showPage(initialPage, false);

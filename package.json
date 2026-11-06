@@ -1,8 +1,14 @@
 {
   "name": "exxpress-marketplace-demo",
-  "version": "1.3.0",
+  "version": "1.5.7",
   "private": true,
-  "description": "Exxpress marketplace demo with email verification support",
-  "scripts": { "start": "node server.js" },
-  "dependencies": { "dotenv": "^16.4.7", "express": "^4.21.2", "nodemailer": "^6.10.1" }
+  "description": "Exxpress marketplace with precise percentage fee formatting, four display currencies and compact support launcher",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "nodemailer": "^6.10.1"
+  }
 }

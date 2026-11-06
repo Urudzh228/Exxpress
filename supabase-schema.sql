@@ -28,7 +28,7 @@ create table if not exists public.listings (
   seller_name text not null default 'Продавец',
   title text not null check (char_length(title) between 2 and 120),
   category text not null default 'Другое',
-  price numeric(12,2) not null check (price > 0),
+  price numeric(12,2) not null check (price >= 90),
   stock integer not null default 1 check (stock >= 0),
   image_url text,
   description text not null default '',

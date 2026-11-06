@@ -1,4 +1,4 @@
-const CACHE_NAME = 'exxpress-seller-buyer-cabinet-20261102-v1';
+const CACHE_NAME = 'exxpress-1-5-7-min-listing-price';
 const APP_SHELL = ['./', './index.html', './manifest.webmanifest', './icon.svg'];
 self.addEventListener('install', event => {
   self.skipWaiting();

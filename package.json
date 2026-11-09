@@ -1,8 +1,8 @@
 {
   "name": "exxpress-marketplace-demo",
-  "version": "1.5.7",
+  "version": "1.6.2",
   "private": true,
-  "description": "Exxpress marketplace with precise percentage fee formatting, four display currencies and compact support launcher",
+  "description": "Exxpress marketplace with protected Supabase admin moderation, listing review and reversible account bans",
   "scripts": {
     "start": "node server.js"
   },

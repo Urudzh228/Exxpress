@@ -1,4 +1,4 @@
-const CACHE_NAME = 'exxpress-1-5-7-min-listing-price';
+const CACHE_NAME = 'exxpress-1.6.2-ban-listings';
 const APP_SHELL = ['./', './index.html', './manifest.webmanifest', './icon.svg'];
 self.addEventListener('install', event => {
   self.skipWaiting();

@@ -1,5 +1,5 @@
-const CACHE_NAME = 'exxpress-1.6.2-ban-listings';
-const APP_SHELL = ['./', './index.html', './manifest.webmanifest', './icon.svg'];
+const CACHE_NAME = 'exxpress-1.6.3-blue-branding';
+const APP_SHELL = ['./', './index.html', './manifest.webmanifest', './icon.svg', './favicon.ico', './favicon-32x32.png', './favicon-16x16.png', './apple-touch-icon.png', './icon-192.png', './icon-512.png', './og-image.jpg'];
 self.addEventListener('install', event => {
   self.skipWaiting();
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL).catch(() => {})));

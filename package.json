@@ -1,8 +1,8 @@
 {
   "name": "exxpress-marketplace-demo",
-  "version": "1.6.3",
+  "version": "1.7.1",
   "private": true,
-  "description": "EXXPRESS marketplace with protected Supabase admin moderation, reversible account bans and blue brand icons",
+  "description": "EXXPRESS marketplace with improved mobile navigation and Gemini AI support",
   "scripts": {
     "start": "node server.js"
   },
@@ -10,5 +10,8 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "nodemailer": "^6.10.1"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }

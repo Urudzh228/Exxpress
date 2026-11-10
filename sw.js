@@ -1,5 +1,5 @@
-const CACHE_NAME = 'exxpress-1.6.3-blue-branding';
-const APP_SHELL = ['./', './index.html', './manifest.webmanifest', './icon.svg', './favicon.ico', './favicon-32x32.png', './favicon-16x16.png', './apple-touch-icon.png', './icon-192.png', './icon-512.png', './og-image.jpg'];
+const CACHE_NAME = 'exxpress-1.7.1-gemini-support-icon-fix';
+const APP_SHELL = ['./', './index.html?v=1.7.1', './manifest.webmanifest?v=1.7.1', './icon.svg?v=1.7.1', './favicon.ico?v=1.7.1', './favicon-32x32.png?v=1.7.1', './favicon-16x16.png?v=1.7.1', './apple-touch-icon.png?v=1.7.1', './icon-192.png?v=1.7.1', './icon-512.png?v=1.7.1', './og-image.jpg'];
 self.addEventListener('install', event => {
   self.skipWaiting();
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL).catch(() => {})));

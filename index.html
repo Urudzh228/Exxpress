@@ -34,7 +34,7 @@
 <style>
 :root{color-scheme:dark;--bg:#0a111d;--surface:#111d2c;--surface2:#17273a;--surface3:#20364d;--line:#2a425b;--text:#eff6ff;--muted:#9db0c4;--blue:#62bdff;--blue2:#268fdb;--mint:#67dfad;--gold:#ffc76b;--danger:#ff8190;--shadow:0 22px 65px #0008;--radius:16px}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--text);font:15px/1.55 Inter,Segoe UI,Arial,sans-serif;background:radial-gradient(ellipse at 10% -5%,#1b527333,transparent 38%),radial-gradient(ellipse at 100% 30%,#1d47702b,transparent 35%),var(--bg)}body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.12;background-image:linear-gradient(30deg,transparent 48%,#78c5ff18 49%,#78c5ff18 50%,transparent 51%),linear-gradient(150deg,transparent 48%,#78c5ff12 49%,#78c5ff12 50%,transparent 51%);background-size:58px 58px}
-button,input,select,textarea{font:inherit}button{cursor:pointer;color:inherit;border:0}a{color:inherit;text-decoration:none}.hidden{display:none!important}.muted{color:var(--muted)}.tiny{font-size:12px}.topbar{height:76px;position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:28px;padding:0 max(22px,calc((100% - 1420px)/2));background:#0c1725eF;border-bottom:1px solid #34516c;backdrop-filter:blur(18px);box-shadow:0 8px 28px #0003}.logo{font-size:29px;font-weight:900;letter-spacing:-1.6px;white-space:nowrap}.logo span{background:linear-gradient(120deg,#73caff,#6be3bb);-webkit-background-clip:text;background-clip:text;color:transparent}.nav{display:flex;gap:8px}.nav button{padding:10px 13px;border-radius:9px;background:transparent;color:#b9cadb;font-weight:650;transition:.2s}.nav button:hover,.nav button.active{color:#fff;background:#203951}.search{flex:1;max-width:480px;position:relative}.search:before{content:"⌕";position:absolute;left:15px;top:4px;font-size:27px;color:#9dbbd4}.search input{width:100%;padding:12px 16px 12px 43px;color:#fff;background:#192b3e;border:1px solid #34516d;border-radius:10px;outline:none}.search input:focus,.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #62bdff20}.top-actions{display:flex;gap:9px;margin-left:auto;align-items:center}.btn{padding:10px 16px;border-radius:9px;background:#29435c;font-weight:700;border:1px solid #ffffff0c;transition:transform .18s,filter .18s,box-shadow .18s}.btn:hover{filter:brightness(1.14);transform:translateY(-1px)}.btn.primary{color:#061725;background:linear-gradient(120deg,#2296e5,#68ccf3);box-shadow:0 6px 20px #1689df30}.btn.secondary{background:#20364b;border-color:#3a5875}.btn.ghost{background:transparent;border-color:#405b75;color:#d4e3ef}.btn.danger{background:#4a2734;border-color:#784052;color:#ffdce2}.btn.small{padding:7px 11px;font-size:13px}.wrap{max-width:1420px;margin:auto;padding:26px 28px 40px}.hero{position:relative;overflow:hidden;min-height:285px;padding:42px 48px;border:1px solid #47799b;border-radius:22px;background:radial-gradient(circle at 83% 30%,#5ac4ff35,transparent 27%),linear-gradient(110deg,#10263b 0%,#19466a 57%,#13283d 100%);box-shadow:var(--shadow)}.hero:before{content:"";position:absolute;width:310px;height:310px;right:10%;top:-120px;border:1px solid #a6dcff35;border-radius:50%;box-shadow:0 0 0 28px #a6dcff0c,0 0 0 62px #a6dcff09,0 0 0 100px #a6dcff06}.hero:after{content:"";position:absolute;pointer-events:none}.hero-content{position:relative;z-index:1;max-width:680px}.eyebrow{color:#8bd4ff;text-transform:uppercase;letter-spacing:2px;font-size:12px;font-weight:800}.hero h1{margin:10px 0 12px;font-size:clamp(30px,4vw,46px);line-height:1.08;letter-spacing:-1.7px}.hero p{max-width:560px;color:#c4d9e9;margin:0}.hero .btn{margin-top:19px}.hero-pills{display:flex;flex-wrap:wrap;gap:9px;margin-top:23px}.hero-pills span{padding:6px 10px;border:1px solid #a8d9ff35;background:#ffffff0b;border-radius:30px;font-size:12px;color:#d3e8f6}.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:32px 0 16px}.section-head h2{font-size:22px;margin:0;letter-spacing:-.4px}.section-head p{margin:3px 0 0;color:var(--muted);font-size:13px}.categories{display:flex;flex-wrap:wrap;gap:9px}.chip{padding:9px 15px;border:1px solid #344e68;border-radius:40px;background:#17283a;color:#c5d7e7;transition:.2s}.chip:hover,.chip.active{background:linear-gradient(120deg,#1a6494,#287eae);border-color:#62bdff;color:#fff;box-shadow:0 5px 18px #1689df25}.catalog-layout{display:grid;grid-template-columns:215px 1fr;gap:22px}.sidebar,.panel{background:linear-gradient(145deg,#16273a,#101c2a);border:1px solid var(--line);border-radius:15px;padding:18px;box-shadow:0 12px 34px #0003}.sidebar h3{margin:0 0 12px;font-size:15px}.filter{display:block;width:100%;padding:10px;text-align:left;background:transparent;color:#b9cadb;border-radius:8px}.filter:hover,.filter.active{background:#243e56;color:#fff}.products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.product{min-width:0;overflow:hidden;position:relative;background:linear-gradient(155deg,#1a2e43,#111f2e);border:1px solid #304b67;border-radius:15px;box-shadow:0 10px 28px #0003;transition:.23s}.product:before{content:"";position:absolute;top:0;left:18px;right:18px;height:1px;background:linear-gradient(90deg,transparent,#86d1ff85,transparent);z-index:1}.product:hover{transform:translateY(-5px);border-color:#5bb8f0;box-shadow:0 18px 38px #0006,0 0 24px #2c9fe51b}.product img{display:block;width:100%;height:168px;object-fit:cover;background:#20364b}.product-body{padding:15px}.meta{font-size:12px;color:#9eb3c6}.product h3{font-size:16px;line-height:1.35;margin:6px 0 5px;min-height:43px}.stars{color:var(--gold)}.price-row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px}.price{font-size:20px;font-weight:850;color:#80e0ae}.tag{font-size:11px;color:#a9d9fb;background:#1c405a;border:1px solid #315b7b;padding:4px 8px;border-radius:6px;white-space:nowrap}.product-actions{display:flex;gap:8px;margin-top:13px}.product-actions button{flex:1}.empty{padding:42px 20px;text-align:center;color:var(--muted);background:#142438;border:1px dashed #3a5872;border-radius:14px}.notice{padding:12px 14px;border-left:3px solid var(--gold);border-radius:7px;background:#2a3947;color:#dce7f0;font-size:13px}.modal-bg{position:fixed;inset:0;z-index:30;display:none;align-items:center;justify-content:center;padding:18px;background:#03070ddc;backdrop-filter:blur(7px)}.modal-bg.show{display:flex}.modal{width:min(640px,100%);max-height:90vh;overflow:auto;padding:23px;background:linear-gradient(145deg,#1c3046,#101d2b);border:1px solid #496986;border-radius:17px;box-shadow:0 25px 85px #000b}.modal-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:16px}.modal-head h2{margin:0;font-size:21px}.close{background:#2a4056;border-radius:8px;padding:7px 11px}.field{margin:13px 0}.field label{display:block;margin-bottom:6px;font-size:13px;color:#c3d2df}.field input,.field select,.field textarea{display:block;width:100%;padding:11px 12px;background:#0e1925;border:1px solid #3b536b;border-radius:8px;color:#f2f7fb;outline:none}.field textarea{min-height:95px;resize:vertical}.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.tabs{display:flex;gap:8px;border-bottom:1px solid var(--line);margin-bottom:16px}.tabs button{padding:10px 13px;background:transparent;color:#aebfce;border-bottom:2px solid transparent}.tabs button.active{color:#fff;border-bottom-color:var(--blue)}.profile-grid{display:grid;grid-template-columns:1fr 250px;gap:18px}.profile-card{padding:20px;background:#1b3045;border:1px solid #395671;border-radius:13px}.avatar{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;font-size:27px;font-weight:900;color:#062036;background:linear-gradient(135deg,#67c9ff,#6de0b4);border:3px solid #b5e5ff55}.profile-head{display:flex;gap:16px;align-items:center}.profile-head h2{margin:0}.profile-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}.stat{padding:13px;background:#20364b;border:1px solid #385570;border-radius:10px}.stat b{display:block;font-size:22px}.order{display:flex;justify-content:space-between;align-items:center;gap:14px;margin:10px 0;padding:13px;background:#1d3043;border:1px solid #344f69;border-radius:10px}.status{font-size:12px;color:var(--mint)}.detail-img{display:block;width:100%;max-height:270px;object-fit:cover;border-radius:10px;margin-bottom:14px}.review{padding:12px 0;border-top:1px solid var(--line)}.chat-layout{display:grid;grid-template-columns:240px 1fr;gap:14px}.chat-list,.chat-window{background:#142336;border:1px solid var(--line);border-radius:12px;padding:12px}.chat-peer{display:block;width:100%;padding:11px;margin:3px 0;text-align:left;background:transparent;border-radius:8px}.chat-peer:hover,.chat-peer.active{background:#263f57}.chat-window{min-height:390px;display:flex;flex-direction:column}.chat-messages{flex:1;max-height:430px;overflow:auto;padding:8px}.bubble{max-width:80%;padding:10px 13px;margin:8px 0;border-radius:12px;background:#263d54;overflow-wrap:anywhere}.bubble.mine{margin-left:auto;background:#205783}.bubble small{display:block;margin-top:5px;font-size:10px;color:#b7cadb}.chat-compose{display:flex;gap:8px;margin-top:12px}.chat-compose input{flex:1;min-width:0;padding:11px;background:#0e1925;border:1px solid #3b536b;border-radius:8px;color:white}.footer{margin-top:60px;border-top:1px solid var(--line);padding:25px 0;color:#8196aa;font-size:12px}.toast{position:fixed;right:22px;bottom:22px;z-index:60;max-width:min(420px,calc(100% - 40px));padding:13px 17px;border:1px solid #5686aa;border-radius:10px;background:#1b3b55;color:#f3faff;box-shadow:0 12px 35px #0008;opacity:0;transform:translateY(10px);pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:translateY(0)}.divider{height:1px;background:var(--line);margin:17px 0}.footer-inner{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+button,input,select,textarea{font:inherit}button{cursor:pointer;color:inherit;border:0}a{color:inherit;text-decoration:none}.hidden{display:none!important}.muted{color:var(--muted)}.tiny{font-size:12px}.topbar{height:76px;position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:28px;padding:0 max(22px,calc((100% - 1420px)/2));background:#0c1725eF;border-bottom:1px solid #34516c;backdrop-filter:blur(18px);box-shadow:0 8px 28px #0003}.logo{font-size:29px;font-weight:900;letter-spacing:-1.6px;white-space:nowrap}.logo span{background:linear-gradient(120deg,#73caff,#6be3bb);-webkit-background-clip:text;background-clip:text;color:transparent}.nav{display:flex;gap:8px}.nav button{padding:10px 13px;border-radius:9px;background:transparent;color:#b9cadb;font-weight:650;transition:.2s}.nav button:hover,.nav button.active{color:#fff;background:#203951}.search{flex:1;max-width:480px;position:relative}.search:before{content:"⌕";position:absolute;left:15px;top:4px;font-size:27px;color:#9dbbd4}.search input{width:100%;padding:12px 16px 12px 43px;color:#fff;background:#192b3e;border:1px solid #34516d;border-radius:10px;outline:none}.search input:focus,.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #62bdff20}.top-actions{display:flex;gap:9px;margin-left:auto;align-items:center}.btn{padding:10px 16px;border-radius:9px;background:#29435c;font-weight:700;border:1px solid #ffffff0c;transition:transform .18s,filter .18s,box-shadow .18s}.btn:hover{filter:brightness(1.14);transform:translateY(-1px)}.btn.primary{color:#061725;background:linear-gradient(120deg,#2296e5,#68ccf3);box-shadow:0 6px 20px #1689df30}.btn.secondary{background:#20364b;border-color:#3a5875}.btn.ghost{background:transparent;border-color:#405b75;color:#d4e3ef}.btn.danger{background:#4a2734;border-color:#784052;color:#ffdce2}.btn.small{padding:7px 11px;font-size:13px}.wrap{max-width:1420px;margin:auto;padding:26px 28px 40px}.hero{position:relative;overflow:hidden;min-height:285px;padding:42px 48px;border:1px solid #47799b;border-radius:22px;background:radial-gradient(circle at 83% 30%,#5ac4ff35,transparent 27%),linear-gradient(110deg,#10263b 0%,#19466a 57%,#13283d 100%);box-shadow:var(--shadow)}.hero:before{content:"";position:absolute;width:310px;height:310px;right:10%;top:-120px;border:1px solid #a6dcff35;border-radius:50%;box-shadow:0 0 0 28px #a6dcff0c,0 0 0 62px #a6dcff09,0 0 0 100px #a6dcff06}.hero:after{content:"";position:absolute;pointer-events:none}.hero-content{position:relative;z-index:1;max-width:680px}.eyebrow{color:#8bd4ff;text-transform:uppercase;letter-spacing:2px;font-size:12px;font-weight:800}.hero h1{margin:10px 0 12px;font-size:clamp(30px,4vw,46px);line-height:1.08;letter-spacing:-1.7px}.hero p{max-width:560px;color:#c4d9e9;margin:0}.hero .btn{margin-top:19px}.hero-pills{display:flex;flex-wrap:wrap;gap:9px;margin-top:23px}.hero-pills span{padding:6px 10px;border:1px solid #a8d9ff35;background:#ffffff0b;border-radius:30px;font-size:12px;color:#d3e8f6}.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:32px 0 16px}.section-head h2{font-size:22px;margin:0;letter-spacing:-.4px}.section-head p{margin:3px 0 0;color:var(--muted);font-size:13px}.categories{display:flex;flex-wrap:wrap;gap:9px}.chip{padding:9px 15px;border:1px solid #344e68;border-radius:40px;background:#17283a;color:#c5d7e7;transition:.2s}.chip:hover,.chip.active{background:linear-gradient(120deg,#1a6494,#287eae);border-color:#62bdff;color:#fff;box-shadow:0 5px 18px #1689df25}.catalog-layout{display:grid;grid-template-columns:215px 1fr;gap:22px}.sidebar,.panel{background:linear-gradient(145deg,#16273a,#101c2a);border:1px solid var(--line);border-radius:15px;padding:18px;box-shadow:0 12px 34px #0003}.sidebar h3{margin:0 0 12px;font-size:15px}.filter{display:block;width:100%;padding:10px;text-align:left;background:transparent;color:#b9cadb;border-radius:8px}.filter:hover,.filter.active{background:#243e56;color:#fff}.products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.product{min-width:0;overflow:hidden;position:relative;background:linear-gradient(155deg,#1a2e43,#111f2e);border:1px solid #304b67;border-radius:15px;box-shadow:0 10px 28px #0003;transition:.23s}.product:before{content:"";position:absolute;top:0;left:18px;right:18px;height:1px;background:linear-gradient(90deg,transparent,#86d1ff85,transparent);z-index:1}.product:hover{transform:translateY(-5px);border-color:#5bb8f0;box-shadow:0 18px 38px #0006,0 0 24px #2c9fe51b}.product img{display:block;width:100%;height:168px;object-fit:cover;background:#20364b}.product-body{padding:15px}.meta{font-size:12px;color:#9eb3c6}.product h3{font-size:16px;line-height:1.35;margin:6px 0 5px;min-height:43px}.stars{color:var(--gold)}.price-row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px}.price{font-size:20px;font-weight:850;color:#80e0ae}.tag{font-size:11px;color:#a9d9fb;background:#1c405a;border:1px solid #315b7b;padding:4px 8px;border-radius:6px;white-space:nowrap}.product-actions{display:flex;gap:8px;margin-top:13px}.product-actions button{flex:1}.empty{padding:42px 20px;text-align:center;color:var(--muted);background:#142438;border:1px dashed #3a5872;border-radius:14px}.notice{padding:12px 14px;border-left:3px solid var(--gold);border-radius:7px;background:#2a3947;color:#dce7f0;font-size:13px}.modal-bg{position:fixed;inset:0;z-index:30;display:none;align-items:center;justify-content:center;padding:18px;background:#03070ddc;backdrop-filter:blur(7px)}.modal-bg.show{display:flex}.modal{width:min(640px,100%);max-height:90vh;overflow:auto;padding:23px;background:linear-gradient(145deg,#1c3046,#101d2b);border:1px solid #496986;border-radius:17px;box-shadow:0 25px 85px #000b}.modal-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:16px}.modal-head h2{margin:0;font-size:21px}.close{background:#2a4056;border-radius:8px;padding:7px 11px}.field{margin:13px 0}.field label{display:block;margin-bottom:6px;font-size:13px;color:#c3d2df}.field input,.field select,.field textarea{display:block;width:100%;padding:11px 12px;background:#0e1925;border:1px solid #3b536b;border-radius:8px;color:#f2f7fb;outline:none}.field textarea{min-height:95px;resize:vertical}.auth-link{display:block;margin:11px auto 0;padding:5px 8px;background:transparent;color:#8fd4ff;font-size:13px;text-decoration:underline;text-underline-offset:3px}.auth-link:hover{color:#c2ebff}.auth-help{margin:10px 0;color:#aabdd0;font-size:12px;line-height:1.55}.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.tabs{display:flex;gap:8px;border-bottom:1px solid var(--line);margin-bottom:16px}.tabs button{padding:10px 13px;background:transparent;color:#aebfce;border-bottom:2px solid transparent}.tabs button.active{color:#fff;border-bottom-color:var(--blue)}.profile-grid{display:grid;grid-template-columns:1fr 250px;gap:18px}.profile-card{padding:20px;background:#1b3045;border:1px solid #395671;border-radius:13px}.avatar{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;font-size:27px;font-weight:900;color:#062036;background:linear-gradient(135deg,#67c9ff,#6de0b4);border:3px solid #b5e5ff55}.profile-head{display:flex;gap:16px;align-items:center}.profile-head h2{margin:0}.profile-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}.stat{padding:13px;background:#20364b;border:1px solid #385570;border-radius:10px}.stat b{display:block;font-size:22px}.order{display:flex;justify-content:space-between;align-items:center;gap:14px;margin:10px 0;padding:13px;background:#1d3043;border:1px solid #344f69;border-radius:10px}.status{font-size:12px;color:var(--mint)}.detail-img{display:block;width:100%;max-height:270px;object-fit:cover;border-radius:10px;margin-bottom:14px}.review{padding:12px 0;border-top:1px solid var(--line)}.chat-layout{display:grid;grid-template-columns:240px 1fr;gap:14px}.chat-list,.chat-window{background:#142336;border:1px solid var(--line);border-radius:12px;padding:12px}.chat-peer{display:block;width:100%;padding:11px;margin:3px 0;text-align:left;background:transparent;border-radius:8px}.chat-peer:hover,.chat-peer.active{background:#263f57}.chat-window{min-height:390px;display:flex;flex-direction:column}.chat-messages{flex:1;max-height:430px;overflow:auto;padding:8px}.bubble{max-width:80%;padding:10px 13px;margin:8px 0;border-radius:12px;background:#263d54;overflow-wrap:anywhere}.bubble.mine{margin-left:auto;background:#205783}.bubble small{display:block;margin-top:5px;font-size:10px;color:#b7cadb}.chat-compose{display:flex;gap:8px;margin-top:12px}.chat-compose input{flex:1;min-width:0;padding:11px;background:#0e1925;border:1px solid #3b536b;border-radius:8px;color:white}.footer{margin-top:60px;border-top:1px solid var(--line);padding:25px 0;color:#8196aa;font-size:12px}.toast{position:fixed;right:22px;bottom:22px;z-index:60;max-width:min(420px,calc(100% - 40px));padding:13px 17px;border:1px solid #5686aa;border-radius:10px;background:#1b3b55;color:#f3faff;box-shadow:0 12px 35px #0008;opacity:0;transform:translateY(10px);pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:translateY(0)}.divider{height:1px;background:var(--line);margin:17px 0}.footer-inner{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 @media(max-width:1120px){.products{grid-template-columns:repeat(2,minmax(0,1fr))}.topbar{padding:0 18px}.nav{gap:2px}.nav button{padding:9px}}
 @media(max-width:760px){.topbar{height:auto;min-height:70px;flex-wrap:wrap;padding:12px 15px;gap:10px}.nav{order:3;width:100%;overflow:auto}.search{order:2;flex-basis:100%;max-width:none}.top-actions{margin-left:auto}.wrap{padding:16px}.hero{padding:27px 24px;min-height:250px}.hero:after{font-size:155px;right:2%;top:-20px}.hero h1{font-size:32px}.catalog-layout{grid-template-columns:1fr}.sidebar{display:none}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.product img{height:125px}.product-body{padding:11px}.product h3{font-size:14px;min-height:38px}.price{font-size:17px}.row2,.profile-grid,.chat-layout{grid-template-columns:1fr}.profile-stats{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:420px){.logo{font-size:25px}.top-actions .btn.ghost{display:none}.products{grid-template-columns:1fr}.product img{height:175px}.profile-stats{grid-template-columns:1fr 1fr}.hero h1{font-size:28px}}
@@ -1462,6 +1462,8 @@ let searchText = localStorage.getItem('exxpress_search') || '';
 let activeChat = null;
 let currentPage = 'home';
 let authResolved = false;
+let passwordRecoveryActive = false;
+let passwordRecoveryModalOpen = false;
 let pendingProtectedPage = null;
 let pendingListingImage = '';
 let cardSize = ['compact','normal','large'].includes(readLocal('cardSize', 'normal')) ? readLocal('cardSize', 'normal') : 'normal';
@@ -1607,13 +1609,15 @@ async function cloudInit() {
   }
   try {
     exxpressSupabase = window.supabase.createClient(window.EXXPRESS_SUPABASE_CONFIG.url, window.EXXPRESS_SUPABASE_CONFIG.anonKey);
-    const { data, error } = await exxpressSupabase.auth.getSession();
-    if (error) throw error;
-    if (data.session?.user) {
-      applyCloudUser(data.session.user);
-      await refreshAccountPermissions();
-    }
-    exxpressSupabase.auth.onAuthStateChange((_event, session) => {
+    // Subscribe before getSession(): PASSWORD_RECOVERY can be emitted while Supabase
+    // processes the recovery link during client initialization.
+    exxpressSupabase.auth.onAuthStateChange((event, session) => {
+      // The first INITIAL_SESSION is handled below by getSession().
+      if (event === 'INITIAL_SESSION') return;
+      if (event === 'PASSWORD_RECOVERY') {
+        passwordRecoveryActive = true;
+        setTimeout(showPasswordUpdateForm, 0);
+      }
       if (session?.user) {
         applyCloudUser(session.user);
         refreshAccountPermissions().then(allowed => {
@@ -1630,6 +1634,12 @@ async function cloudInit() {
         if (currentPage !== 'home') showPage('home');
       }
     });
+    const { data, error } = await exxpressSupabase.auth.getSession();
+    if (error) throw error;
+    if (data.session?.user) {
+      applyCloudUser(data.session.user);
+      await refreshAccountPermissions();
+    }
     authResolved = true;
     resumePendingProtectedPage();
     await loadCloudListings();
@@ -1682,6 +1692,74 @@ async function login() {
   toast('Вход выполнен. Добро пожаловать!');
   resumePendingPurchase();
 }
+async function sendPasswordReset() {
+  if (!exxpressSupabase) return toast('Supabase ещё не подключён.');
+  const email = String($('resetEmail')?.value || '').trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return toast('Укажи корректный адрес электронной почты.');
+  }
+  const button = $('sendResetBtn');
+  if (button) { button.disabled = true; button.textContent = 'Отправляем…'; }
+  try {
+    const { error } = await exxpressSupabase.auth.resetPasswordForEmail(email, {
+      redirectTo: window.location.origin
+    });
+    if (error) throw error;
+    // Supabase intentionally does not reveal whether an account exists.
+    openModal('Проверь почту', `<div class="notice">Если аккаунт с адресом <b>${esc(email)}</b> существует, на него отправлено письмо со ссылкой для смены пароля.</div><p class="auth-help">Открой письмо от Supabase и перейди по ссылке. Она вернёт тебя на EXXPRESS, где можно будет задать новый пароль. Если письма нет, проверь папку «Спам».</p><button class="btn primary" style="width:100%" onclick="closeModal()">Понятно</button>`);
+  } catch (error) {
+    console.error('Password reset request failed:', error?.message || error);
+    if (button) { button.disabled = false; button.textContent = 'Отправить ссылку'; }
+    toast(error?.message || 'Не удалось отправить письмо для восстановления пароля.');
+  }
+}
+function showForgotPassword() {
+  const currentEmail = String($('email')?.value || '').trim();
+  openModal('Восстановление пароля', `
+    <p class="auth-help">Укажи адрес электронной почты, который использовал при регистрации. Мы отправим на него ссылку для создания нового пароля.</p>
+    <div class="field"><label for="resetEmail">Электронная почта</label><input id="resetEmail" type="email" placeholder="name@example.com" autocomplete="email" value="${esc(currentEmail)}"></div>
+    <button class="btn primary" id="sendResetBtn" style="width:100%" onclick="sendPasswordReset()">Отправить ссылку</button>
+    <button class="auth-link" type="button" onclick="openAuth();authTab('login')">Вернуться ко входу</button>
+  `);
+  setTimeout(() => $('resetEmail')?.focus(), 0);
+}
+function showPasswordUpdateForm() {
+  if (!passwordRecoveryActive || passwordRecoveryModalOpen) return;
+  passwordRecoveryModalOpen = true;
+  openModal('Новый пароль', `
+    <p class="auth-help">Ссылка подтверждена. Придумай новый пароль для своего аккаунта EXXPRESS.</p>
+    <div class="field"><label for="recoveryPassword">Новый пароль</label><input id="recoveryPassword" type="password" minlength="8" autocomplete="new-password" placeholder="Не менее 8 символов"></div>
+    <div class="field"><label for="recoveryPasswordConfirm">Повтори новый пароль</label><input id="recoveryPasswordConfirm" type="password" minlength="8" autocomplete="new-password" placeholder="Повтори пароль"></div>
+    <button class="btn primary" id="saveRecoveryPasswordBtn" style="width:100%" onclick="saveRecoveredPassword()">Сохранить новый пароль</button>
+  `);
+  setTimeout(() => $('recoveryPassword')?.focus(), 0);
+}
+async function saveRecoveredPassword() {
+  if (!exxpressSupabase || !passwordRecoveryActive) return toast('Сначала открой ссылку восстановления из письма.');
+  const password = String($('recoveryPassword')?.value || '');
+  const confirmation = String($('recoveryPasswordConfirm')?.value || '');
+  if (password.length < 8) return toast('Новый пароль должен содержать не менее 8 символов.');
+  if (password !== confirmation) return toast('Пароли не совпадают.');
+  const button = $('saveRecoveryPasswordBtn');
+  if (button) { button.disabled = true; button.textContent = 'Сохраняем…'; }
+  try {
+    const { error } = await exxpressSupabase.auth.updateUser({ password });
+    if (error) throw error;
+    passwordRecoveryActive = false;
+    passwordRecoveryModalOpen = false;
+    const cleanUrl = new URL(window.location.href);
+    cleanUrl.searchParams.delete('code');
+    cleanUrl.searchParams.delete('type');
+    cleanUrl.hash = '';
+    window.history.replaceState({}, document.title, cleanUrl.pathname + cleanUrl.search);
+    closeModal();
+    toast('Пароль успешно изменён. Теперь можно войти с новым паролем.');
+  } catch (error) {
+    console.error('Password update failed:', error?.message || error);
+    if (button) { button.disabled = false; button.textContent = 'Сохранить новый пароль'; }
+    toast(error?.message || 'Не удалось изменить пароль. Запроси новую ссылку восстановления.');
+  }
+}
 async function register() {
   if (!exxpressSupabase) return toast('Supabase ещё не подключён.');
   const email = $('email').value.trim();
@@ -1729,6 +1807,7 @@ function openAuth(note = '') {
       <div class="field"><label for="email">Электронная почта</label><input id="email" type="email" placeholder="name@example.com" autocomplete="email"></div>
       <div class="field"><label for="password">Пароль</label><input id="password" type="password" placeholder="Не менее 8 символов" autocomplete="current-password"></div>
       <button class="btn primary" style="width:100%" onclick="login()">Войти</button>
+      <button class="auth-link" type="button" onclick="showForgotPassword()">Забыли пароль?</button>
     </div>
     <div class="muted tiny" style="text-align:center;margin:15px 0">или</div>
     <button class="btn secondary" style="width:100%" onclick="signInWithGoogle()">Продолжить с Google</button>
@@ -1743,7 +1822,8 @@ function authTab(tab) {
     <div class="field"><label for="password">Пароль</label><input id="password" type="password" placeholder="Не менее 8 символов" autocomplete="${tab === 'reg' ? 'new-password' : 'current-password'}"></div>
     ${tab === 'reg' ? '<div class="field"><label for="username">Твой ник в Exxpress</label><input id="username" maxlength="24" placeholder="Например, Zextor"></div>' : ''}
     ${tab === 'reg' ? '<div class="notice" style="margin:12px 0">После регистрации мы отправим письмо. Подтверди адрес по ссылке в письме, вернись на сайт и нажми «Войти», используя тот же email и пароль.</div>' : '<div class="notice" style="margin:12px 0">Если ты уже нажал ссылку подтверждения из письма, теперь просто войди с тем же email и паролем.</div>'}
-    <button class="btn primary" style="width:100%" onclick="${tab === 'reg' ? 'register()' : 'login()'}">${tab === 'reg' ? 'Создать аккаунт' : 'Войти'}</button>`;
+    <button class="btn primary" style="width:100%" onclick="${tab === 'reg' ? 'register()' : 'login()'}">${tab === 'reg' ? 'Создать аккаунт' : 'Войти'}</button>
+    <button class="auth-link" type="button" onclick="showForgotPassword()">Забыли пароль?</button>`;
 }
 $('accountBtn').addEventListener('click', () => user ? showPage('profile') : openAuth());
 $('registerBtn').addEventListener('click', () => { openAuth(); authTab('reg'); });
@@ -2795,7 +2875,7 @@ if (['home','sell','orders','profile','admin'].includes(initialPage)) showPage(i
 if ('serviceWorker' in navigator && location.protocol !== 'file:') {
   window.addEventListener('load', async () => {
     try {
-      const registration = await navigator.serviceWorker.register('./sw.js?v=1.7.3.1', { updateViaCache: 'none' });
+      const registration = await navigator.serviceWorker.register('./sw.js?v=1.7.6', { updateViaCache: 'none' });
       await registration.update().catch(() => {});
       document.addEventListener('visibilitychange', () => {
         if (document.visibilityState === 'visible') registration.update().catch(() => {});

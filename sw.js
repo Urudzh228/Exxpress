@@ -1,5 +1,5 @@
-const CACHE_NAME = 'exxpress-1.7.5-cloudflare-response-fix';
-const APP_SHELL = ['./', './index.html?v=1.7.5', './manifest.webmanifest?v=1.7.5', './icon.svg?v=1.7.5', './favicon.ico', './favicon-96x96.png', './favicon-48x48.png', './apple-touch-icon.png', './icon-192.png', './icon-512.png', './og-image.jpg'];
+const CACHE_NAME = 'exxpress-1.7.6-forgot-password';
+const APP_SHELL = ['./', './index.html?v=1.7.6', './manifest.webmanifest?v=1.7.6', './icon.svg?v=1.7.6', './favicon.ico', './favicon-96x96.png', './favicon-48x48.png', './apple-touch-icon.png', './icon-192.png', './icon-512.png', './og-image.jpg'];
 self.addEventListener('install', event => {
   self.skipWaiting();
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL).catch(() => {})));

@@ -1,8 +1,8 @@
 {
   "name": "exxpress-marketplace-demo",
-  "version": "1.7.5",
+  "version": "1.7.6",
   "private": true,
-  "description": "EXXPRESS marketplace with mobile navigation, Cloudflare Workers AI support and refreshed search icons",
+  "description": "EXXPRESS marketplace with Cloudflare Workers AI support and Supabase password recovery",
   "scripts": {
     "start": "node server.js"
   },

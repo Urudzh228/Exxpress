@@ -1,6 +1,6 @@
 {
   "name": "exxpress-marketplace-demo",
-  "version": "1.7.4",
+  "version": "1.7.5",
   "private": true,
   "description": "EXXPRESS marketplace with mobile navigation, Cloudflare Workers AI support and refreshed search icons",
   "scripts": {

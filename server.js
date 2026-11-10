@@ -126,8 +126,12 @@ app.post('/api/support-chat', async (req, res) => {
           ...history,
           { role: 'user', content: message }
         ],
-        max_tokens: 700,
-        temperature: 0.35
+        max_completion_tokens: 900,
+        temperature: 0.35,
+        modalities: ['text'],
+        // GLM-4.7-Flash enables reasoning by default. For a chat-support
+        // endpoint we need a user-facing text answer, not a reasoning-only turn.
+        chat_template_kwargs: { enable_thinking: false, clear_thinking: true }
       })
     });
 
@@ -150,15 +154,34 @@ app.post('/api/support-chat', async (req, res) => {
       return res.status(502).json({ error: 'Cloudflare не смог обработать запрос. Проверь настройки Workers AI в Render и Cloudflare.' });
     }
 
+    const result = payload?.result ?? payload;
+    const firstChoice = result?.choices?.[0] || payload?.choices?.[0] || null;
+    const messageContent = firstChoice?.message?.content;
+    const contentText = Array.isArray(messageContent)
+      ? messageContent.map(part => typeof part === 'string' ? part : (part?.text || '')).join(' ')
+      : (typeof messageContent === 'string' ? messageContent : '');
     const reply = String(
-      payload?.result?.response ||
-      payload?.result?.choices?.[0]?.message?.content ||
-      payload?.choices?.[0]?.message?.content ||
+      result?.response ||
+      result?.output_text ||
+      result?.text ||
+      contentText ||
+      firstChoice?.text ||
+      firstChoice?.delta?.content ||
       ''
     ).trim();
     if (!reply) {
-      console.warn('Cloudflare Workers AI returned no text.');
-      return res.status(502).json({ error: 'ИИ не сформировал текстовый ответ. Попробуй переформулировать вопрос.' });
+      // Log response shape only. Never log prompts, generated content, or credentials.
+      console.warn('Cloudflare Workers AI returned no text:', JSON.stringify({
+        payloadKeys: payload && typeof payload === 'object' ? Object.keys(payload) : [],
+        resultKeys: result && typeof result === 'object' ? Object.keys(result) : [],
+        choicesCount: Array.isArray(result?.choices) ? result.choices.length : 0,
+        choiceKeys: firstChoice && typeof firstChoice === 'object' ? Object.keys(firstChoice) : [],
+        messageKeys: firstChoice?.message && typeof firstChoice.message === 'object' ? Object.keys(firstChoice.message) : [],
+        finishReason: firstChoice?.finish_reason || null,
+        contentType: Array.isArray(messageContent) ? 'array' : typeof messageContent,
+        contentLength: typeof messageContent === 'string' ? messageContent.length : (Array.isArray(messageContent) ? messageContent.length : 0)
+      }));
+      return res.status(502).json({ error: 'Cloudflare ответил без текста. Попробуй ещё раз; если повторится — проверь подробности ответа в Render Logs.' });
     }
     return res.json({ reply: reply.slice(0, 5000) });
   } catch (error) {

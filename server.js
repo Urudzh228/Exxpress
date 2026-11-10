@@ -109,7 +109,7 @@ app.post('/api/support-chat', async (req, res) => {
   })).filter(item => item.content);
 
   const model = String(process.env.CLOUDFLARE_MODEL || '@cf/zai-org/glm-4.7-flash').trim();
-  if (!/^@[a-z0-9-]+\/[a-z0-9._-]+$/i.test(model)) {
+  if (!/^@[a-z0-9-]+(?:\/[a-z0-9._-]+)+$/i.test(model)) {
     return res.status(500).json({ error: 'В Render указана некорректная модель Cloudflare.' });
   }
   const controller = new AbortController();

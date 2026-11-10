@@ -7,15 +7,15 @@
 <meta name="theme-color" content="#06152b">
 <meta name="application-name" content="EXXPRESS">
 <meta name="apple-mobile-web-app-title" content="EXXPRESS">
-<meta name="description" content="EXXPRESS — игровой маркетплейс сообщества. Игровые товары, цифровые услуги и объявления.">
+<meta name="description" content="EXXPRESS — игровой маркетплейс. Игровые товары, цифровые услуги и объявления сообщества.">
 <title>EXXPRESS — игровой маркетплейс</title>
 <link rel="canonical" href="https://exxpress.onrender.com/">
-<link rel="icon" type="image/svg+xml" href="/icon.svg?v=1.7.1">
-<link rel="icon" href="/favicon.ico?v=1.7.1" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=1.7.1">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=1.7.1">
-<link rel="apple-touch-icon" sizes="180x180" type="image/png" href="/apple-touch-icon.png?v=1.7.1">
-<link rel="apple-touch-icon-precomposed" sizes="180x180" href="/apple-touch-icon.png?v=1.7.1">
+<!-- Stable, square EXXPRESS favicon URLs for browsers and search crawlers -->
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <meta property="og:site_name" content="EXXPRESS">
 <meta property="og:type" content="website">
 <meta property="og:title" content="EXXPRESS — игровой маркетплейс">
@@ -26,7 +26,7 @@
 <meta name="twitter:title" content="EXXPRESS — игровой маркетплейс">
 <meta name="twitter:description" content="Игровые товары, цифровые услуги и объявления сообщества.">
 <meta name="twitter:image" content="https://exxpress.onrender.com/og-image.jpg">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"EXXPRESS","alternateName":"Exxpress","url":"https://exxpress.onrender.com/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"EXXPRESS","alternateName":["Exxpress","EXXPRESS Market"],"url":"https://exxpress.onrender.com/"}</script>
 <link rel="manifest" href="/manifest.webmanifest?v=1.7.1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2795,7 +2795,7 @@ if (['home','sell','orders','profile','admin'].includes(initialPage)) showPage(i
 if ('serviceWorker' in navigator && location.protocol !== 'file:') {
   window.addEventListener('load', async () => {
     try {
-      const registration = await navigator.serviceWorker.register('./sw.js?v=1.7.1', { updateViaCache: 'none' });
+      const registration = await navigator.serviceWorker.register('./sw.js?v=1.7.3.1', { updateViaCache: 'none' });
       await registration.update().catch(() => {});
       document.addEventListener('visibilitychange', () => {
         if (document.visibilityState === 'visible') registration.update().catch(() => {});
